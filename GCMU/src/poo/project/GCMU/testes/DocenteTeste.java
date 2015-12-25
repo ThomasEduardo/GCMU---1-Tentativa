@@ -1,0 +1,35 @@
+package poo.project.GCMU.testes;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import poo.project.GCMU.Docente;
+
+public class DocenteTeste {
+	Docente dc1;
+
+	@Before
+	public void setUp() throws Exception {
+		dc1 = new Docente("secretario", "secretaria", "integral", 1234, "olavose", "olavose@gmail.com", "123456",
+				"T12345");
+	}
+
+	@Test
+	public void test() {
+
+		assertTrue(dc1.requisitaChave().equals("ok"));
+	}
+
+	@Test
+	public void test2() {
+		assertTrue(dc1.requisitaMateriais().equals("ok"));
+	}
+
+	@Test
+	public void test3() {
+		assertTrue(dc1.requisitaUtensilios().equals("ok"));
+
+	}
+}
