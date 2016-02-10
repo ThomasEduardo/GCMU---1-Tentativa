@@ -10,6 +10,12 @@ import poo.project.GCMU.Docente;
 public class DocenteTeste {
 	Docente dc1;
 
+	/**
+	 * Tem como atributos: cargo, area, turno, matricula, name, email,
+	 * telefone,senha, matricula, name, email, telefone, senha);
+	 * 
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		dc1 = new Docente("secretario", "secretaria", "integral", 1234, "olavose", "olavose@gmail.com", "123456",

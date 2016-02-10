@@ -11,6 +11,12 @@ public class DicenteTeste {
 	Dicente d1;
 
 	@Before
+	/**
+	 * Tem como atributos: sala, curso, turma, matricula, name, email, telefone,
+	 * senha,matricula, name, email, telefone, senha);
+	 * 
+	 * @throws Exception
+	 */
 	public void setUp() throws Exception {
 		d1 = new Dicente("infoLab", "info", "A", 123, "Ola", "olavose@gmail.com", "123456", "T123");
 	}

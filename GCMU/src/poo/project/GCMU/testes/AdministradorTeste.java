@@ -8,10 +8,15 @@ import org.junit.Test;
 
 import poo.project.GCMU.Administrador;
 
-
 public class AdministradorTeste {
 	Administrador A1;
 
+	/**
+	 * tem como atributos, respectivamente: senha, matricula, name, email,
+	 * telefone, matricula, name, email e telefone;
+	 * 
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		A1 = new Administrador("123", 123, "Ola", "olavose@gmail.com", "123456");
