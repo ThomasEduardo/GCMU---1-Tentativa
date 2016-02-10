@@ -15,7 +15,11 @@ public class Administrador extends Pessoa{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+	/**
+	 *  A funçao desse método, seré de efetuar o cadastro do Aluno/Dicente/Docente,
+	 *  ele irá printar na tela que o cadastro fou efetuado com sucesso!
+	 * @return
+	 */
 	public String Autoriza(){
 		return "ok, cadastro efetuado";
 	}

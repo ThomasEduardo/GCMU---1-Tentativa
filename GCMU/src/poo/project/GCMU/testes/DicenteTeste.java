@@ -17,17 +17,17 @@ public class DicenteTeste {
 
 	public void test() {
 
-		assertTrue(d1.requisitaChave().equals("ok"));
+		assertTrue(d1.requisitaChave().equals("ok, Chave Reservada!"));
 	}
 
 	@Test
 	public void test2() {
-		assertTrue(d1.requisitaMateriais().equals("ok"));
+		assertTrue(d1.requisitaMateriais().equals("ok, Material reservado!S"));
 	}
 
 	@Test
 	public void test3() {
-		assertTrue(d1.requisitaUtensilios().equals("ok"));
+		assertTrue(d1.requisitaUtensilios().equals("ok, Utencilio Encontrado!"));
 
 	}
 }

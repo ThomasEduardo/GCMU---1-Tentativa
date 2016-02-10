@@ -19,17 +19,17 @@ public class DocenteTeste {
 	@Test
 	public void test() {
 
-		assertTrue(dc1.requisitaChave().equals("ok"));
+		assertTrue(dc1.requisitaChave().equals("ok, Chave Reservada!"));
 	}
 
 	@Test
 	public void test2() {
-		assertTrue(dc1.requisitaMateriais().equals("ok"));
+		assertTrue(dc1.requisitaMateriais().equals("ok, Material reservado!"));
 	}
 
 	@Test
 	public void test3() {
-		assertTrue(dc1.requisitaUtensilios().equals("ok"));
+		assertTrue(dc1.requisitaUtensilios().equals("ok, Utencilio Encontrado!"));
 
 	}
 }

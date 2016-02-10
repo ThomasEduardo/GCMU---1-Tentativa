@@ -46,17 +46,29 @@ public abstract class Pessoa {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	/**
+	 *  A funçao desse método, seré de requisitar a chave para o Dicente/Docente.
+	 *  Ele irá printar na tela que a chave foi reservada, se nao, que está ocupada!
+	 * @return
+	 */
 	public String requisitaChave() {
-		return ("ok");
+		return ("ok, Chave Reservada!");
 	}
-
+	/**
+	 *  A funçao desse método, seré de requisitar materiais para o Docente.
+	 *  ele irá printar na tela que o material foi reservado, se nao, que está ocupado!
+	 * @return
+	 */
 	public String requisitaMateriais() {
-		return ("ok");
+		return ("ok, Material reservado!");
 	}
-
+	/**
+	 *  A funçao desse método, seré de requisitar um untencio perdido para o Aluno/
+	 *  Dicente/Docente. Ele irá printar na tela que o untencilio foi encontrado!
+	 * @return
+	 */
 	public String requisitaUtensilios() {
-		return ("ok");
+		return ("ok, Utencilio Encontrado!");
 	}
 
 	public String getSenha() {
