@@ -1,5 +1,9 @@
 package poo.project.GCMU;
-
+/**
+ * 
+ * @author GCMU
+ * Essa classe representa um docente que autorizado pelo administrador podera pegar chaves ou materiais
+ */
 public class Docente extends Pessoa {
 	private String cargo;
 	private String area;

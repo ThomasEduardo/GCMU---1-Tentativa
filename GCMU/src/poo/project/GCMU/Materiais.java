@@ -1,5 +1,9 @@
 package poo.project.GCMU;
-
+/**
+ * 
+ * @author GCMU
+ * Essa classe representa a entidade materiais que podera ser reservado por um discente ou docente, sendo essa a responsavel por conter as inormações dos materiais
+ */
 public class Materiais {
 
 	private String salaDestino;

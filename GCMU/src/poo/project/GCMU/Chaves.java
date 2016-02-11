@@ -1,5 +1,9 @@
 package poo.project.GCMU;
-
+/**
+ * 
+ * @author GCMU
+ * Essa classe representa a entidade chave que podera ser reservada por um discente ou docente e terá as informações para que eles saibam a situação dessa chave
+ */
 public class Chaves {
 
 	private int nSala;

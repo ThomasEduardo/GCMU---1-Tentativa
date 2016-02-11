@@ -1,5 +1,9 @@
 package poo.project.GCMU;
-
+/**
+ * 
+ * @author GCMU
+ *	Essa é uma classe mae que contem os atributos comuns entre discente e docente 
+ */
 public abstract class Pessoa {
 	private int matricula;
 	private String name;
@@ -47,24 +51,24 @@ public abstract class Pessoa {
 		this.name = name;
 	}
 	/**
-	 *  A funÃ§ao desse mÃ©todo, serÃ© de requisitar a chave para o Dicente/Docente.
-	 *  Ele irÃ¡ printar na tela que a chave foi reservada, se nao, que estÃ¡ ocupada!
+	 *  A funçao desse método, seré de requisitar a chave para o Dicente/Docente.
+	 *  Ele irá printar na tela que a chave foi reservada, se nao, que está ocupada!
 	 * @return
 	 */
 	public String requisitaChave() {
 		return ("ok, Chave Reservada!");
 	}
 	/**
-	 *  A funÃ§ao desse mÃ©todo, serÃ© de requisitar materiais para o Docente.
-	 *  ele irÃ¡ printar na tela que o material foi reservado, se nao, que estÃ¡ ocupado!
+	 *  A fuA funçao desse método, seré de requisitar materiais para o Docente.
+	 *  ele irá printar na tela que o material foi reservado, se nao, que está ocupado!
 	 * @return
 	 */
 	public String requisitaMateriais() {
 		return ("ok, Material reservado!");
 	}
 	/**
-	 *  A funÃ§ao desse mÃ©todo, serÃ© de requisitar um untencio perdido para o Aluno/
-	 *  Dicente/Docente. Ele irÃ¡ printar na tela que o untencilio foi encontrado!
+	 *  A funçao desse método, seré de requisitar um untencio perdido para o Aluno/
+	 *  Dicente/Docente. Ele irá printar na tela que o untencilio foi encontrado!
 	 * @return
 	 */
 	public String requisitaUtensilios() {

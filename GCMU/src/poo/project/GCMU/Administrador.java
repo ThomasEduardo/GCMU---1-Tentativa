@@ -1,5 +1,9 @@
 package poo.project.GCMU;
-
+/**
+ * 
+ * @author GCMU
+ *	Essa classe sera de administração no qual o administrador ira autorizar que o discente ou docente peguem materias ou chaves
+ */
 public class Administrador extends Pessoa{
 	private String senha;
 
@@ -16,8 +20,8 @@ public class Administrador extends Pessoa{
 		this.senha = senha;
 	}
 	/**
-	 *  A funÃ§ao desse mÃ©todo, serÃ© de efetuar o cadastro do Aluno/Dicente/Docente,
-	 *  ele irÃ¡ printar na tela que o cadastro fou efetuado com sucesso!
+	 *   A funçao desse método, seré de efetuar o cadastro do Aluno/Dicente/Docente,
+	 *  ele irá printar na tela que o cadastro fou efetuado com sucesso!
 	 * @return
 	 */
 	public String Autoriza(){

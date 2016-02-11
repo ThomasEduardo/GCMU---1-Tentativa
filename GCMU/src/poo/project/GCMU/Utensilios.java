@@ -1,5 +1,9 @@
 package poo.project.GCMU;
-
+/**
+ * 
+ * @author GCMU
+ * Essa classe representa os materiais perdidos e contem as informções sobre eles
+ */
 public class Utensilios {
 	private String nome;
 	private String tipo;
