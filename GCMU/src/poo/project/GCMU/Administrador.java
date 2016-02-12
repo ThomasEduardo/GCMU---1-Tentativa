@@ -20,11 +20,36 @@ public class Administrador extends Pessoa{
 		this.senha = senha;
 	}
 	/**
-	 *   A funçao desse método, seré de efetuar o cadastro do Aluno/Dicente/Docente,
+	 *   A funçao desse método, será de efetuar o cadastro do Aluno/Dicente/Docente,
 	 *  ele irá printar na tela que o cadastro fou efetuado com sucesso!
 	 * @return
 	 */
-	public String Autoriza(){
+	public String CadastraPessoa(){
 		return "ok, cadastro efetuado";
 	}
+
+	/**
+	 *   A funçao desse método, será de efetuar o cadastro do Aluno/Dicente/Docente,
+	 *  ele irá printar na tela que o cadastro fou efetuado com sucesso!
+	 * @return
+	 */
+	public String CadastraChaves(){
+		return "ok, cadastro efetuado";
+	}
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+// remove
+//cadastra chaves
+// att dados 
