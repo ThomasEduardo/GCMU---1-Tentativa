@@ -55,3 +55,10 @@ obeservaçao VARCHAR(30),
 nome VARCHAR(30)
 );
 
+CREATE TABLE materiais_tb (
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+tipo VARCHAR(30), 
+status VARCHAR(30), 
+obeservaçao VARCHAR(30), 
+salaDestino VARCHAR(30)
+);
