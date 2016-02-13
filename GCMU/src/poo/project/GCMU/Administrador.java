@@ -12,8 +12,8 @@ package poo.project.GCMU;
 public class Administrador extends Pessoa {
 	private String senha;
 
-	public Administrador(String senha, int matricula, String name, String email, String telefone) {
-		super(matricula, name, email, telefone, senha);
+	public Administrador(String senha, int matricula, String name, String email, String telefone, String cpf) {
+		super(matricula, name, email, telefone, senha, cpf);
 		this.senha = senha;
 	}
 
@@ -45,13 +45,13 @@ public class Administrador extends Pessoa {
 	// "Atualizacao" efetuará a atualizaçao dos mesmos, dependendo de onde o
 	// método for chaamdo.
 	public String Atualizacao(/*Recurso*/) {
-		return "ok, Atualizaçao efetuada!";
+		return "ok, Atualização efetuada!";
 	}
 
 	// "Remocao" efetuará a atualizaçao dos mesmos, dependendo de onde o método
 	// for chaamdo.
 	public String Remocao(/*Recurso*/) {
-		return "ok, Remoçao efetuada!";
+		return "ok, Remoção efetuada!";
 	}
 
 }

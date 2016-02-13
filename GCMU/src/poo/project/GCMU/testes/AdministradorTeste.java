@@ -18,7 +18,7 @@ public class AdministradorTeste {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		A1 = new Administrador("123", 123, "Ola", "olavose@gmail.com", "123456");
+		A1 = new Administrador("123", 123, "Ola", "olavose@gmail.com", "123456", "123.456.789-10");
 	}
 
 	@Test
@@ -34,12 +34,12 @@ public class AdministradorTeste {
 
 	@Test
 	public void testAtualizacao() {
-		assertTrue(A1.Atualizacao().equals("ok, Atualizaçao efetuada!"));
+		assertTrue(A1.Atualizacao().equals("ok, Atualização efetuada!"));
 	}
 
 	@Test
 	public void testRemocao() {
-		assertTrue(A1.Remocao().equals("ok, Remoçao efetuada!"));
+		assertTrue(A1.Remocao().equals("ok, Remoção efetuada!"));
 	}
 
 }

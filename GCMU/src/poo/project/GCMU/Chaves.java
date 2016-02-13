@@ -2,18 +2,18 @@ package poo.project.GCMU;
 /**
  * 
  * @author GCMU
- * Essa classe representa a entidade chave que podera ser reservada por um discente ou docente e terá as informações para que eles saibam a situação dessa chave
+ * Essa classe representa a entidade chave que podera ser reservada por um discente ou docente e terï¿½ as informaï¿½ï¿½es para que eles saibam a situaï¿½ï¿½o dessa chave
  */
 public class Chaves {
 
-	private int nSala;
+	private int numeroSala;
 	private String tipo;
 	private String observacao;
 	private int id;
 
-	public Chaves(int nSala, int id, String tipo, String observacao) {
+	public Chaves(int numeroSala, int id, String tipo, String observacao) {
 
-		this.nSala = nSala;
+		this.numeroSala = numeroSala;
 		this.tipo = tipo;
 		this.observacao = observacao;
 		this.id = id;
@@ -38,13 +38,13 @@ public class Chaves {
 
 	public int getnSala() {
 
-		return nSala;
+		return numeroSala;
 
 	}
 
 	public void setnSala(int nsala) {
 
-		this.nSala = nsala;
+		this.numeroSala = nsala;
 
 	}
 
