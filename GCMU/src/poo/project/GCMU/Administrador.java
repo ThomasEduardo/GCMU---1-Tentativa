@@ -1,17 +1,22 @@
 package poo.project.GCMU;
+
 /**
  * 
- * @author GCMU
- *	Essa classe sera de administraÁ„o no qual o administrador ira autorizar que o discente ou docente peguem materias ou chaves
+ * @author GCMU Essa classe seria a de administraco, na qual, o administrador
+ *         ir√° autorizar o discente ou docente para que peguem materias, chaves
+ *         ou utencilios, ja os metodos foram feitos para serem chamados em
+ *         determinadas opera√ßoes, que sejam necessarias em contexto geral,
+ *         como: Cadastro de chaves, materis e utencilios, o mesmo para
+ *         atualiza√ß√£o e remocao. 
  */
-public class Administrador extends Pessoa{
+public class Administrador extends Pessoa {
 	private String senha;
 
 	public Administrador(String senha, int matricula, String name, String email, String telefone) {
 		super(matricula, name, email, telefone, senha);
-		this.senha=senha;
+		this.senha = senha;
 	}
-	
+
 	public String getSenha() {
 		return senha;
 	}
@@ -19,37 +24,34 @@ public class Administrador extends Pessoa{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	/**
-	 *   A funÁao desse mÈtodo, ser· de efetuar o cadastro do Aluno/Dicente/Docente,
-	 *  ele ir· printar na tela que o cadastro fou efetuado com sucesso!
-	 * @return
-	 */
-	public String CadastraPessoa(){
-		return "ok, cadastro efetuado";
-	}
 
 	/**
-	 *   A funÁao desse mÈtodo, ser· de efetuar o cadastro do Aluno/Dicente/Docente,
-	 *  ele ir· printar na tela que o cadastro fou efetuado com sucesso!
+	 * A funcao desse metodo, sera de efetuar o cadastro do
+	 * Aluno/Dicente/Docente, ele ira printar na tela que a autoriza√ßao foi
+	 * efetuada com sucesso!
+	 * 
 	 * @return
 	 */
-	public String CadastraChaves(){
-		return "ok, cadastro efetuado";
+	public String AutorizaPessoa() { 
+		return "ok, voc√™ est√° autorizado!";
 	}
 
+	// "Cadastro" efetuar√° o cadastro de uma Chave/ material ou Utencilio,
+	// dependendo de onde o m√©todo for chaamdo
+	public String Cadastro(/*Recurso*/) {
+		return "ok, cadastro efetuado!";
+	}
 
+	// "Atualizacao" efetuar√° a atualiza√ßao dos mesmos, dependendo de onde o
+	// m√©todo for chaamdo.
+	public String Atualizacao(/*Recurso*/) {
+		return "ok, Atualiza√ßao efetuada!";
+	}
 
+	// "Remocao" efetuar√° a atualiza√ßao dos mesmos, dependendo de onde o m√©todo
+	// for chaamdo.
+	public String Remocao(/*Recurso*/) {
+		return "ok, Remo√ßao efetuada!";
+	}
 
 }
-
-
-
-
-
-
-
-
-
-// remove
-//cadastra chaves
-// att dados 

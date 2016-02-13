@@ -1,9 +1,10 @@
-
 package poo.project.GCMU.testes;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Test;
+
 import poo.project.GCMU.Administrador;
 
 public class AdministradorTeste {
@@ -20,9 +21,25 @@ public class AdministradorTeste {
 		A1 = new Administrador("123", 123, "Ola", "olavose@gmail.com", "123456");
 	}
 
-	public void test() {
+	@Test
+	public void testAutorizaPessoa() {
+		assertTrue(A1.AutorizaPessoa().equals("ok, você está autorizado!"));
 
-		assertTrue(A1.Autoriza().equals("ok, cadastro efetuado"));
+	}
+
+	@Test
+	public void testCadastro() {
+		assertTrue(A1.Cadastro().equals("ok, cadastro efetuado!"));
+	}
+
+	@Test
+	public void testAtualizacao() {
+		assertTrue(A1.Atualizacao().equals("ok, Atualizaçao efetuada!"));
+	}
+
+	@Test
+	public void testRemocao() {
+		assertTrue(A1.Remocao().equals("ok, Remoçao efetuada!"));
 	}
 
 }
