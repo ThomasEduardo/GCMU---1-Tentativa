@@ -171,4 +171,4 @@ DROP TABLE docente_tb;
 DROP TABLE pessoa_tb;
 DROP TABLE chaves_tb;
 DROP TABLE materiais_tb;
-DROP TABLE utencilios_tb;
+DROP TABLE utencilios_tb;;
