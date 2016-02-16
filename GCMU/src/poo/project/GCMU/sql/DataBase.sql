@@ -1,3 +1,5 @@
+
+
 CREATE TABLE pessoa_tb (
 matricula INT UNSIGNED PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
@@ -56,42 +58,41 @@ status VARCHAR(30),
 observacao VARCHAR(30), 
 nome VARCHAR(30) NOT NULL
 );
+
+
 CREATE TABLE Pessoa_Reserva_Chaves_tb (
 horaPedido VARCHAR(20) PRIMARY KEY,
 horaDevolucao VARCHAR(15),
-data VARCHAR(15),
-matricula VARCHAR(15), 
-numeroSala INT(5),
-CONSTRAINT fk_Pessoa_Chaves FOREIGN KEY 
-(matricula) REFERENCES pessoa_tb(matricula)
-CONSTRAINT fk_chave_pessoa FOREIGN KEY 
-(numeroSala) REFERENCES pessoa_tb(numeroSala)
+dataChave VARCHAR(15),
+matricula INT(10) unsigned, 
+idChave INT(10) unsigned auto_increment,
+CONSTRAINT fk_Pessoa_Chaves FOREIGN KEY (matricula) REFERENCES pessoa_tb(matricula),
+CONSTRAINT fk_chave_pessoa FOREIGN KEY (idChave) REFERENCES chaves_tb(id)
 );
 
-CREATE TABLE Pessoa_Reserva_Utensilio_tb (
-horaPedido VARCHAR PRIMARY KEY,
+CREATE TABLE Pessoa_Reserva_Utencilio_tb (
+horaPedido VARCHAR(255) PRIMARY KEY,
 horaDevolucao VARCHAR(15),
-data VARCHAR(15),
-matricula VARCHAR(15), 
-idUtensilio INT UNSIGNED AUTO_INCREMENT,
+dataUtensilio VARCHAR(15),
+matricula Int(10) unsigned, 
+idUtensilio INT(10) UNSIGNED AUTO_INCREMENT,
 CONSTRAINT fk_Pessoa_Utencilios FOREIGN KEY 
-(matricula) REFERENCES pessoa_tb(matricula)
+(matricula) REFERENCES pessoa_tb(matricula),
 CONSTRAINT fk_Utencilios_Pessoa FOREIGN KEY 
-(idUtensilio) REFERENCES pessoa_tb(idUtensilio)
+(idUtensilio) REFERENCES utencilios_tb(id)
 );
 
 CREATE TABLE Pessoa_Reserva_Materiais_tb (
-horaPedido VARCHAR PRIMARY KEY,
+horaPedido VARCHAR(255) PRIMARY KEY,
 horaDevolucao VARCHAR(15),
-data VARCHAR(15),
-matricula VARCHAR(15), 
-idUtensilio INT UNSIGNED AUTO_INCREMENT,
-CONSTRAINT fk_Pessoa_Utencilios FOREIGN KEY 
-(matricula) REFERENCES pessoa_tb(matricula)
-CONSTRAINT fk_Utencilios_Pessoa FOREIGN KEY 
-(idUtencilio) REFERENCES pessoa_tb(idUtencilio)
+dataMaterial VARCHAR(15),
+matricula int(10) unsigned, 
+idMaterial INT(10) UNSIGNED AUTO_INCREMENT,
+CONSTRAINT fk_Pessoa_Materiais FOREIGN KEY 
+(matricula) REFERENCES pessoa_tb(matricula),
+CONSTRAINT fk_Materiais_Pessoa FOREIGN KEY 
+(idMaterial) REFERENCES materiais_tb(id)
 );
-
 
 INSERT INTO pessoa_tb(matricula, name, email, senha, telefone)
 VALUES('54789','Jao', 'jaorock3000@gmail.com','123','9965');
@@ -157,62 +158,30 @@ VALUES('celular','perdido','com a tela quebrada','sansung');
 INSERT INTO utencilios_tb(tipo,status,observacao,nome)
 VALUES('pendrive','perdido','com a tela quebrada','pendrive');
 
-DELETE FROM pessoa_tb
-WHERE name = 'Jão';
-DELETE FROM pessoa_tb
-WHERE matricula = '0000';
-DELETE FROM pessoa_tb
-WHERE email LIKE 'gmail.com';
+DELETE FROM pessoa_tb WHERE matricula = '54789' and matricula = '54788' and matricula = '54778';
+
+DELETE FROM dicente_tb where cpf='4444444' and cpf = '5555555' and cpf='6666666';
+
+DELETE FROM administrador_tb WHERE matricula = '58475' and matricula = '58485' and matricula = '58175';
+
+DELETE FROM docente_tb where cpf='1111111' and cpf='2222222' and cpf = '3333333';
+
+DELETE FROM chaves_tb where id <= 3;
+
+DELETE FROM materiais_tb where id <=3;
+
+DELETE FROM utencilios_tb where id<=3;
 
 
-DELETE FROM dicente_tb
-WHERE turma = 'A';
-DELETE FROM dicente_tb
-WHERE curso = 'p&g';
-DELETE FROM dicente_tb
-WHERE sala = '0';
 
-DELETE FROM administrador_tb
-WHERE senha = '666';
-DELETE FROM administrador_tb
-WHERE matricula = '40028922';
-DELETE FROM administrador_tb
-WHERE senha = '999';
-
-
-DELETE FROM docente_tb
-WHERE cargo = 'professor';
-DELETE FROM docente_tb
-WHERE turno = 'manha';
-DELETE FROM docente_tb
-WHERE area = 'saude';
-
-DELETE FROM chaves_tb
-WHERE nSala = '69';
-DELETE FROM chaves_tb
-WHERE tipo = 'pado';
-DELETE FROM chaves_tb
-WHERE observacao = 'sumida';
-
-
-DELETE FROM materiais_tb
-WHERE tipo = 'controle';
-DELETE FROM materiais_tb
-WHERE status = 'solteiro';
-DELETE FROM materiais_tb
-WHERE obeservacao = 'falhando';
-
-DELETE FROM utencilios_tb
-WHERE tipo = 'fone';
-DELETE FROM utencilios_tb
-WHERE status = 'sumido';
-DELETE FROM utencilios_tb
-WHERE obeservacao = 'quebrado';
 
 DROP TABLE administrador_tb;
 DROP TABLE dicente_tb;
 DROP TABLE docente_tb;
-DROP TABLE pessoa_tb;
+DROP TABLE Pessoa_Reserva_Chaves_tb;
+DROP TABLE Pessoa_Reserva_Utencilio_tb;
+DROP TABLE Pessoa_Reserva_Materiais_tb;
+DROP TABLE utencilios_tb;
 DROP TABLE chaves_tb;
 DROP TABLE materiais_tb;
-DROP TABLE utencilios_tb;
+DROP TABLE pessoa_tb;
