@@ -1,4 +1,4 @@
-
+use GCMU;
 
 CREATE TABLE pessoa_tb (
 matricula INT UNSIGNED PRIMARY KEY,
@@ -93,7 +93,13 @@ CONSTRAINT fk_Pessoa_Materiais FOREIGN KEY
 CONSTRAINT fk_Materiais_Pessoa FOREIGN KEY 
 (idMaterial) REFERENCES materiais_tb(id)
 );
-
+CREATE TABLE bkpPessoa_tb (
+matricula INT UNSIGNED PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+email VARCHAR(30),
+senha VARCHAR(30),
+telefone VARCHAR(30)
+);
 INSERT INTO pessoa_tb(matricula, name, email, senha, telefone)
 VALUES('54789','Jao', 'jaorock3000@gmail.com','123','9965');
 
@@ -141,7 +147,7 @@ VALUES('03','tiponsei','soobservo');
 
 
 INSERT INTO materiais_tb(tipo, status, observacao,salaDestino)	
-VALUES('cabo','emprestado','esta novo','11');
+VALUES('cabo','emprestado','reservado','11');
 
 INSERT INTO materiais_tb(tipo, status, observacao,salaDestino)	
 VALUES('datashow','emprestado','esta novo','11');
@@ -172,6 +178,103 @@ DELETE FROM materiais_tb where id <=3;
 
 DELETE FROM utencilios_tb where id<=3;
 
+delimiter $$
+Create trigger insertPessoa before insert
+on pessoa_tb
+for each row
+begin
+	if(length(new.telefone) != 11) then
+	  set new.matricula = null;
+    end if;
+
+end $$
+delimiter ;
+delimiter $$
+Create trigger insertDicente before insert
+on dicente_tb
+for each row
+begin
+	if(length(new.cpf) != 14) then
+	  set new.cpf = null;
+    end if;
+
+end $$
+delimiter ;
+
+delimiter $$
+Create trigger insertDocente before insert
+on docente_tb
+for each row
+begin
+	if(length(new.cpf) != 14) then
+	  set new.cpf = null;
+    end if;
+
+end $$
+delimiter ;
+
+delimiter $$
+Create trigger insertAdministrador before insert
+on administrador_tb
+for each row
+begin
+	if(new.senha != '123') then
+	  set new.matricula = null;
+    end if;
+
+end $$
+delimiter ;
+
+
+delimiter $$
+Create trigger insertChave before insert
+on chaves_tb
+for each row
+begin
+	if(new.observacao = 'Reservada') then
+	  set new.id = null;
+    end if;
+
+end $$
+delimiter ;
+
+delimiter $$
+Create trigger insertMateriais before insert
+on materiais_tb
+for each row
+begin
+	if(new.observacao = 'Reservada') then
+	  set new.id = null;
+    end if;
+
+end $$
+delimiter;
+
+
+delimiter $$
+Create trigger insertUtencilios before insert
+on utencilios_tb
+for each row
+begin
+	if(new.observacao = 'Reservada') then
+	  set new.id = null;
+    end if;
+
+end $$
+delimiter ;
+
+
+delimiter $$
+Create trigger deletePessoa before delete
+on pessoa_tb
+for each row
+begin
+
+	INSERT INTO bkppessoa_tb(matricula, name, email, senha, telefone)
+	VALUES(old.matricula,old.name,old.email,old.senha,old.telefone);
+
+end $$
+delimiter ;
 
 
 
@@ -184,4 +287,5 @@ DROP TABLE Pessoa_Reserva_Materiais_tb;
 DROP TABLE utencilios_tb;
 DROP TABLE chaves_tb;
 DROP TABLE materiais_tb;
-DROP TABLE pessoa_tb;
+DROP TABLE bkpPessoa_tb;
+DROP TABLE pessoa_tb;SS
