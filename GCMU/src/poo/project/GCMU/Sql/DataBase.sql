@@ -157,13 +157,57 @@ VALUES('celular','perdido','com a tela quebrada','sansung');
 INSERT INTO utencilios_tb(tipo,status,observacao,nome)
 VALUES('pendrive','perdido','com a tela quebrada','pendrive');
 
-DELETE from administrador_tb;
-DELETE from dicente_tb;
-DELETE from docente_tb;
-DELETE from pessoa_tb;
-DELETE from chaves_tb;
-DELETE from materiais_tb;
-DELETE from utencilios_tb;
+DELETE FROM pessoa_tb
+WHERE name = 'Jão';
+DELETE FROM pessoa_tb
+WHERE matricula = '0000';
+DELETE FROM pessoa_tb
+WHERE email LIKE 'gmail.com';
+
+
+DELETE FROM dicente_tb
+WHERE turma = 'A';
+DELETE FROM dicente_tb
+WHERE curso = 'p&g';
+DELETE FROM dicente_tb
+WHERE sala = '0';
+
+DELETE FROM administrador_tb
+WHERE senha = '666';
+DELETE FROM administrador_tb
+WHERE matricula = '40028922';
+DELETE FROM administrador_tb
+WHERE senha = '999';
+
+
+DELETE FROM docente_tb
+WHERE cargo = 'professor';
+DELETE FROM docente_tb
+WHERE turno = 'manha';
+DELETE FROM docente_tb
+WHERE area = 'saude';
+
+DELETE FROM chaves_tb
+WHERE nSala = '69';
+DELETE FROM chaves_tb
+WHERE tipo = 'pado';
+DELETE FROM chaves_tb
+WHERE observacao = 'sumida';
+
+
+DELETE FROM materiais_tb
+WHERE tipo = 'controle';
+DELETE FROM materiais_tb
+WHERE status = 'solteiro';
+DELETE FROM materiais_tb
+WHERE obeservacao = 'falhando';
+
+DELETE FROM utencilios_tb
+WHERE tipo = 'fone';
+DELETE FROM utencilios_tb
+WHERE status = 'sumido';
+DELETE FROM utencilios_tb
+WHERE obeservacao = 'quebrado';
 
 DROP TABLE administrador_tb;
 DROP TABLE dicente_tb;
@@ -171,4 +215,4 @@ DROP TABLE docente_tb;
 DROP TABLE pessoa_tb;
 DROP TABLE chaves_tb;
 DROP TABLE materiais_tb;
-DROP TABLE utencilios_tb;;
+DROP TABLE utencilios_tb;
