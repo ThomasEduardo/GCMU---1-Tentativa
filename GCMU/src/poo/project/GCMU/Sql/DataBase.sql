@@ -15,23 +15,23 @@ CONSTRAINT fk_administrador_pessoa FOREIGN KEY
 );
 
 CREATE TABLE dicente_tb (
-matricula INT(30) PRIMARY KEY,
+cpf VARCHAR (20)PRIMARY KEY,    
+curso VARCHAR(30),
 sala INT(10),
-curso VARCHAR(20) NOT NULL,
 turma VARCHAR(10),
 pessoa_matricula INT UNSIGNED,
-CONSTRAINT fk_administrador_pessoa FOREIGN KEY 
+CONSTRAINT fk_dicente_pessoa FOREIGN KEY 
 (pessoa_matricula) REFERENCES pessoa_tb(matricula)
 );
 
 
 CREATE TABLE docente_tb (
-matricula INT(30) PRIMARY KEY,
-cargo VARCHAR(20),
+cpf VARCHAR(20) PRIMARY KEY,
+cargo VARCHAR(20), 
 area VARCHAR(15),
 turno VARCHAR(10),
 pessoa_matricula INT UNSIGNED,
-CONSTRAINT fk_administrador_pessoa FOREIGN KEY 
+CONSTRAINT fk_docente_pessoa FOREIGN KEY 
 (pessoa_matricula) REFERENCES pessoa_tb(matricula)
 );
 
@@ -39,63 +39,136 @@ CREATE TABLE chaves_tb (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 nSala INT(10),
 tipo VARCHAR(30) NOT NULL,
-observacao VARCHAR(30),
+observacao VARCHAR(30)
 );
 
 CREATE TABLE materiais_tb (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 tipo VARCHAR(30) NOT NULL,
 status VARCHAR(30), 
-obeservacao VARCHAR(30), 
+observacao VARCHAR(30), 
 salaDestino VARCHAR(30) NOT NULL
 );
 CREATE TABLE utencilios_tb (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 tipo VARCHAR(30) NOT NULL,
 status VARCHAR(30), 
-obeservacao VARCHAR(30), 
+observacao VARCHAR(30), 
 nome VARCHAR(30) NOT NULL
+);
+CREATE TABLE Pessoa_Reserva_Chaves_tb (
+horaPedido VARCHAR(20) PRIMARY KEY,
+horaDevolucao VARCHAR(15),
+data VARCHAR(15),
+matricula VARCHAR(15), 
+numeroSala INT(5),
+CONSTRAINT fk_Pessoa_Chaves FOREIGN KEY 
+(matricula) REFERENCES pessoa_tb(matricula)
+CONSTRAINT fk_chave_pessoa FOREIGN KEY 
+(numeroSala) REFERENCES pessoa_tb(numeroSala)
+);
+
+CREATE TABLE Pessoa_Reserva_Utensilio_tb (
+horaPedido VARCHAR PRIMARY KEY,
+horaDevolucao VARCHAR(15),
+data VARCHAR(15),
+matricula VARCHAR(15), 
+idUtensilio INT UNSIGNED AUTO_INCREMENT,
+CONSTRAINT fk_Pessoa_Utencilios FOREIGN KEY 
+(matricula) REFERENCES pessoa_tb(matricula)
+CONSTRAINT fk_Utencilios_Pessoa FOREIGN KEY 
+(idUtensilio) REFERENCES pessoa_tb(idUtensilio)
+);
+
+CREATE TABLE Pessoa_Reserva_Materiais_tb (
+horaPedido VARCHAR PRIMARY KEY,
+horaDevolucao VARCHAR(15),
+data VARCHAR(15),
+matricula VARCHAR(15), 
+idUtensilio INT UNSIGNED AUTO_INCREMENT,
+CONSTRAINT fk_Pessoa_Utencilios FOREIGN KEY 
+(matricula) REFERENCES pessoa_tb(matricula)
+CONSTRAINT fk_Utencilios_Pessoa FOREIGN KEY 
+(idUtencilio) REFERENCES pessoa_tb(idUtencilio)
 );
 
 
-INSERT INTO pessoa_tb(matriculaname, email, senha, telefone)
-VALUES(‘54789’,‘Jao’, ‘jaorock3000@gmail.com’,’ 123’,’ 9965’);
+INSERT INTO pessoa_tb(matricula, name, email, senha, telefone)
+VALUES('54789','Jao', 'jaorock3000@gmail.com','123','9965');
+
+INSERT INTO pessoa_tb(matricula, name, email, senha, telefone)
+VALUES('54788','JoÃ£o', 'jaorock@gmail.com','1234','995778');
+
+INSERT INTO pessoa_tb(matricula, name, email, senha, telefone)
+VALUES('54778','Maria', 'mariarock@gmail.com','1334','9956578'); 
 
 INSERT INTO administrador_tb (matricula, senha)
-VALUES(‘58475’,‘58765’);
+VALUES('58475','58765');
 
-INSERT INTO dicente(matricula, sala, curso, turma)
-VALUES(‘58625’,’02’,’Informatica’,’A’)
+INSERT INTO administrador_tb (matricula, senha)
+VALUES('58485','59765');
 
-INSERT INTO docente_tb (matricula, cargo ,area, turno)
-VALUES(‘58475’,‘professor’, ‘geografia’,’manha’);
+INSERT INTO administrador_tb (matricula, senha)
+VALUES('58175','458765');
+
+INSERT INTO dicente_tb(cpf,sala, curso, turma)
+VALUES('4444444','01','Informatica','A');
+
+INSERT INTO dicente_tb(cpf,sala, curso, turma)
+VALUES('5555555','02','Informatica','A');
+
+INSERT INTO dicente_tb(cpf,sala, curso, turma)
+VALUES('6666666','03','Informatica','A');
+
+INSERT INTO docente_tb (cpf,cargo ,area, turno)
+VALUES('1111111','professor', 'geografia','manha');
+
+INSERT INTO docente_tb (cpf,cargo ,area, turno)
+VALUES('2222222','professor', 'geografia','manha');
+
+INSERT INTO docente_tb (cpf,cargo ,area, turno)
+VALUES('3333333','professor', 'matematica','manha');
 
 INSERT INTO chaves_tb(nSala, tipo, observacao)
-VALUES(‘02’,’tiponsei’,’soobservo’);
+VALUES('01','tiponsei','soobservo');
+
+INSERT INTO chaves_tb(nSala, tipo, observacao)
+VALUES('02','tiponsei','soobservo');
+
+INSERT INTO chaves_tb(nSala, tipo, observacao)
+VALUES('03','tiponsei','soobservo');
 
 
 INSERT INTO materiais_tb(tipo, status, observacao,salaDestino)	
-VALUES(‘cabo’,’emprestado’,’esta novo’,’11’);
+VALUES('cabo','emprestado','esta novo','11');
 
-INSERT INTO utencilio_tb(tipo,status,observacao,nome)
-VALUES(‘notebook’,’perdido’,’com a tela quebrada’,’macbook’);
+INSERT INTO materiais_tb(tipo, status, observacao,salaDestino)	
+VALUES('datashow','emprestado','esta novo','11');
 
+INSERT INTO materiais_tb(tipo, status, observacao,salaDestino)	
+VALUES('datashow','emprestado','esta novo','13');
 
+INSERT INTO utencilios_tb(tipo,status,observacao,nome)
+VALUES('notebook','perdido','com a tela quebrada','macbook');
 
+INSERT INTO utencilios_tb(tipo,status,observacao,nome)
+VALUES('celular','perdido','com a tela quebrada','sansung');
 
-DELETE from pessoa_tb;
+INSERT INTO utencilios_tb(tipo,status,observacao,nome)
+VALUES('pendrive','perdido','com a tela quebrada','pendrive');
+
 DELETE from administrador_tb;
 DELETE from dicente_tb;
 DELETE from docente_tb;
+DELETE from pessoa_tb;
 DELETE from chaves_tb;
 DELETE from materiais_tb;
 DELETE from utencilios_tb;
 
-DROP TABLE pessoa_tb;
 DROP TABLE administrador_tb;
 DROP TABLE dicente_tb;
 DROP TABLE docente_tb;
+DROP TABLE pessoa_tb;
 DROP TABLE chaves_tb;
 DROP TABLE materiais_tb;
 DROP TABLE utencilios_tb;
-
