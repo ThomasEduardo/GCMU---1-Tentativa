@@ -63,7 +63,7 @@ nome VARCHAR(30) NOT NULL
 CREATE TABLE Pessoa_Reserva_Chaves_tb (
 horaPedido VARCHAR(20) PRIMARY KEY,
 horaDevolucao VARCHAR(15),
-dataChave VARCHAR(15),
+dataChave TIMESTAMP,
 matricula INT(10) unsigned, 
 idChave INT(10) unsigned auto_increment,
 CONSTRAINT fk_Pessoa_Chaves FOREIGN KEY (matricula) REFERENCES pessoa_tb(matricula),
@@ -73,7 +73,7 @@ CONSTRAINT fk_chave_pessoa FOREIGN KEY (idChave) REFERENCES chaves_tb(id)
 CREATE TABLE Pessoa_Reserva_Utencilio_tb (
 horaPedido VARCHAR(255) PRIMARY KEY,
 horaDevolucao VARCHAR(15),
-dataUtensilio VARCHAR(15),
+dataUtensilio TIMESTAMP(15),
 matricula Int(10) unsigned, 
 idUtensilio INT(10) UNSIGNED AUTO_INCREMENT,
 CONSTRAINT fk_Pessoa_Utencilios FOREIGN KEY 
@@ -85,7 +85,7 @@ CONSTRAINT fk_Utencilios_Pessoa FOREIGN KEY
 CREATE TABLE Pessoa_Reserva_Materiais_tb (
 horaPedido VARCHAR(255) PRIMARY KEY,
 horaDevolucao VARCHAR(15),
-dataMaterial VARCHAR(15),
+dataMaterial TIMESTAMP(15),
 matricula int(10) unsigned, 
 idMaterial INT(10) UNSIGNED AUTO_INCREMENT,
 CONSTRAINT fk_Pessoa_Materiais FOREIGN KEY 
