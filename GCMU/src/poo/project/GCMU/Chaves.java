@@ -7,14 +7,14 @@ package poo.project.GCMU;
 public class Chaves {
 
 	private int numeroSala;
-	private String tipo;
+	private String nomeSala;
 	private String observacao;
 	private int id;
 
-	public Chaves(int numeroSala, int id, String tipo, String observacao) {
+	public Chaves(int numeroSala, int id, String nomeSala, String observacao) {
 
 		this.numeroSala = numeroSala;
-		this.tipo = tipo;
+		this.nomeSala = nomeSala;
 		this.observacao = observacao;
 		this.id = id;
 
@@ -48,15 +48,15 @@ public class Chaves {
 
 	}
 
-	public String getTipo() {
+	public String getNomeSala() {
 
-		return tipo;
+		return nomeSala;
 
 	}
 
-	public void setTipo(String tipo) {
+	public void setNomeSala(String nomeSala) {
 
-		this.tipo = tipo;
+		this.nomeSala = nomeSala;
 
 	}
 

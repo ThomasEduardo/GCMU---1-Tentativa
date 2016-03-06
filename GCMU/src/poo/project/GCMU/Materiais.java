@@ -2,37 +2,29 @@ package poo.project.GCMU;
 /**
  * 
  * @author GCMU
- * Essa classe representa a entidade materiais que podera ser reservado por um discente ou docente, sendo essa a responsavel por conter as inormações dos materiais
+ * Essa classe representa a entidade materiais que podera ser reservado por um discente ou docente, sendo essa a responsavel por conter as inormaï¿½ï¿½es dos materiais
  */
 public class Materiais {
 
-	private String salaDestino;
+	private int id;
 	private String tipo;
 	private String status;
 	private String observacao;
-	private int id;
+	private int numeroSala;
+	private String nomeSala;
 
-	public Materiais(String salaDestino, int id, String tipo, String status, String observacao) {
+	public Materiais( int id, String tipo, String status, String observacao, int numeroSala, String nomeSala) {
 
-		this.salaDestino = salaDestino;
+	
 		this.tipo = tipo;
 		this.status = status;
 		this.observacao = observacao;
 		this.id = id;
-
+		this.numeroSala = numeroSala;
+		this.nomeSala = nomeSala;
 	}
 
-	public String getSalaDestino() {
 
-		return salaDestino;
-
-	}
-
-	public void setSalaDestino(String salaDestino) {
-
-		this.salaDestino = salaDestino;
-
-	}
 
 	public int getId() {
 		return id;
@@ -77,5 +69,22 @@ public class Materiais {
 		this.observacao = observacao;
 
 	}
+
+	public int getNumeroSala() {
+		return numeroSala;
+	}
+
+	public void setNumeroSala(int numeroSala) {
+		this.numeroSala = numeroSala;
+	}
+
+	public String getNomeSala() {
+		return nomeSala;
+	}
+
+	public void setNomeSala(String nomeSala) {
+		this.nomeSala = nomeSala;
+	}
+
 
 }

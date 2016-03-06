@@ -2,29 +2,31 @@ package poo.project.GCMU;
 /**
  * 
  * @author GCMU
- * Essa classe representa os materiais perdidos e contem as informções sobre eles
+ * Essa classe representa os materiais perdidos e contem as informï¿½ï¿½es sobre eles
  */
 public class Utensilios {
-	private String nome;
+	private String locall;
 	private String tipo;
 	private String status;
 	private String observacao;
+	private String marca;
 	private int id;
 
-	public Utensilios(String nome, String tipo, String status, int id, String observacao) {
-		this.nome = nome;
+	public Utensilios(String locall, String tipo, String status, int id, String observacao, String marca) {
+		this.locall = locall;
 		this.tipo = tipo;
 		this.id = id;
 		this.observacao = observacao;
 		this.status = status;
+		this.marca = marca;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getLocall() {
+		return locall;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setLocall(String locall) {
+		this.locall = locall;
 	}
 
 	public String getTipo() {
@@ -57,6 +59,14 @@ public class Utensilios {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 
 }
