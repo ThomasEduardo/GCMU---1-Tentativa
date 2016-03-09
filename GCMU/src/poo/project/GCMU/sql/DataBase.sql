@@ -1,22 +1,20 @@
-use GCMU;
-
 CREATE TABLE pessoa_tb (
 matricula INT UNSIGNED PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
 email VARCHAR(30),
 senha VARCHAR(30),
-telefone VARCHAR(30)
+telefone INT(30),
+cpf VARCHAR(14)
 );
 
-CREATE TABLE administrador_tb (
+CREATE TABLE administrador_tb(
 siap INT(30) PRIMARY KEY,
-senha INT(30),
 pessoa_matricula INT UNSIGNED,
 CONSTRAINT fk_administrador_pessoa FOREIGN KEY 
 (pessoa_matricula) REFERENCES pessoa_tb(matricula)
 );
 
-CREATE TABLE dicente_tb (
+CREATE TABLE discente_tb (
 matricula VARCHAR (20)PRIMARY KEY,    
 curso VARCHAR(30),
 sala INT(10),
@@ -45,14 +43,15 @@ status VARCHAR(30)
 );
 
 CREATE TABLE materiais_tb (
-idMateriais INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+idMaterial INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 tipo VARCHAR(30) NOT NULL,
 status VARCHAR(30), 
-salaDestino VARCHAR(30) NOT NULL,
+numeroSala int,
+nomeSala VARCHAR(30),
 observacao VARCHAR(30)
 );
 
-CREATE TABLE utencilios_tb (
+CREATE TABLE utensilios_tb (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 tipo VARCHAR(30) NOT NULL,
 status VARCHAR(30), 
@@ -64,37 +63,37 @@ marca VARCHAR(30)
 
 CREATE TABLE Pessoa_Reserva_Chaves_tb (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-horaPedido VARCHAR(20) ,
-horaDevolucao VARCHAR(15),
-data TIMESTAMP,
-matricula INT(10) unsigned, 
-idChave INT(10) UNSIGNED AUTO_INCREMENT,
+horaPedido  TIME,
+horaDevolucao TIME,
+data DATE,
+matricula INT(10)  UNSIGNED, 
+idChave INT(10) UNSIGNED,
 CONSTRAINT fk_Pessoa_Chaves FOREIGN KEY (matricula) REFERENCES pessoa_tb(matricula),
-CONSTRAINT fk_chave_pessoa FOREIGN KEY (idChave) REFERENCES chaves_tb(id)
+CONSTRAINT fk_chave_pessoa FOREIGN KEY (idChave) REFERENCES chaves_tb(idChave)
 );
 
-CREATE TABLE Pessoa_Pesquisa_Utencilios_tb (
-horaPedido VARCHAR(255) PRIMARY KEY,
-horaDevolucao VARCHAR(15),
-dataUtensilio TIMESTAMP(15),
-matricula Int(10) unsigned, 
-idUtensilio INT(10) UNSIGNED AUTO_INCREMENT,
+CREATE TABLE Pessoa_Pesquisa_Utensilios_tb (
+horaPedido TIME PRIMARY KEY,
+horaDevolucao TIME,
+data DATE,
+matricula Int(10) UNSIGNED, 
+idUtensilio INT(10) UNSIGNED,
 CONSTRAINT fk_Pessoa_Utencilios FOREIGN KEY 
 (matricula) REFERENCES pessoa_tb(matricula),
-CONSTRAINT fk_Utencilios_Pessoa FOREIGN KEY 
-(idUtensilio) REFERENCES utencilios_tb(id)
+CONSTRAINT fk_Utensilios_Pessoa FOREIGN KEY 
+(idUtensilio) REFERENCES utensilios_tb(id)
 );
 
 CREATE TABLE Pessoa_Reserva_Materiais_tb (
-horaPedido VARCHAR(255) PRIMARY KEY,
-horaDevolucao VARCHAR(15),
-dataMaterial TIMESTAMP(15),
-matricula int(10) unsigned, 
-idMaterial INT(10) UNSIGNED AUTO_INCREMENT,
+horaPedido TIME PRIMARY KEY,
+horaDevolucao TIME,
+data DATE,
+matricula int(10) UNSIGNED,
+idMaterial INT(10) UNSIGNED, 
 CONSTRAINT fk_Pessoa_Materiais FOREIGN KEY 
 (matricula) REFERENCES pessoa_tb(matricula),
 CONSTRAINT fk_Materiais_Pessoa FOREIGN KEY 
-(idMaterial) REFERENCES materiais_tb(id)
+(idMaterial) REFERENCES materiais_tb(idMaterial)
 );
 
 CREATE TABLE bkpPessoa_tb (
@@ -105,41 +104,60 @@ senha VARCHAR(30),
 telefone VARCHAR(30)
 );
 
-INSERT INTO pessoa_tb(matricula, name, email, senha, telefone)
-VALUES('1234','Jao', 'jaorock3000@gmail.com','123','9965');
 
-INSERT INTO pessoa_tb(matricula, name, email, senha, telefone)
-VALUES('54788','Robervaldo', 'jaorock@gmail.com','1234','995778');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
+VALUES('444444-4','1234','Jao', 'jaorock3000@gmail.com','223','9965');
 
-INSERT INTO pessoa_tb(matricula, name, email, senha, telefone)
-VALUES('54778','Maria', 'mariarock@gmail.com','1334','9956578'); 
+INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
+VALUES('555555-5','54788','Robervaldo', 'robervaldoroc@gmail.com','1234','995778');
 
-INSERT INTO administrador_tb (SIAP, senha)
-VALUES('58475','58765');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
+VALUES('666666-6','54778','Maria', 'mariarock@gmail.com','3334','9956578'); 
 
-INSERT INTO administrador_tb (SIAP, senha)
-VALUES('58485','59765');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
+VALUES('1444444-4','2234','Jjao', 'jjaorock3000@gmail.com','423','9965');
 
-INSERT INTO administrador_tb (SIAP, senha)
-VALUES('58175','458765');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
+VALUES('255555-5','34788','Rrobervaldo', 'rrobervaldorock@gmail.com','5234','995778');
 
-INSERT INTO dicente_tb(matricula, sala, curso, turma)
-VALUES('4444444','01','Informática','A');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
+VALUES('366666-6','44778','aaria', 'mariarock@gmail.com','5334','9956578'); 
 
-INSERT INTO dicente_tb(matricula,sala, curso, turma)
-VALUES('5555555','02','quimica','A');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
+VALUES('54444444-4','51234','jjJao', 'jjjaorock3000@gmail.com','22123','9965');
 
-INSERT INTO dicente_tb(matricula,sala, curso, turma)
-VALUES('6666666','03','Informática','A');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
+VALUES('6555555-5','654788','rrRobervaldo', 'rrrobervaldoroc@gmail.com','2231234','995778');
 
-INSERT INTO docente_tb (siap, cargo ,area, turno)
-VALUES('1222','tecnico', 'informatica','manha');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
+VALUES('7666666-6','754778','mmmMaria', 'mmmariarock@gmail.com','221334','9956578'); 
 
-INSERT INTO docente_tb (siap,cargo ,area, turno)
-VALUES('2222222','professor', 'informatica','manha');
+INSERT INTO administrador_tb (SIAP, pessoa_matricula)
+VALUES('58475','1234');
 
-INSERT INTO docente_tb (siap,cargo ,area, turno)
-VALUES('3333333','professor', 'matematica','manha');
+INSERT INTO administrador_tb (SIAP,  pessoa_matricula)
+VALUES('58485','54788');
+
+INSERT INTO administrador_tb (SIAP, pessoa_matricula)
+VALUES('58175','54778');
+
+INSERT INTO discente_tb(matricula, sala, curso, turma,pessoa_matricula)
+VALUES('2234','01','Informática','A','2234');
+
+INSERT INTO discente_tb(matricula,sala, curso, turma,pessoa_matricula) 
+VALUES('34788','02','quimica','B', '34788');
+
+INSERT INTO discente_tb(matricula,sala, curso, turma, pessoa_matricula)
+VALUES('44778','03','Informática','C', '44778');
+
+INSERT INTO docente_tb (siap, cargo ,area, turno, pessoa_matricula)
+VALUES('1222','tecnico', 'informatica','manha', '51234');
+
+INSERT INTO docente_tb (siap,cargo ,area, turno, pessoa_matricula)
+VALUES('2222222','professor', 'informatica','manha', '654788');
+
+INSERT INTO docente_tb (siap,cargo ,area, turno, pessoa_matricula)
+VALUES('3333333','professor', 'matematica','manha', '754778');
 
 INSERT INTO chaves_tb(numeroSala, nomeSala, status)
 VALUES('12','BD','reservado');
@@ -147,188 +165,226 @@ VALUES('12','BD','reservado');
 INSERT INTO chaves_tb(numeroSala, nomeSala, status)
 VALUES('02','COPED','reservado');
 
-INSERT INTO chaves_tb(nnumeroSala, nomeSala, status)
+INSERT INTO chaves_tb(numeroSala, nomeSala, status)
 VALUES('13','BD','Livre');
 
-
-INSERT INTO materiais_tb(tipo, status, observacao, numeroDestino, nomeSala)	
+INSERT INTO materiais_tb(tipo, status, observacao, numeroSala, nomeSala)	
 VALUES('Controle','reservado','novo','11','CAEST');
 
-INSERT INTO materiais_tb(tipo, status, observacao,numeroDestino, nomeSala)	
-VALUES('datashow','rerservado','novo','14', 'LRC');
+INSERT INTO materiais_tb(tipo, status, observacao,numeroSala, nomeSala)	
+VALUES('datashow','rerservado','novo','13', 'BD');
 
-INSERT INTO materiais_tb(tipo, status, observacao,numeroDestino, nomeSala)	
+INSERT INTO materiais_tb(tipo, status, observacao,numeroSala, nomeSala)	
 VALUES('datashow','livre','quebrado','15','LRC');
 
-INSERT INTO utencilios_tb(tipo,status, observacao, locall, marca)
+INSERT INTO utensilios_tb(tipo,status, observacao, locall, marca)
 VALUES('notebook','perdido','azul','vivencia', 'NIKE');
 
-INSERT INTO utencilios_tb(tipo,status,observacao,locall, marca)
+INSERT INTO utensilios_tb(tipo,status,observacao,locall, marca)
 VALUES('celular','perdido','com a tela quebrada','quadra', 'SAMSUMG');
 
-INSERT INTO utencilios_tb(tipo,status,observacao,locall, marca)
+INSERT INTO utensilios_tb(tipo,status,observacao,locall, marca)
 VALUES('pendrive','perdido','com a tela quebrada','sala de aula','THOMASIL');
 
-INSERT INTO Pessoa_Reserva_Chaves_tb()
-VALUES('25-Jan-2017');
-
-INSERT INTO Pessoa_Reserva_Chaves_tb()
-VALUES('30-Jan-2017');
-
-INSERT INTO Pessoa_Reserva_Chaves_tb()
-VALUES('10-Jan-2017');
-
-INSERT INTO Pessoa_Pesquisa_Utensilios_tb()
-VALUES('25-Jan-2017');
-
-INSERT INTO Pessoa_Pesquisa_Utensilios_tb()
-VALUES('30-Jan-2017');
-
-INSERT INTO Pessoa_Pesquisa_Utensilios_tb()
-VALUES('04-Fev-2017');
-
-INSERT INTO Pessoa_Reserva_Materiais_tb()
-VALUES('25-Jan-2017');
-
-INSERT INTO Pessoa_Reserva_Materiais_tb()
-VALUES('30-Jan-2017');
-
-INSERT INTO Pessoa_Reserva_Materiais_tb()
-VALUES('10-Jan-2017');
 
 
-DELETE FROM pessoa_tb WHERE matricula = '54789' and matricula = '54788' and matricula = '54778';
+INSERT INTO Pessoa_Reserva_Chaves_tb(data,horaPedido, horaDevolucao, matricula, idChave)
+VALUES('2018-03-20','10:01:00','11:01:00','1234','01'); 
 
-DELETE FROM dicente_tb where cpf='4444444' and cpf = '5555555' and cpf='6666666';
+INSERT INTO Pessoa_Reserva_Chaves_tb(data,horaPedido, horaDevolucao, matricula, idChave)
+VALUES('2017-01-30','10:02:00','12:01:00','54788','02'); 
 
-DELETE FROM administrador_tb WHERE matricula = '58475' and matricula = '58485' and matricula = '58175';
+INSERT INTO Pessoa_Reserva_Chaves_tb(data,horaPedido, horaDevolucao, matricula, idChave)
+VALUES('2017-01-10','10:03:00','13:01:00','54778','03');
 
-DELETE FROM docente_tb where cpf='1111111' and cpf='2222222' and cpf = '3333333';
+INSERT INTO Pessoa_Pesquisa_Utensilios_tb(data,horaPedido, horaDevolucao, matricula, idUtensilio)
+VALUES('2017-01-25','10:04:00','14:01:00','1234','01');
 
-DELETE FROM chaves_tb where id <= 3;
+INSERT INTO Pessoa_Pesquisa_Utensilios_tb(data,horaPedido, horaDevolucao, matricula, idUtensilio)
+VALUES('2017-01-30','10:05:00','15:01:00','54788','02');
 
-DELETE FROM materiais_tb where id <=3;
+INSERT INTO Pessoa_Pesquisa_Utensilios_tb(data,horaPedido, horaDevolucao, matricula, idUtensilio)
+VALUES('2017-02-04','10:06:00','16:01:00','54778','03');
 
-DELETE FROM utencilios_tb where id<=3;
+INSERT INTO Pessoa_Reserva_Materiais_tb(data,horaPedido, horaDevolucao, matricula, idMaterial)
+VALUES('2017-01-25','10:07:00','17:01:00','1234', '01');
 
-delimiter $$
-Create trigger insertPessoa before insert
-on pessoa_tb
-for each row
-begin
-	if(length(new.telefone) != 11) then
-	  set new.matricula = null;
-    end if;
+INSERT INTO Pessoa_Reserva_Materiais_tb(data,horaPedido, horaDevolucao, matricula, idMaterial)
+VALUES('2017-01-30','10:08:00','18:01:00','54788','02');
 
-end $$
-delimiter ;
+INSERT INTO Pessoa_Reserva_Materiais_tb(data,horaPedido, horaDevolucao, matricula, idMaterial)
+VALUES('2017-01-10','10:09:00','19:01:00','54778','03');
 
-delimiter $$
-Create trigger insertDicente before insert
-on dicente_tb
-for each row
-begin
-	if(length(new.cpf) != 14) then
-	  set new.cpf = null;
-    end if;
+SELECT * FROM pessoa_tb
+WHERE Matricula = '1234';
 
-end $$
-delimiter ;
+select * FROM docente_tb
+WHERE siap = '1222';
 
-delimiter $$
-Create trigger tr_encriptaSenha before insert
-on pessoa
-for each row
-begin
-   set new.senha = MD5(new.senha);
-end $$
-delimiter ;
+SELECT  status
+FROM chaves_tb
+WHERE nomeSala = 'BD'
+OR numeroSala = '12';
 
-delimiter $$
-Create trigger insertDocente before insert
-on docente_tb
-for each row
-begin
-	if(length(new.cpf) != 14) then
-	  set new.cpf = null;
-    end if;
-
-end $$
-delimiter ;
-
-delimiter $$
-Create trigger insertAdministrador before insert
-on administrador_tb
-for each row
-begin
-	if(new.senha != '123') then
-	  set new.matricula = null;
-    end if;
-
-end $$
-delimiter ;
+SELECT  status
+FROM materiais_tb
+WHERE nomeSala = 'BD'
+OR numeroSala = '13';
 
 
-delimiter $$
-Create trigger insertChave before insert
-on chaves_tb
-for each row
-begin
-	if(new.observacao = 'Reservada') then
-	  set new.id = null;
-    end if;
 
-end $$
-delimiter ;
+SELECT  marca
+FROM utensilios_tb
+WHERE observacao = 'azul';
 
-delimiter $$
-Create trigger insertMateriais before insert
-on materiais_tb
-for each row
-begin
-	if(new.observacao = 'Reservada') then
-	  set new.id = null;
-    end if;
+SELECT  tipo, locall
+FROM utensilios_tb
+WHERE marca = 'NIKE';
 
-end $$
-delimiter;
+SELECT  cargo
+FROM docente_tb
+WHERE area = 'informatica';
+
+SELECT  idMaterial
+FROM materiais_tb
+WHERE status = 'Reservado';
+
+SELECT  numeroSala, nomeSala
+FROM materiais_tb
+WHERE idMaterial = '01';
+
+SELECT  idChave
+FROM chaves_tb
+WHERE status = 'Livre';
+
+SELECT  numeroSala, nomeSala
+FROM chaves_tb
+WHERE idChave = '01';
+
+SELECT *
+FROM pessoa_reserva_chaves_tb
+WHERE data
+BETWEEN '25-Jan-2017'
+AND '30-Jan-2017';
+
+SELECT *
+FROM Pessoa_Pesquisa_Utensilios_tb
+WHERE data
+BETWEEN '25-Jan-2017'
+AND '30-Jan-2017';
+
+SELECT *
+FROM Pessoa_Reserva_Materiais_tb
+WHERE data
+BETWEEN '25-Jan-2017'
+AND '30-Jan-2017';
+
+SELECT matricula, email, telefone 
+FROM pessoa_tb
+WHERE Name
+IN ('Jao', 'Maria');
 
 
-delimiter $$
-Create trigger insertUtencilios before insert
-on utencilios_tb
-for each row
-begin
-	if(new.observacao = 'Reservada') then
-	  set new.id = null;
-    end if;
+SELECT  status
+FROM chaves_tb
+WHERE numeroSala
+IN ('12', '02');
 
-end $$
-delimiter ;
+SELECT  Observacao
+FROM Materiais_tb
+WHERE numeroSala
+IN ('11','13');
+
+SELECT  Observacao
+FROM Materiais_tb
+WHERE numeroSala
+IN ('11', '15')
+OR nomeSala = 'LRC';
+
+SELECT  status
+FROM chaves_tb
+WHERE nomeSala
+IN ('BD','COPED');
+
+SELECT  Observacao
+FROM Materiais_tb
+WHERE nomeSala
+IN ('LRC', 'CAEST');
+
+SELECT R.data , P.name 
+FROM Pessoa_Reserva_Chaves_tb R
+inner join pessoa_tb P
+on P.matricula = R.matricula
+inner join chaves_tb C
+on C.idchave = R.idChave
+AND C.status = 'reservado';
+
+SELECT D.data, P.name 
+FROM Pessoa_Reserva_Materiais_tb D
+inner join pessoa_tb P                           
+on P.matricula = D.matricula
+inner join materiais_tb M
+on M.idMaterial = D.idMaterial
+AND M.status = 'reservado';
+
+SELECT R.horaDevolucao, R.data
+FROM Pessoa_Reserva_Chaves_tb R 
+inner join pessoa_tb P
+on P.matricula = R.matricula
+inner join chaves_tb C
+on C.idChave= R.idChave;
+
+SELECT D.horaDevolucao, D.data
+FROM Pessoa_Reserva_Materiais_tb D                            
+inner join pessoa_tb P
+on P.matricula = D.matricula
+inner join materiais_tb M
+on M.idMaterial= D.idMaterial;
 
 
-delimiter $$
-Create trigger deletePessoa before delete
-on pessoa_tb
-for each row
-begin
+SELECT P.matricula, C.numeroSala, C.nomeSala, A.horaPedido 
+FROM Pessoa_Reserva_Chaves_tb A 
+inner join pessoa_tb P                                     
+on P.matricula = A.matricula AND A.data = '2017-01-10'
+inner join chaves_tb C
+on C.idChave= A.idChave;
 
-	INSERT INTO bkppessoa_tb(matricula, name, email, senha, telefone)
-	VALUES(old.matricula,old.name,old.email,old.senha,old.telefone);
 
-end $$
-delimiter ;
+ SELECT P.matricula, M.tipo, M.nomeSala, M.numeroSala, D.horaPedido 
+FROM Pessoa_Reserva_Materiais_tb D
+inner join pessoa_tb P
+on P.matricula = D.matricula and D.data =  '2017-01-25'
+inner join materiais_tb M
+on M.idMaterial = D.idMaterial;
+
+/* so funciona ate os selects*/
+
+
+DELETE FROM pessoa_tb WHERE matricula = '1234' and matricula = '54788' and matricula = '54778';
+
+DELETE FROM discente_tb where matricula ='2234' and matricula = '34788' and matricula='44778';
+
+DELETE FROM administrador_tb WHERE siap = '58475' and siap= '58485' and siap = '58175';
+
+DELETE FROM docente_tb where siap='1222' and siap= '2222222' and siap = '3333333';
+
+DELETE FROM chaves_tb where idChave <= 3;
+
+DELETE FROM materiais_tb where idMaterial <=3;
+
+DELETE FROM utensilios_tb where idUtensilio <=3;
+
 
 
 
 DROP TABLE administrador_tb;
-DROP TABLE dicente_tb;
+DROP TABLE discente_tb;
 DROP TABLE docente_tb;
 DROP TABLE Pessoa_Reserva_Chaves_tb;
-DROP TABLE Pessoa_Reserva_Utencilio_tb;
+DROP TABLE Pessoa_Reserva_Utensilios_tb;
 DROP TABLE Pessoa_Reserva_Materiais_tb;
-DROP TABLE utencilios_tb;
+DROP TABLE utensilios_tb;
 DROP TABLE chaves_tb;
 DROP TABLE materiais_tb;
 DROP TABLE bkpPessoa_tb;
-DROP TABLE pessoa_tb;SS
+DROP TABLE pessoa_tb;
