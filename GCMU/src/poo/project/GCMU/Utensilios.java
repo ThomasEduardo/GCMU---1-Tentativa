@@ -20,7 +20,9 @@ public class Utensilios {
 		this.status = status;
 		this.marca = marca;
 	}
-
+	
+	public Utensilios (){}
+	
 	public String getLocall() {
 		return locall;
 	}

@@ -9,14 +9,16 @@ public class Dicente extends Pessoa {
 	private String curso;
 	private String turma;
 
-	public Dicente(String sala, String curso, String turma, int matricula, String name, String email, String telefone,
+	public Dicente(String sala, String curso, String turma, int matricula, String name, String email, int telefone,
 			String senha, String cpf) {
 		super(matricula, name, email, telefone, senha, cpf);
 		this.turma = turma;
 		this.sala = sala;
 		this.curso = curso;
 	}
-
+	
+	public Dicente(){}
+	
 	public String getSala() {
 		return sala;
 	}

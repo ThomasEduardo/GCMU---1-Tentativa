@@ -8,11 +8,11 @@ public abstract class Pessoa {
 	private int matricula;
 	private String name;
 	private String email;
-	private String telefone;
+	private int telefone;
 	private String senha;
 	private String cpf;
 
-	public Pessoa(int matricula, String name, String email, String telefone, String senha, String cpf) {
+	public Pessoa(int matricula, String name, String email, int telefone, String senha, String cpf) {
 		this.matricula = matricula;
 		this.name = name;
 		this.email = email;
@@ -20,6 +20,13 @@ public abstract class Pessoa {
 		this.senha = senha;
 		this.setCpf(cpf);
 	}
+	public int getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(int telefone) {
+		this.telefone = telefone;
+	}
+	public Pessoa(){}
 
 	public String getEmail() {
 		return email;
@@ -27,14 +34,6 @@ public abstract class Pessoa {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
 	}
 
 	public int getMatricula() {

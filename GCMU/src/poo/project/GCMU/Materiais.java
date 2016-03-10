@@ -24,7 +24,7 @@ public class Materiais {
 		this.nomeSala = nomeSala;
 	}
 
-
+	public Materiais(){}
 
 	public int getId() {
 		return id;

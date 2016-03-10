@@ -10,13 +10,17 @@ package poo.project.GCMU;
  *         atualização e remocao. 
  */
 public class Administrador extends Pessoa {
+	
 	private String senha;
-
-	public Administrador(String senha, int matricula, String name, String email, String telefone, String cpf) {
+	
+	
+	public Administrador(String senha, int matricula, String name, String email, int telefone, String cpf) {
 		super(matricula, name, email, telefone, senha, cpf);
 		this.senha = senha;
 	}
-
+	
+	public Administrador(){}
+	
 	public String getSenha() {
 		return senha;
 	}

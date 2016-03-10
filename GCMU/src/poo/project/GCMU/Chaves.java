@@ -19,7 +19,9 @@ public class Chaves {
 		this.id = id;
 
 	}
-
+	
+	public Chaves(){}
+	
 	public int getId() {
 		return id;
 	}
