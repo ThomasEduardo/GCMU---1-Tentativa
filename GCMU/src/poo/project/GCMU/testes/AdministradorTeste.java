@@ -18,7 +18,7 @@ public class AdministradorTeste {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		A1 = new Administrador("123", 123, "Ola", "olavose@gmail.com", 123456, "123.456.789-10");
+		A1 = new Administrador(0, "123", 123, "Ola", "olavose@gmail.com", 123456, "123.456.789-10");
 	}
 
 	@Test

@@ -4,7 +4,7 @@ package poo.project.GCMU;
  * @author GCMU
  *	Essa eh uma classe mae que contem os atributos comuns entre discente e docente 
  */
-public abstract class Pessoa {
+public class Pessoa {
 	private int matricula;
 	private String name;
 	private String email;

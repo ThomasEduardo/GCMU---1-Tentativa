@@ -11,10 +11,11 @@ package poo.project.GCMU;
  */
 public class Administrador extends Pessoa {
 	
+	private int siap;
 	private String senha;
 	
 	
-	public Administrador(String senha, int matricula, String name, String email, int telefone, String cpf) {
+	public Administrador(int Siap, String senha, int matricula, String name, String email, int telefone, String cpf) {
 		super(matricula, name, email, telefone, senha, cpf);
 		this.senha = senha;
 	}
@@ -56,6 +57,14 @@ public class Administrador extends Pessoa {
 	// for chaamdo.
 	public String Remocao(/*Recurso*/) {
 		return "ok, Remoção efetuada!";
+	}
+
+	public int getSiap() {
+		return siap;
+	}
+
+	public void setSiap(int siap) {
+		this.siap = siap;
 	}
 
 }

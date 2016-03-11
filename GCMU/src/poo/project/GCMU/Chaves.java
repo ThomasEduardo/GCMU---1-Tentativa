@@ -38,15 +38,15 @@ public class Chaves {
 		this.observacao = observacao;
 	}
 
-	public int getnSala() {
+	public int getNumeroSala() {
 
 		return numeroSala;
 
 	}
 
-	public void setnSala(int nsala) {
+	public void setNumeroSala(int numeroSala) {
 
-		this.numeroSala = nsala;
+		this.numeroSala = numeroSala;
 
 	}
 

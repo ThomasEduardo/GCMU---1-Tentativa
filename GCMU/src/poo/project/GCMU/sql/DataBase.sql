@@ -9,6 +9,7 @@ cpf VARCHAR(14)
 
 CREATE TABLE administrador_tb(
 siap INT(30) PRIMARY KEY,
+senha VARCHAR(30) NOT NULL,
 pessoa_matricula INT UNSIGNED,
 CONSTRAINT fk_administrador_pessoa FOREIGN KEY 
 (pessoa_matricula) REFERENCES pessoa_tb(matricula)
