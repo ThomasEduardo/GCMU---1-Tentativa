@@ -38,28 +38,20 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 		try {
 
 			String sql = "INSERT INTO docente_tb ("
-					+ " matricula, "
-					+ " name,"
-					+ " email,"
-					+ " senha,"
-					+ " telefone,"
-					+ " cpf,"
+					+ " siap, "
 					+ " cargo,"
 					+ " area,"
-					+ " turno)"
-					+ " VALUES (?,?,?,?,?,?,?,?,?)";
+					+ " turno,"
+					+ " pessoa_matricula)"
+					+ " VALUES (?,?,?,?,?)";
 
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 
-			stmt.setInt(1, docente.getMatricula());
-			stmt.setString(2, docente.getName());
-			stmt.setString(3, docente.getEmail());
-			stmt.setString(4, docente.getSenha());
-			stmt.setInt(5, docente.getTelefone());
-			stmt.setString(6, docente.getCpf());	
-			stmt.setString(7, docente.getCargo());
-			stmt.setString(8, docente.getArea());
-			stmt.setString(9, docente.getTurno());
+			stmt.setInt(1, docente.getSiap());	
+			stmt.setString(2, docente.getCargo());
+			stmt.setString(3, docente.getArea());
+			stmt.setString(4, docente.getTurno());
+			stmt.setInt(5, docente.getMatricula());
 			
 			stmt.execute();
 
@@ -87,14 +79,9 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 
 		try {
 
-			String sql = "SELECT docente.matricula,"
-					+ " docente.name,"
-					+ " docente.email"
-					+ " docente.senha"
-					+ " docente.telefone"
-					+ " docente.cpf"
-					+ " docente.cargo"
-					+ " docente.area"
+			String sql = "SELECT docente.siap,"
+					+ " docente.cargo,"
+					+ " docente.area,"
 					+ " docente.turno"
 					+ " FROM docente_tb AS docente"
 					+ " WHERE docente.siap = " 
@@ -132,12 +119,7 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 				// Pessoa
 				Docente docente = new Docente();
 
-				docente.setMatricula(rs.getInt("docente.matricula"));
-				docente.setName(rs.getString("docente.name"));
-				docente.setEmail(rs.getString("docente.email"));
-				docente.setSenha(rs.getString("docente.senha"));
-				docente.setTelefone(rs.getInt("docente.telefone"));
-				docente.setCpf(rs.getString("docente.cpf"));
+				docente.setMatricula(rs.getInt("docente.siap"));
 				docente.setCargo(rs.getString("docente.cargo"));
 				docente.setArea(rs.getString("docente.area"));
 				docente.setTurno(rs.getString("docente.turno"));

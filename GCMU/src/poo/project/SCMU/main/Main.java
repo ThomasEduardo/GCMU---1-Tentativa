@@ -10,12 +10,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Docente docente = new Docente("chefe", "técnico", "manha", 199, "Matheus", "matehus@exemplo.com",999999,
-				"1234", "9999dsds99", 4444444);
+		Docente docente = new Docente("chefe", "técnico", "manha", 1234, "Matheus", "matehus@exemplo.com",999999,
+				"1234", "9999dsds99", 1234);
 		
 		try {
 			
-			DocenteDAO.getInstance().insert(docente);
+			DocenteDAO.getInstance().delete(1234);
 			
 		} catch (SQLException e) {
 			
