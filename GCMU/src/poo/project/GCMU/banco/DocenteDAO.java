@@ -107,6 +107,45 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 
 		return docente;
 	}
+	
+	public Docente queryCargo (String area) throws SQLException {
+		
+		/*SELECT  cargo
+			FROM docente_tb
+			WHERE area = 'informatica';*/
+		Docente docente = null;
+
+		PreparedStatement stmt = null;
+
+		ResultSet rs = null;
+
+		try {
+
+			String sql = "SELECT docente.cargo"
+					+ " FROM docente_tb AS docente"
+					+ " WHERE docente.area = " 
+					+ area;
+
+			stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			List<Docente> docentes = convertToList(rs);
+
+			if (!docentes.isEmpty())
+				docente = docentes.get(0);
+
+		} catch (SQLException sqle) {
+
+			throw sqle;
+
+		} finally {
+
+			connection.close();
+		}
+
+		return docente;
+	}
 
 	private List<Docente> convertToList(ResultSet rs) throws SQLException {
 

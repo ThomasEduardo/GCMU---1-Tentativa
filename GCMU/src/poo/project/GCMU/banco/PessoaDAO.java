@@ -114,6 +114,46 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 
 		return pessoa;
 	}
+	public Pessoa queryDataNome(String status) throws SQLException {
+
+		Pessoa pessoa = null;
+
+		PreparedStatement stmt = null;
+
+		ResultSet rs = null;
+
+		try {
+
+			String sql = "SELECT D.data, P.name,"
+					+ " FROM Pessoa_Reserva_Materiais_tb D"
+					+ " inner join pessoa_tb P"
+					+ " on P.matricula = D.matricula"
+					+ " inner join materiais_tb M"
+					+ " on M.idMaterial = D.idMaterial"
+					+ " AND M.status = "
+					+status; 
+					
+			stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			List<Pessoa> pessoas = convertToList(rs);
+
+			if (!pessoas.isEmpty())
+				pessoa = pessoas.get(0);
+
+		} catch (SQLException sqle) {
+
+			throw sqle;
+
+		} finally {
+
+			connection.close();
+		}
+
+		return pessoa;
+	}
+
 
 	private List<Pessoa> convertToList(ResultSet rs) throws SQLException {
 

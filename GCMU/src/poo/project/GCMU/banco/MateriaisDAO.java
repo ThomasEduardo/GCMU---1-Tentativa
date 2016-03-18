@@ -113,21 +113,21 @@ public class MateriaisDAO implements GenericDAO<Integer, Materiais>{
 
 	private List<Materiais> convertToList(ResultSet rs) throws SQLException {
 
-		List<Materiais> chavess = new ArrayList<Materiais>();
+		List<Materiais> materiais = new ArrayList<Materiais>();
 
 		try {
 
 			while (rs.next()) {
 
-				// Chaves
-				Materiais materiais = new Materiais();
+				// Material
+				Materiais material = new Materiais();
 
-				materiais.setId(rs.getInt("materiais.id"));
-				materiais.setNumeroSala(rs.getInt("materiais.numeroSala"));
-				materiais.setNomeSala(rs.getString("materiais.nomeSala"));
-				materiais.setObservacao(rs.getString("materiais.observacao"));
+				material.setId(rs.getInt("materiais.id"));
+				material.setNumeroSala(rs.getInt("materiais.numeroSala"));
+				material.setNomeSala(rs.getString("materiais.nomeSala"));
+				material.setObservacao(rs.getString("materiais.observacao"));
 				
-				Materiaiss.add(materiais);
+				materiais.add(material);
 			}
 
 		} catch (SQLException sqle) {
@@ -135,7 +135,7 @@ public class MateriaisDAO implements GenericDAO<Integer, Materiais>{
 			throw sqle;
 		}
 
-		return Materiaiss;
+		return materiais;
 	}
 
 	@Override
