@@ -124,14 +124,10 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 
 		try {
 
-			String sql = "SELECT D.data, P.name,"
+			String sql = "SELECT D.data, P.name"
 					+ " FROM Pessoa_Reserva_Materiais_tb D"
-					+ " inner join pessoa_tb P"
-					+ " on P.matricula = D.matricula"
-					+ " inner join materiais_tb M"
-					+ " on M.idMaterial = D.idMaterial"
-					+ " AND M.status = "
-					+status; 
+					+ " inner join pessoa_tb P on P.matricula = D.matricula"
+					+ " inner join materiais_tb M on M.idMaterial = D.idMaterial AND M.status = "+status; 
 					
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
 
