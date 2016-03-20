@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mysql.jdbc.Connection;
-import poo.project.GCMU.Discente;
+
+import poo.project.GCMU.classes.Discente;
 
 
 public class DiscenteDAO implements GenericDAO<Integer, Discente>{

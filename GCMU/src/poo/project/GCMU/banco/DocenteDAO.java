@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.mysql.jdbc.Connection;
 
-import poo.project.GCMU.Docente;
+import poo.project.GCMU.classes.Docente;
 
 public class DocenteDAO implements GenericDAO<Integer, Docente>{
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.mysql.jdbc.Connection;
 
-import poo.project.GCMU.Administrador;
+import poo.project.GCMU.classes.Administrador;
 
 public class AdministradorDAO implements GenericDAO<Integer, Administrador>{
 

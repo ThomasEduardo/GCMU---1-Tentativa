@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import poo.project.GCMU.Discente;
+import poo.project.GCMU.classes.Discente;
 
 public class DicenteTeste {
 	Discente d1;

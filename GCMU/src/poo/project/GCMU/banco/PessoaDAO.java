@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.mysql.jdbc.Connection;
 
-import poo.project.GCMU.Pessoa;
+import poo.project.GCMU.classes.Pessoa;
 
 
 public class PessoaDAO implements GenericDAO<Integer, Pessoa>{

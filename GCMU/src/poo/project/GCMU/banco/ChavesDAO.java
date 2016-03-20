@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.mysql.jdbc.Connection;
 
-import poo.project.GCMU.Chaves;
+import poo.project.GCMU.classes.Chaves;
 
 public class ChavesDAO implements GenericDAO<Integer, Chaves>{
 

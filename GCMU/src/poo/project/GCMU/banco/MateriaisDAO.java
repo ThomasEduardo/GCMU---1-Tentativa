@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.mysql.jdbc.Connection;
 
-import poo.project.GCMU.Materiais;
+import poo.project.GCMU.classes.Materiais;
 
 public class MateriaisDAO implements GenericDAO<Integer, Materiais>{
 

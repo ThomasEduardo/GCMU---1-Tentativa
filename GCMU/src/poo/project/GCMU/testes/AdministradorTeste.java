@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import poo.project.GCMU.Administrador;
+import poo.project.GCMU.classes.Administrador;
 
 public class AdministradorTeste {
 	Administrador A1;

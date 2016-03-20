@@ -2,10 +2,10 @@ package poo.project.GCMU.main;
 
 import java.sql.SQLException;
 
-import poo.project.GCMU.Discente;
-import poo.project.GCMU.Docente;
 import poo.project.GCMU.banco.DiscenteDAO;
 import poo.project.GCMU.banco.DocenteDAO;
+import poo.project.GCMU.classes.Discente;
+import poo.project.GCMU.classes.Docente;
 
 
 public class Main {

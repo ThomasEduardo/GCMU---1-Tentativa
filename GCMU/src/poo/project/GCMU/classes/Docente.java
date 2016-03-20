@@ -1,4 +1,4 @@
-package poo.project.GCMU;
+package poo.project.GCMU.classes;
 /**
  * 
  * @author GCMU
