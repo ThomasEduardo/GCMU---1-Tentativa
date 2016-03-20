@@ -1,4 +1,4 @@
-package poo.project.GCMU.banco;
+package poo.project.GCMU.DataBase;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.mysql.jdbc.Connection;
 
-import poo.project.GCMU.classes.Docente;
+import poo.project.GCMU.Classes.Docente;
 
 public class DocenteDAO implements GenericDAO<Integer, Docente>{
 

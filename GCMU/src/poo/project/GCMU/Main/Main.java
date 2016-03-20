@@ -1,11 +1,11 @@
-package poo.project.GCMU.main;
+package poo.project.GCMU.Main;
 
 import java.sql.SQLException;
 
-import poo.project.GCMU.banco.DiscenteDAO;
-import poo.project.GCMU.banco.DocenteDAO;
-import poo.project.GCMU.classes.Discente;
-import poo.project.GCMU.classes.Docente;
+import poo.project.GCMU.Classes.Discente;
+import poo.project.GCMU.Classes.Docente;
+import poo.project.GCMU.DataBase.DiscenteDAO;
+import poo.project.GCMU.DataBase.DocenteDAO;
 
 
 public class Main {

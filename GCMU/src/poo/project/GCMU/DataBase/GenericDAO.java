@@ -1,4 +1,4 @@
-package poo.project.GCMU.banco;
+package poo.project.GCMU.DataBase;
 
 import java.sql.SQLException;
 import java.util.List;

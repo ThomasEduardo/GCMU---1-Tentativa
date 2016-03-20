@@ -1,28 +1,48 @@
-package poo.project.GCMU.testes;
+package poo.project.GCMU.Tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class ChavesTeste {
+public class UtensiliosTeste {
 
 	@Before
 	public void setUp() throws Exception {
 	}
 
 	@Test
-	public void testChaves() {
+	public void testUtensilios() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetId() {
+	public void testGetNome() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetId() {
+	public void testSetNome() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetTipo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetTipo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetStatus() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetStatus() {
 		fail("Not yet implemented");
 	}
 
@@ -37,22 +57,12 @@ public class ChavesTeste {
 	}
 
 	@Test
-	public void testGetnSala() {
+	public void testGetId() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetnSala() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetTipo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetTipo() {
+	public void testSetId() {
 		fail("Not yet implemented");
 	}
 

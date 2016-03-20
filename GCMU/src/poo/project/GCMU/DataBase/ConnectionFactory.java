@@ -1,4 +1,4 @@
-package poo.project.GCMU.banco;
+package poo.project.GCMU.DataBase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +23,7 @@ public class ConnectionFactory {
 
 			Class.forName("com.mysql.jdbc.Driver");
 
-			// Endereço do Banco, Usuário e Senha. Substituir: [BANCO], [USUARIO], [SENHA]
+			// Endereï¿½o do Banco, Usuï¿½rio e Senha. Substituir: [BANCO], [USUARIO], [SENHA]
 			return DriverManager.getConnection("jdbc:mysql://localhost/gcmu", "root","");
 
 		} catch (SQLException | ClassNotFoundException e) {

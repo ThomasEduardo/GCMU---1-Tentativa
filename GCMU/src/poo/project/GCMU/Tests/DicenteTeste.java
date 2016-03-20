@@ -1,11 +1,11 @@
-package poo.project.GCMU.testes;
+package poo.project.GCMU.Tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import poo.project.GCMU.classes.Discente;
+import poo.project.GCMU.Classes.Discente;
 
 public class DicenteTeste {
 	Discente d1;
