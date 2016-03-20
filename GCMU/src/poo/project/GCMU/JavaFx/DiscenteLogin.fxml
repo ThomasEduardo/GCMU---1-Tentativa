@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="618.0" style="-fx-border-width: 04; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ProgressBar layoutX="3.0" layoutY="5.0" prefHeight="377.0" prefWidth="276.0" progress="0.0" />
+      <Label layoutX="98.0" layoutY="242.0" text="Discente">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <PasswordField layoutX="408.0" layoutY="168.0" />
+      <TextField layoutX="377.0" layoutY="102.0" promptText="ex: 12345" />
+      <Label layoutX="309.0" layoutY="107.0" text="Matricula" />
+      <Label layoutX="341.0" layoutY="173.0" text="Senha" />
+      <Button layoutX="522.0" layoutY="299.0" mnemonicParsing="false" text="Continuar" />
+      <Button layoutX="450.0" layoutY="299.0" mnemonicParsing="false" opacity="0.45" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="Voltar" underline="true" />
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="43.0" layoutY="26.0">
+         <image>
+            <Image url="@../../../../../../../../Desktop/icones/1aluno.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

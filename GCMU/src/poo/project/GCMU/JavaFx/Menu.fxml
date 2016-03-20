@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="632.0" style="-fx-background-color: #5F9EA0; -fx-border-color: black; -fx-border-width: 06;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="265.0" layoutY="21.0" text="GCMU">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="158.0" layoutY="65.0" text="Gerenciamento de Chaves, Materiais e Utensilios">
+         <font>
+            <Font name="Serif Regular" size="13.0" />
+         </font></Label>
+      <Label layoutX="131.0" layoutY="139.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="237.0" layoutY="168.0">
+         <image>
+            <Image url="@../../../../../../../../Desktop/icones/user-icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="237.0" layoutY="318.0">
+         <image>
+            <Image url="@../../../../../../../../Desktop/icones/user-icon.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="55.0" layoutY="145.0" mnemonicParsing="false" opacity="0.71" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #D3D3D3;" text="Logar como:">
+         <font>
+            <Font name="System Italic" size="11.0" />
+         </font></Button>
+      <Button layoutX="292.0" layoutY="176.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Administrador">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="295.0" layoutY="254.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Discente" />
+      <Button layoutX="296.0" layoutY="327.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Docente" />
+      <ImageView fitHeight="55.0" fitWidth="43.0" layoutX="234.0" layoutY="239.0">
+         <image>
+            <Image url="@../../../../../../../../Desktop/icones/1aluno.png" />
+         </image>
+      </ImageView>
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+   <effect>
+      <Glow level="0.03" />
+   </effect>
+</AnchorPane>
