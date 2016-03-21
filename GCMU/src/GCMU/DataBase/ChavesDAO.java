@@ -1,4 +1,4 @@
-package poo.project.GCMU.DataBase;
+package GCMU.DataBase;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.mysql.jdbc.Connection;
 
-import poo.project.GCMU.Classes.Chaves;
+import GCMU.classes.Chaves;
 
 public class ChavesDAO implements GenericDAO<Integer, Chaves>{
 

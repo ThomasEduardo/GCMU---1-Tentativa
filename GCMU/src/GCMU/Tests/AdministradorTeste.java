@@ -1,11 +1,11 @@
-package poo.project.GCMU.Tests;
+package GCMU.Tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import poo.project.GCMU.Classes.Administrador;
+import GCMU.classes.Administrador;
 
 public class AdministradorTeste {
 	Administrador A1;

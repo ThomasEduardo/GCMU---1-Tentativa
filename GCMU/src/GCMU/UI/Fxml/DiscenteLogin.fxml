@@ -10,13 +10,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poo.project.GCMU.UI.Controllers.DiscenteLoginController">
    <children>
       <PasswordField layoutX="400.0" layoutY="162.0" />
-      <TextField layoutX="400.0" layoutY="118.0" promptText="ex: 12345" />
-      <Label layoutX="332.0" layoutY="123.0" text="Suap:" />
-      <Label layoutX="328.0" layoutY="167.0" text="Senha:" />
-      <Button layoutX="456.0" layoutY="257.0" mnemonicParsing="false" text="Continuar" />
+      <TextField fx:id="suapDoscente" layoutX="400.0" layoutY="118.0" promptText="ex: 12345" />
+      <Label layoutX="332.0" layoutY="123.0" text="Matricula:" />
+      <Label layoutX="340.0" layoutY="166.0" text="Senha:" />
+      <Button layoutX="457.0" layoutY="257.0" mnemonicParsing="false" text="Continuar" />
       <Button layoutX="370.0" layoutY="257.0" mnemonicParsing="false" opacity="0.45" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="Voltar" underline="true" />
       <AnchorPane layoutX="4.0" layoutY="4.0" prefHeight="381.0" prefWidth="278.0" style="-fx-background-color: #5F9EA0;">
          <children>
