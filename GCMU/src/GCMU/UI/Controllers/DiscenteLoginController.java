@@ -40,7 +40,7 @@ public class MenuController implements Initializable {
 		Main.primaryStage.show(); 
 	}
 	
-	
+	//
 	@FXML
 	private void btDocente() throws IOException{
 		perfil = "Docente";

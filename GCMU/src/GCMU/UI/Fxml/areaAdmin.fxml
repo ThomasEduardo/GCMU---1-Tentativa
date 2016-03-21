@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="335.0" layoutY="14.0" text="Qual ação deseja fazer?">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Button layoutX="544.0" layoutY="337.0" mnemonicParsing="false" opacity="0.45" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="Sair" underline="true" />
+      <AnchorPane layoutX="4.0" layoutY="4.0" prefHeight="381.0" prefWidth="278.0" style="-fx-background-color: #5F9EA0;">
+         <children>
+            <Label layoutX="14.0" layoutY="346.0" text="Bem Vindo ">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="119.0" layoutY="352.0" text="(name)!" />
+            <ImageView fitHeight="200.0" fitWidth="188.0" layoutX="56.0" layoutY="31.0">
+               <image>
+                  <Image url="@../../../../../../../Desktop/user-icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <CheckBox layoutX="326.0" layoutY="121.0" mnemonicParsing="false" text="Cadastrar" />
+      <CheckBox layoutX="328.0" layoutY="169.0" mnemonicParsing="false" text="Atualizar" />
+      <CheckBox layoutX="328.0" layoutY="216.0" mnemonicParsing="false" text="Remover" />
+      <ChoiceBox layoutX="423.0" layoutY="117.0" prefWidth="150.0">
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" text="Discente" />
+                  <MenuItem mnemonicParsing="false" text="Docente" />
+                  <MenuItem mnemonicParsing="false" text="Chaves" />
+                  <MenuItem mnemonicParsing="false" text="Materiais" />
+                  <MenuItem mnemonicParsing="false" text="Utensilios Perdidos" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </ChoiceBox>
+      <ChoiceBox layoutX="423.0" layoutY="165.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="423.0" layoutY="212.0" prefWidth="150.0" />
+      <CheckBox layoutX="328.0" layoutY="263.0" mnemonicParsing="false" text="Consulta" />
+      <ChoiceBox layoutX="423.0" layoutY="259.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

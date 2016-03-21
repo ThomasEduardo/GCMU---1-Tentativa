@@ -15,7 +15,7 @@
       <Button layoutX="544.0" layoutY="337.0" mnemonicParsing="false" opacity="0.45" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="Voltar" underline="true" />
       <AnchorPane layoutX="4.0" layoutY="1.0" prefHeight="59.0" prefWidth="440.0" style="-fx-background-color: #5F9EA0;">
          <children>
-            <Label layoutX="130.0" layoutY="12.0" prefHeight="33.0" prefWidth="181.0" text="Pedido de Chave">
+            <Label layoutX="128.0" layoutY="12.0" prefHeight="36.0" prefWidth="255.0" text="Pedido de Materiais">
                <font>
                   <Font name="System Italic" size="25.0" />
                </font>
@@ -26,7 +26,7 @@
       <Label layoutX="312.0" layoutY="178.0" />
       <TextField layoutX="155.0" layoutY="135.0" promptText="20141004" />
       <Label layoutX="82.0" layoutY="278.0" text="Data:" />
-      <Label layoutX="81.0" layoutY="206.0" text="Numêro da Sala do Destino:" />
+      <Label layoutX="81.0" layoutY="206.0" text="Numero da Sala do Destino:" />
       <TextField layoutX="241.0" layoutY="195.0" promptText="ex: NIKE" />
       <TextField layoutX="238.0" layoutY="233.0" promptText="ex: Sala 10" />
       <Label layoutX="82.0" layoutY="245.0" text="Nome da Sala do Destino:" />
