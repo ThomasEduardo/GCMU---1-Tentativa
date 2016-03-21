@@ -25,7 +25,7 @@
                   <Font name="System Bold Italic" size="19.0" />
                </font>
             </Label>
-            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="34.0" layoutY="55.0">
+            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="39.0" layoutY="34.0">
                <image>
                   <Image url="@../../../../../../../../../Desktop/icones/1aluno.png" />
                </image>
