@@ -29,30 +29,30 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="237.0" layoutY="168.0">
-         <image>
-            <Image url="@../../../../../../../../Desktop/icones/user-icon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="237.0" layoutY="318.0">
-         <image>
-            <Image url="@../../../../../../../../Desktop/icones/user-icon.png" />
-         </image>
-      </ImageView>
       <Button layoutX="55.0" layoutY="145.0" mnemonicParsing="false" opacity="0.71" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #D3D3D3;" text="Logar como:">
          <font>
             <Font name="System Italic" size="11.0" />
          </font></Button>
-      <Button layoutX="292.0" layoutY="176.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Administrador">
+      <Button layoutX="295.0" layoutY="179.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Administrador">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Button layoutX="295.0" layoutY="254.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Discente" />
       <Button layoutX="296.0" layoutY="327.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Docente" />
-      <ImageView fitHeight="55.0" fitWidth="43.0" layoutX="234.0" layoutY="239.0">
+      <ImageView fitHeight="55.0" fitWidth="43.0" layoutX="250.0" layoutY="230.0">
          <image>
-            <Image url="@../../../../../../../../Desktop/icones/1aluno.png" />
+            <Image url="@../../../../../../../../../Desktop/icones/1aluno.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="251.0" layoutY="169.0">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/icones/user-icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="253.0" layoutY="313.0">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/icones/user-icon.png" />
          </image>
       </ImageView>
    </children>
