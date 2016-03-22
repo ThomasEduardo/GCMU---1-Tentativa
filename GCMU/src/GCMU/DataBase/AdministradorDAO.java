@@ -36,8 +36,8 @@ public class AdministradorDAO implements GenericDAO<Integer, Administrador>{
 	public boolean insert(Administrador administrador) throws SQLException {
 
 		try {
-		
-				String sql = "INSERT INTO administrador_tb ("
+
+			String sql = "INSERT INTO administrador_tb ("
 					+ " siap, "
 					+ " senha, "
 					+ " pessoa_matricula)"
@@ -48,7 +48,7 @@ public class AdministradorDAO implements GenericDAO<Integer, Administrador>{
 			stmt.setInt(1, administrador.getSiap());	
 			stmt.setString(2, administrador.getSenha());
 			stmt.setInt(5, administrador.getMatricula());
-			
+
 			stmt.execute();
 
 		} catch (SQLException e) {
@@ -115,7 +115,7 @@ public class AdministradorDAO implements GenericDAO<Integer, Administrador>{
 
 				administrador.setSiap(rs.getInt("administrador.siap"));
 				administrador.setSenha(rs.getString("administrador.senha"));
-				
+
 				administradores.add(administrador);
 			}
 
@@ -155,8 +155,30 @@ public class AdministradorDAO implements GenericDAO<Integer, Administrador>{
 	}
 
 	@Override
-	public void update(Administrador entity) throws SQLException {
-		// TODO Auto-generated method stub
+	public void update(Administrador administrador) throws SQLException {
+		
+		try {
+
+			String sql = "UPDATE administrador_tb"
+					+ " SET siap=?, senha=?"
+					+ " WHERE siap=?";
+
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setLong(1, administrador.getSiap());
+			stmt.setString(2, administrador.getSenha());
+			stmt.setLong(3, administrador.getSiap());
+
+			stmt.execute();
+
+		}catch (SQLException e) {
+
+			System.out.println(e);
+
+		} finally {
+
+			connection.close();
+		}
 
 	}
 

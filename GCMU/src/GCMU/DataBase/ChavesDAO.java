@@ -35,11 +35,9 @@ public class ChavesDAO implements GenericDAO<Integer, Chaves>{
 	@Override
 	public boolean insert(Chaves chaves) throws SQLException {
 
-		try {
-		
-	
-			
-				String sql = "INSERT INTO chaves_tb ("
+		try {	
+
+			String sql = "INSERT INTO chaves_tb ("
 					+ " id,"
 					+ " numeroSala, "
 					+ " nomeSala, "
@@ -52,7 +50,7 @@ public class ChavesDAO implements GenericDAO<Integer, Chaves>{
 			stmt.setInt(2, chaves.getNumeroSala());
 			stmt.setString(3, chaves.getNomeSala());
 			stmt.setString(4, chaves.getObservacao());
-			
+
 			stmt.execute();
 
 		} catch (SQLException e) {
@@ -123,7 +121,7 @@ public class ChavesDAO implements GenericDAO<Integer, Chaves>{
 				chaves.setNumeroSala(rs.getInt("chaves.numeroSala"));
 				chaves.setNomeSala(rs.getString("chaves.nomeSala"));
 				chaves.setObservacao(rs.getString("chaves.observacao"));
-				
+
 				chavess.add(chaves);
 			}
 
@@ -163,8 +161,33 @@ public class ChavesDAO implements GenericDAO<Integer, Chaves>{
 	}
 
 	@Override
-	public void update(Chaves entity) throws SQLException {
-		// TODO Auto-generated method stub
+	public void update(Chaves chaves) throws SQLException {
+
+		try {
+
+			String sql = "UPDATE chaves_tb"
+					+ " SET id=?, numeroSala=?, nomeSala=?, observacao=?"
+					+ " WHERE id=?";
+
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setLong(1, chaves.getId());
+			stmt.setInt(2, chaves.getNumeroSala());
+			stmt.setString(3, chaves.getNomeSala());
+			stmt.setString(4, chaves.getObservacao());
+			stmt.setLong(5, chaves.getId());
+
+			stmt.execute();
+
+		}catch (SQLException e) {
+
+			System.out.println(e);
+
+		} finally {
+
+			connection.close();
+		}
+
 
 	}
 

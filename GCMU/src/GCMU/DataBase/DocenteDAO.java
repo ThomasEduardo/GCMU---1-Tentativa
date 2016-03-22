@@ -110,9 +110,6 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 	
 	public Docente queryCargo (String area) throws SQLException {
 		
-		/*SELECT  cargo
-			FROM docente_tb
-			WHERE area = 'informatica';*/
 		Docente docente = null;
 
 		PreparedStatement stmt = null;
@@ -202,8 +199,33 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 	}
 
 	@Override
-	public void update(Docente entity) throws SQLException {
-		// TODO Auto-generated method stub
+	public void update(Docente docente) throws SQLException {
+
+		try {
+
+			String sql = "UPDATE docente_tb"
+					+ " SET siap=?, cargo=?, area=?, turno=?"
+					+ " WHERE siap=?";
+
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setLong(1, docente.getSiap());
+			stmt.setString(2, docente.getCargo());
+			stmt.setString(3, docente.getArea());
+			stmt.setString(4, docente.getTurno());
+			stmt.setLong(5, docente.getSiap());
+
+			stmt.execute();
+
+		}catch (SQLException e) {
+
+			System.out.println(e);
+
+		} finally {
+
+			connection.close();
+		}
+
 
 	}
 

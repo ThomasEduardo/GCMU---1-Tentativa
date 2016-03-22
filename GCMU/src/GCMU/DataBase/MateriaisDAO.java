@@ -36,8 +36,7 @@ public class MateriaisDAO implements GenericDAO<Integer, Materiais>{
 	public boolean insert(Materiais materiais) throws SQLException {
 
 		try {
-		
-		
+	
 				String sql = "INSERT INTO chaves_tb ("
 					+ " id,"
 					+ " tipo, "
@@ -166,8 +165,35 @@ public class MateriaisDAO implements GenericDAO<Integer, Materiais>{
 	}
 
 	@Override
-	public void update(Materiais entity) throws SQLException {
-		// TODO Auto-generated method stub
+	public void update(Materiais materiais) throws SQLException {
+		
+		try {
+
+			String sql = "UPDATE chaves_tb"
+					+ " SET id=?, tipo=?, status=?, observavao=?, numeroSala=?, nomeSala=?"
+					+ " WHERE id=?";
+
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setLong(1, materiais.getId());
+			stmt.setString(2, materiais.getTipo());
+			stmt.setString(3, materiais.getStatus());
+			stmt.setString(4, materiais.getObservacao());
+			stmt.setLong(5, materiais.getNumeroSala());
+			stmt.setString(6, materiais.getNomeSala());
+			stmt.setLong(7, materiais.getId());
+			
+			stmt.execute();
+
+		}catch (SQLException e) {
+
+			System.out.println(e);
+
+		} finally {
+
+			connection.close();
+		}
+
 
 	}
 

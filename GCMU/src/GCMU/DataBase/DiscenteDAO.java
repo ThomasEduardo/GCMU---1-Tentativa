@@ -166,11 +166,34 @@ public class DiscenteDAO implements GenericDAO<Integer, Discente>{
 	}
 
 	@Override
-	public void update(Discente entity) throws SQLException {
-		// TODO Auto-generated method stub
+	public void update(Discente discente) throws SQLException {
+				
+		try {
+			
+			String sql = "UPDATE discente_tb"
+					+ " SET matricula=?, curso=?, sala=?, turma=?"
+					+ " WHERE matricula=?";
+			
+	         PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+	         
+	         stmt.setLong(1, discente.getMatricula());
+	         stmt.setString(2, discente.getCurso());
+	         stmt.setString(3, discente.getSala());
+	         stmt.setString(4, discente.getTurma());
+	         stmt.setLong(5, discente.getMatricula());
+	         
+	         stmt.execute();
+	         
+	         }catch (SQLException e) {
+
+	 			System.out.println(e);
+
+	 		} finally {
+
+	 			connection.close();
+	 		}
 
 	}
-
 	@Override
 	public List<Discente> getAll() throws SQLException {
 		// TODO Auto-generated method stub

@@ -38,7 +38,7 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 
 		try {
 
-			String sql = "INSERT INTO discente_tb ("
+			String sql = "INSERT INTO pessoa_tb ("
 					+ " matricula, "
 					+ " name,"
 					+ " email,"
@@ -164,7 +164,7 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 
 				pessoa.setMatricula(rs.getInt("pessoa.Matricula"));
 				pessoa.setName(rs.getString("pessoa.name"));
-				pessoa.setEmail(rs.getString("	pessoa.email"));
+				pessoa.setEmail(rs.getString("pessoa.email"));
 				pessoa.setTelefone(rs.getInt("pessoa.telefone"));
 				pessoa.setSenha(rs.getString("pessoa.senha"));
 				pessoa.setCpf(rs.getString("pessoa.cpf"));
@@ -188,7 +188,7 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 
 		try {
 
-			String sql = "DELETE FROM discente_tb"
+			String sql = "DELETE FROM pessoa_tb"
 					+ " WHERE matricula = "
 					+ pk;
 
@@ -209,8 +209,35 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 	}
 
 	@Override
-	public void update(Pessoa entity) throws SQLException {
-		// TODO Auto-generated method stub
+	public void update(Pessoa pessoa) throws SQLException {
+
+		try {
+
+			String sql = "UPDATE pessoa_tb"
+					+ " SET matricula=?, name=?, email=?, telefone=?, senha=?, cpf=?"
+					+ " WHERE matricula=?";
+
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setLong(1, pessoa.getMatricula());
+			stmt.setString(2, pessoa.getName());
+			stmt.setString(3, pessoa.getEmail());
+			stmt.setLong(4, pessoa.getTelefone());
+			stmt.setString(5, pessoa.getSenha());
+			stmt.setString(6, pessoa.getCpf());
+			stmt.setLong(7, pessoa.getMatricula());
+
+			stmt.execute();
+
+		}catch (SQLException e) {
+
+			System.out.println(e);
+
+		} finally {
+
+			connection.close();
+		}
+
 
 	}
 
