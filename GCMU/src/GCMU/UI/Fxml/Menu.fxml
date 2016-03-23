@@ -10,7 +10,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="632.0" style="-fx-background-color: #5F9EA0; -fx-border-color: black; -fx-border-width: 06;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="632.0" style="-fx-background-color: #5F9EA0; -fx-border-color: black; -fx-border-width: 06;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.MenuController">
    <children>
       <Label layoutX="265.0" layoutY="21.0" text="GCMU">
          <font>
@@ -39,7 +39,7 @@
          </font>
       </Button>
       <Button layoutX="295.0" layoutY="254.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Discente" />
-      <Button layoutX="296.0" layoutY="327.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Docente" />
+      <Button fx:id="Bt_Docente" layoutX="296.0" layoutY="327.0" mnemonicParsing="false" onAction="#btDocente" style="-fx-background-color: transparent;" text="Docente" />
       <ImageView fitHeight="55.0" fitWidth="43.0" layoutX="250.0" layoutY="230.0">
          <image>
             <Image url="@../../../../../../../../../Desktop/icones/1aluno.png" />

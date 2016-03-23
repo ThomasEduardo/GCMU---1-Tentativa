@@ -1,12 +1,11 @@
 package GCMU.UI.Controllers;
-Package br.edu.ifpb.auxilio.service.controller;
+
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.*;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,11 +22,11 @@ public class MenuController implements Initializable {
 	private Button Bt_Admninistrador;
 	
 	@FXML
-	private Button Bt_Discente;
-	
-	@FXML
 	private Button Bt_Docente;
 	
+	@FXML
+	private Button Bt_Discente;
+
 	
 	@FXML
 	private void btAdministrador() throws IOException{
@@ -43,13 +42,16 @@ public class MenuController implements Initializable {
 	//
 	@FXML
 	private void btDocente() throws IOException{
-		perfil = "Docente";
-		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/Menu.fxml"));
 		
-		Scene loginMonitorScreen = new Scene(root);
+		perfil = "Docente";
+		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/DocenteLogin.fxml"));
+		
+		Scene loginDocente = new Scene(root);
 		Main.primaryStage.setTitle("Docente");
-		Main.primaryStage.setScene(loginMonitorScreen);
+		Main.primaryStage.setScene(loginDocente);
 		Main.primaryStage.show(); 
+		
+		
 	}
 	
 	
@@ -65,6 +67,4 @@ public class MenuController implements Initializable {
 		Main.primaryStage.show();
 	}
 	
-	
-
 }
