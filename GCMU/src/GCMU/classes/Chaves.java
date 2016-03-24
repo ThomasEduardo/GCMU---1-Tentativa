@@ -10,6 +10,16 @@ public class Chaves {
 	private String nomeSala;
 	private String observacao;
 	private int id;
+	private String status;
+	
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public Chaves(int numeroSala, int id, String nomeSala, String observacao) {
 

@@ -1,4 +1,7 @@
 package GCMU.classes;
+
+import java.util.Date;
+
 /**
  * 
  * @author GCMU
@@ -11,7 +14,14 @@ public class Pessoa {
 	private int telefone;
 	private String senha;
 	private String cpf;
+	private Date data;
 
+	public Date getData() {
+		return data;
+	}
+	public void setData(Date data) {
+		this.data = data;
+	}
 	public Pessoa(int matricula, String name, String email, int telefone, String senha, String cpf) {
 		this.matricula = matricula;
 		this.name = name;
