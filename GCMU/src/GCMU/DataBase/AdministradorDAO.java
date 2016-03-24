@@ -40,14 +40,24 @@ public class AdministradorDAO implements GenericDAO<Integer, Administrador>{
 			String sql = "INSERT INTO administrador_tb ("
 					+ " siap, "
 					+ " senha, "
-					+ " pessoa_matricula)"
-					+ " VALUES (?,?,?)";
+					+ " pessoa_matricula,"
+					+ " name,"
+					+ " email,"
+					+ " telefone,"
+					+ " senha,"
+					+ " cpf)"
+					+ " VALUES (?,?,?,?,?,?,?,?)";
 
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 
 			stmt.setInt(1, administrador.getSiap());	
 			stmt.setString(2, administrador.getSenha());
-			stmt.setInt(5, administrador.getMatricula());
+			stmt.setInt(3, administrador.getMatricula());
+			stmt.setString(4, administrador.getName());
+			stmt.setString(5, administrador.getEmail());
+			stmt.setInt(6, administrador.getTelefone());
+			stmt.setString(7, administrador.getSenha());
+			stmt.setString(8, administrador.getCpf());
 
 			stmt.execute();
 
@@ -74,9 +84,13 @@ public class AdministradorDAO implements GenericDAO<Integer, Administrador>{
 		ResultSet rs = null;
 
 		try {
-
+			
 			String sql = "SELECT administrador.siap,"
 					+ " administrador.senha,"
+					+ " administrador.name"
+					+ " administrador.email"
+					+ " administrador.telefone"
+					+ " administrador.cpf"
 					+ " FROM administrador_tb AS administrador"
 					+ " WHERE administrador.siap = " 
 					+ pk;
@@ -109,12 +123,16 @@ public class AdministradorDAO implements GenericDAO<Integer, Administrador>{
 		try {
 
 			while (rs.next()) {
-
+				
 				// Administrador
 				Administrador administrador = new Administrador();
 
 				administrador.setSiap(rs.getInt("administrador.siap"));
 				administrador.setSenha(rs.getString("administrador.senha"));
+				administrador.setName(rs.getString("administrador.name"));
+				administrador.setEmail(rs.getString("administrador.email"));
+				administrador.setTelefone(rs.getInt("administrador.telefone"));
+				administrador.setCpf(rs.getString("administrador.cpf"));
 
 				administradores.add(administrador);
 			}

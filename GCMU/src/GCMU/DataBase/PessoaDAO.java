@@ -86,9 +86,9 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 			String sql = "SELECT pessoa.matricula,"
 					+ " pessoa.name,"
 					+ " pessoa.sala,"
-					+ " pessoa.email"
-					+ " pessoa.telefone"
-					+ " pessoa.senha"
+					+ " pessoa.email,"
+					+ " pessoa.telefone,"
+					+ " pessoa.senha,"
 					+ " pessoa.cpf"
 					+ " FROM pessoa_tb AS pessoa"
 					+ " WHERE pessoa.m = " 
@@ -114,6 +114,73 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 
 		return pessoa;
 	}
+	
+	public Pessoa getByName(String name) throws SQLException {
+
+		Pessoa pessoa = null;
+
+		PreparedStatement stmt = null;
+
+		ResultSet rs = null;
+
+		try {
+
+			String sql = "SELECT pessoa.matricula,"
+				     +" pessoa.email,"
+                     +" pessoa.telefone" 
+                     +" FROM pessoa_tb AS pessoa"
+                     +" WHERE pessoa.name = " + name;
+                                     
+                                                        
+
+			stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			List<Pessoa> pessoas = convertToListGetByName(rs);
+
+			if (!pessoas.isEmpty())
+				pessoa = pessoas.get(0);
+
+		} catch (SQLException sqle) {
+
+			throw sqle;
+
+		} finally {
+
+			connection.close();
+		}
+
+		return pessoa;
+	}
+	
+	private List<Pessoa> convertToListGetByName(ResultSet rs) throws SQLException {
+
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+
+		try {
+
+			while (rs.next()) {
+
+				// Pessoa
+				Pessoa pessoa= new Pessoa();
+
+				pessoa.setMatricula(rs.getInt("pessoa.matricula"));
+				pessoa.setEmail(rs.getString("pessoa.email"));
+				pessoa.setTelefone(rs.getInt("pessoa.telefone"));
+				
+	
+				pessoas.add(pessoa);
+			}
+
+		} catch (SQLException sqle) {
+
+			throw sqle;
+		}
+
+		return pessoas;
+	}
+	
 	public Pessoa queryDataNome(String status) throws SQLException {
 
 		Pessoa pessoa = null;
@@ -133,7 +200,7 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 
 			rs = stmt.executeQuery(sql);
 
-			List<Pessoa> pessoas = convertToList(rs);
+			List<Pessoa> pessoas = convertToListQueryDataNome(rs);
 
 			if (!pessoas.isEmpty())
 				pessoa = pessoas.get(0);
@@ -148,6 +215,31 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 		}
 
 		return pessoa;
+	}
+	
+	private List<Pessoa> convertToListQueryDataNome(ResultSet rs) throws SQLException {
+
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+
+		try {
+
+			while (rs.next()) {
+
+				// Pessoa
+				Pessoa pessoa= new Pessoa();
+
+				pessoa.setData(rs.getDate("D.data"));
+				pessoa.setName(rs.getString("P.name"));
+	
+				pessoas.add(pessoa);
+			}
+
+		} catch (SQLException sqle) {
+
+			throw sqle;
+		}
+
+		return pessoas;
 	}
 
 

@@ -42,8 +42,13 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 					+ " cargo,"
 					+ " area,"
 					+ " turno,"
-					+ " pessoa_matricula)"
-					+ " VALUES (?,?,?,?,?)";
+					+ " pessoa_matricula"
+					+ " name,"
+					+ " email,"
+					+ " telefone,"
+					+ " senha,"
+					+ " cpf)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 
@@ -52,6 +57,11 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 			stmt.setString(3, docente.getArea());
 			stmt.setString(4, docente.getTurno());
 			stmt.setInt(5, docente.getMatricula());
+			stmt.setString(6, docente.getName());
+			stmt.setString(7, docente.getEmail());
+			stmt.setInt(8, docente.getTelefone());
+			stmt.setString(9, docente.getSenha());
+			stmt.setString(10, docente.getCpf());
 			
 			stmt.execute();
 
@@ -83,6 +93,11 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 					+ " docente.cargo,"
 					+ " docente.area,"
 					+ " docente.turno"
+					+ " docente.name"
+					+ " docente.email"
+					+ " docente.telefone"
+					+ " docente.cpf"
+					+ " docente.senha"
 					+ " FROM docente_tb AS docente"
 					+ " WHERE docente.siap = " 
 					+ pk;
@@ -159,7 +174,11 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 				docente.setCargo(rs.getString("docente.cargo"));
 				docente.setArea(rs.getString("docente.area"));
 				docente.setTurno(rs.getString("docente.turno"));
-				
+				docente.setName(rs.getString("docente.name"));
+				docente.setEmail(rs.getString("docente.email"));
+				docente.setTelefone(rs.getInt("docente.telefone"));
+				docente.setCpf(rs.getString("docente.cpf"));
+								
 				docentes.add(docente);
 			}
 
@@ -204,7 +223,7 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 		try {
 
 			String sql = "UPDATE docente_tb"
-					+ " SET siap=?, cargo=?, area=?, turno=?"
+					+ " SET siap=?, cargo=?, area=?, turno=?, matricula=?, name=?, email=?, telefone=?, senha=?, cpf=?"
 					+ " WHERE siap=?";
 
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
@@ -214,6 +233,12 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 			stmt.setString(3, docente.getArea());
 			stmt.setString(4, docente.getTurno());
 			stmt.setLong(5, docente.getSiap());
+			stmt.setLong(6, docente.getMatricula());
+			stmt.setString(7, docente.getName());
+			stmt.setString(8, docente.getEmail());
+			stmt.setLong(9, docente.getTelefone());
+			stmt.setString(10, docente.getSenha());
+			stmt.setString(11, docente.getCpf());
 
 			stmt.execute();
 
