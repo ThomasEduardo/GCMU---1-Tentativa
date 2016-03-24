@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
-	public class DocenteLoginController implements Initializable {
+	public class LoginController implements Initializable {
 
 		
 		@FXML
@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 		private void btVoltar() throws IOException{
 			
 			
-			Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/Menu.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Menu.fxml"));
 			
 			Scene menu = new Scene(root);
 			Main.primaryStage.setTitle("Menu");
@@ -39,13 +39,19 @@ import javafx.stage.Stage;
 		private void btContinuar() throws IOException{
 			
 
-			Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/ConsultaDiscente.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Choice.fxml"));
 			
 			Scene consulta = new Scene(root);
 			Main.primaryStage.setTitle("Consulta");
 			Main.primaryStage.setScene(consulta);
 			Main.primaryStage.show(); 
 			
+			
+		}
+
+		@Override
+		public void initialize(URL location, ResourceBundle Resources) {
+			// TODO Auto-generated method stub
 			
 		}
 		

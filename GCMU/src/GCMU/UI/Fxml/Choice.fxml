@@ -10,7 +10,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black; -fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.ConsultaDiscenteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black; -fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.ChoiceController">
    <children>
       <Button layoutX="520.0" layoutY="331.0" mnemonicParsing="false" opacity="0.45" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="Sair" underline="true" />
       <Label layoutX="158.0" layoutY="19.0" prefHeight="38.0" prefWidth="335.0" text="O que deseja consultar?">
@@ -25,7 +25,7 @@
       </Label>
       <Label layoutX="134.0" layoutY="362.0" text="(name)!" />
       <Button fx:id="Bt_Materiais" layoutX="331.0" layoutY="229.0" mnemonicParsing="false" onAction="#btMateriais" opacity="0.84" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: ;" text="Materiais" />
-      <Button layoutX="198.0" layoutY="228.0" mnemonicParsing="false" opacity="0.84" prefHeight="25.0" prefWidth="80.0" text="Chaves" />
+      <Button fx:id="Bt_Chaves" layoutX="198.0" layoutY="228.0" mnemonicParsing="false" onAction="#btChaves" opacity="0.84" prefHeight="25.0" prefWidth="80.0" text="Chaves" />
       <ImageView fitHeight="94.0" fitWidth="115.0" layoutX="181.0" layoutY="118.0" opacity="0.63">
          <image>
             <Image url="@../../../../../../../../../Desktop/icones/1chave.jpg" />

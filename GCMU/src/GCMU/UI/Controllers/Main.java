@@ -25,7 +25,6 @@ public class Main extends Application {
 			
 			primaryStage.setTitle("GCMU");
 			primaryStage.setScene(scene);
-			primaryStage.setMaximized(true);
 			primaryStage.show();
 
 		} catch (Exception e) {

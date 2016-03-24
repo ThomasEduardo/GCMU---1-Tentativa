@@ -35,7 +35,7 @@ public class MenuController implements Initializable {
 		
 		Scene admLogin = new Scene(root);
 		Main.primaryStage.setTitle("Docente");
-		Main.primaryStage.setScene(loginMonitorScreen);
+		Main.primaryStage.setScene(admLogin);
 		Main.primaryStage.show(); 
 	}
 	
@@ -44,7 +44,7 @@ public class MenuController implements Initializable {
 	private void btDocente() throws IOException{
 		
 		perfil = "Docente";
-		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/DocenteLogin.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Login.fxml"));
 		
 		Scene loginDocente = new Scene(root);
 		Main.primaryStage.setTitle("Docente");
@@ -58,13 +58,19 @@ public class MenuController implements Initializable {
 	@FXML
 	private void btDiscente() throws IOException{
 		perfil = "Discente";
-		Parent root2 = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/Menu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/Menu.fxml"));
 		
 		Scene loginSupervisorScreen = new Scene(root);
 		
 		Main.primaryStage.setTitle("Discente");
 		Main.primaryStage.setScene(loginSupervisorScreen);
 		Main.primaryStage.show();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle Resources) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
