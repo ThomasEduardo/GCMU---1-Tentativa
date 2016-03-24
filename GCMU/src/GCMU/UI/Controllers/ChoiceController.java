@@ -21,7 +21,7 @@
 			private Button Bt_Chaves;
 			
 			@FXML
-			private Button Bt_Voltar;
+			private Button Bt_Sair;
 			
 			public static String tipoPedido;
 			
@@ -39,14 +39,14 @@
 			}
 			
 			@FXML
-			private void btVoltar() throws IOException{
+			private void btSair() throws IOException{
 				
 				
-				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Login.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Menu.fxml"));
 				
-				Scene DocenteLogin = new Scene(root);
-				Main.primaryStage.setTitle("Docente Login");
-				Main.primaryStage.setScene(DocenteLogin);
+				Scene Menu = new Scene(root);
+				Main.primaryStage.setTitle("Menu");
+				Main.primaryStage.setScene(Menu);
 				Main.primaryStage.show(); 
 			}
 			
