@@ -18,8 +18,7 @@ CONSTRAINT fk_administrador_pessoa FOREIGN KEY
 CREATE TABLE discente_tb (
 matricula VARCHAR (20)PRIMARY KEY,    
 curso VARCHAR(30),
-sala INT(10),
-turma VARCHAR(10),
+Ano INT(10),
 pessoa_matricula INT UNSIGNED,
 CONSTRAINT fk_dicente_pessoa FOREIGN KEY 
 (pessoa_matricula) REFERENCES pessoa_tb(matricula)

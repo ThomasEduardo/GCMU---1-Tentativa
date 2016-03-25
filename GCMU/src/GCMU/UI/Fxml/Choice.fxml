@@ -13,7 +13,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black; -fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.ChoiceController">
    <children>
       <Button fx:id="Bt_Sair" layoutX="520.0" layoutY="331.0" mnemonicParsing="false" onAction="#btSair" opacity="0.45" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="Sair" underline="true" />
-      <Label layoutX="158.0" layoutY="19.0" prefHeight="38.0" prefWidth="335.0" text="O que deseja consultar?">
+      <Label layoutX="198.0" layoutY="23.0" prefHeight="38.0" prefWidth="335.0" text="O que deseja consultar?">
          <font>
             <Font size="22.0" />
          </font>

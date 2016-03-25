@@ -1,4 +1,10 @@
 package GCMU.classes;
+
+import java.sql.SQLException;
+
+import GCMU.DataBase.ChavesDAO;
+import GCMU.DataBase.DocenteDAO;
+
 /**
  * 
  * @author GCMU
@@ -71,5 +77,9 @@ public class Chaves {
 		this.nomeSala = nomeSala;
 
 	}
-
+	public void insert(Chaves chaves) throws SQLException {
+		ChavesDAO c = new ChavesDAO(null);
+		c.insert(chaves);
+		
+	}
 }

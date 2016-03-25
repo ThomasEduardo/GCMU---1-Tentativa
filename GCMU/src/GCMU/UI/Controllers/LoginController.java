@@ -1,7 +1,15 @@
 package GCMU.UI.Controllers;
+import java.awt.TextField;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
+
+import GCMU.classes.Discente;
+import GCMU.classes.Docente;
+import GCMU.classes.Pessoa;
 import javafx.application.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,12 +17,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
 
 	public class LoginController implements Initializable {
 
+		@FXML
+		private TextField SuapField;
 		
+		@FXML
+		private TextField SenhaField;
+		
+		@FXML
+		private TextField Campo_SUAPServidor;
+
 		@FXML
 		private Button Bt_Voltar;
 		
@@ -46,16 +65,34 @@ import javafx.stage.Stage;
 			Main.primaryStage.setScene(consulta);
 			Main.primaryStage.show(); 
 			
+			try {
+				Docente docente = new Docente();
+				Pessoa p = new Pessoa();
+				
+				Docente d = new Docente();
+				
+				d.setSuap(Integer.parseInt(SuapField.getText()));
+				d.setSenha(SenhaField.getText());
+				DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				/////////////////////////////////////////////////////////////////////d.setIdPessoa(p.insert(d));
+				docente.insert(d);
 			
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
+		
+		
+	}
 		@Override
 		public void initialize(URL location, ResourceBundle Resources) {
 			// TODO Auto-generated method stub
 			
 		}
-		
-		
-		
-		
 	}
+		
+		
+		
+	

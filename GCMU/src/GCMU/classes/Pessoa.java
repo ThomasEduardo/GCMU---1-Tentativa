@@ -1,6 +1,9 @@
 package GCMU.classes;
 
+import java.sql.SQLException;
 import java.util.Date;
+
+import GCMU.DataBase.DocenteDAO;
 
 /**
  * 
@@ -103,5 +106,10 @@ public class Pessoa {
 	 */
 	public String requisitaUtensilios() {
 		return ("ok, Utencilio Encontrado!");
+	}
+	public void insert(Docente docente) throws SQLException {
+		DocenteDAO d = new DocenteDAO(null);
+		d.insert(docente);
+		
 	}
 }

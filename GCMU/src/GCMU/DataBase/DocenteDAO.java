@@ -52,7 +52,7 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 
-			stmt.setInt(1, docente.getSiap());	
+			stmt.setInt(1, docente.getSuap());	
 			stmt.setString(2, docente.getCargo());
 			stmt.setString(3, docente.getArea());
 			stmt.setString(4, docente.getTurno());
@@ -170,7 +170,7 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 				// Pessoa
 				Docente docente = new Docente();
 
-				docente.setMatricula(rs.getInt("docente.siap"));
+				docente.setMatricula(rs.getInt("docente.suap"));
 				docente.setCargo(rs.getString("docente.cargo"));
 				docente.setArea(rs.getString("docente.area"));
 				docente.setTurno(rs.getString("docente.turno"));
@@ -228,11 +228,11 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 
-			stmt.setLong(1, docente.getSiap());
+			stmt.setLong(1, docente.getSuap());
 			stmt.setString(2, docente.getCargo());
 			stmt.setString(3, docente.getArea());
 			stmt.setString(4, docente.getTurno());
-			stmt.setLong(5, docente.getSiap());
+			stmt.setLong(5, docente.getSuap());
 			stmt.setLong(6, docente.getMatricula());
 			stmt.setString(7, docente.getName());
 			stmt.setString(8, docente.getEmail());

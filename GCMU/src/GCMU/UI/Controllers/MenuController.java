@@ -31,7 +31,7 @@ public class MenuController implements Initializable {
 	@FXML
 	private void btAdministrador() throws IOException{
 		perfil = "Administrador";
-		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/Menu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/AreaAdmin.fxml"));
 		
 		Scene admLogin = new Scene(root);
 		Main.primaryStage.setTitle("Docente");
@@ -58,7 +58,7 @@ public class MenuController implements Initializable {
 	@FXML
 	private void btDiscente() throws IOException{
 		perfil = "Discente";
-		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/Menu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/Login.fxml"));
 		
 		Scene loginSupervisorScreen = new Scene(root);
 		

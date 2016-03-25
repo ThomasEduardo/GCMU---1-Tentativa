@@ -32,25 +32,25 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <CheckBox layoutX="326.0" layoutY="121.0" mnemonicParsing="false" text="Cadastrar" />
-      <CheckBox layoutX="328.0" layoutY="169.0" mnemonicParsing="false" text="Atualizar" />
-      <CheckBox layoutX="328.0" layoutY="216.0" mnemonicParsing="false" text="Remover" />
-      <ChoiceBox layoutX="423.0" layoutY="117.0" prefWidth="150.0">
+      <CheckBox fx:id="Bt_Cadastrar" layoutX="326.0" layoutY="121.0" mnemonicParsing="false" onAction="#btCadastrar" text="Cadastrar" />
+      <CheckBox fx:id="Bt_Att" layoutX="328.0" layoutY="169.0" mnemonicParsing="false" onAction="#btAtt" text="Atualizar" />
+      <CheckBox fx:id="Bt_Remover" layoutX="328.0" layoutY="216.0" mnemonicParsing="false" onAction="#btRemover" text="Remover" />
+      <ChoiceBox fx:id="Bt_Menu_C" layoutX="423.0" layoutY="117.0" onDragDetected="#btMenuC" prefWidth="150.0">
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem mnemonicParsing="false" text="Discente" />
-                  <MenuItem mnemonicParsing="false" text="Docente" />
-                  <MenuItem mnemonicParsing="false" text="Chaves" />
-                  <MenuItem mnemonicParsing="false" text="Materiais" />
+                <MenuItem fx:id="Item_Discente" mnemonicParsing="false" onAction="#itemDiscente" text="Discente" />
+                  <MenuItem fx:id="Item_Docente" mnemonicParsing="false" onAction="#itemDocente" text="Docente" />
+                  <MenuItem fx:id="Item_Chaves" mnemonicParsing="false" onAction="#itemChaves" text="Chaves" />
+                  <MenuItem fx:id="Item_Materiais" mnemonicParsing="false" onAction="#itemMateriais" text="Materiais" />
                   <MenuItem mnemonicParsing="false" text="Utensilios Perdidos" />
               </items>
             </ContextMenu>
          </contextMenu>
       </ChoiceBox>
-      <ChoiceBox layoutX="423.0" layoutY="165.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="423.0" layoutY="212.0" prefWidth="150.0" />
-      <CheckBox layoutX="328.0" layoutY="263.0" mnemonicParsing="false" text="Consulta" />
-      <ChoiceBox layoutX="423.0" layoutY="259.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="Bt_Menu_A" layoutX="423.0" layoutY="165.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="Bt_Menu_R" layoutX="423.0" layoutY="212.0" prefWidth="150.0" />
+      <CheckBox fx:id="Bt_Consultar" layoutX="328.0" layoutY="263.0" mnemonicParsing="false" onAction="#bt_Consultar" prefHeight="17.0" prefWidth="72.0" text="Consultar" />
+      <ChoiceBox fx:id="Bt_Menu_Consultar" layoutX="423.0" layoutY="259.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
