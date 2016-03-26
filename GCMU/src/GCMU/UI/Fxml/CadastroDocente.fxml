@@ -42,7 +42,7 @@
             <Font size="11.0" />
          </font>
       </Button>
-      <Button fx:id="Bt_CadastrarServidor" layoutX="566.0" layoutY="356.0" mnemonicParsing="false" style="-fx-background-color: ;" text="Cadastrar">
+      <Button fx:id="Bt_CadastrarDocente" layoutX="566.0" layoutY="356.0" mnemonicParsing="false" style="-fx-background-color: ;" text="Cadastrar">
          <font>
             <Font name="Book Antiqua Bold" size="14.0" />
          </font>
