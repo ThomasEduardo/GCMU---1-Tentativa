@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.MemorandoController">
+   <children>
+      <Button fx:id="Bt_Voltar" layoutX="544.0" layoutY="337.0" mnemonicParsing="false" onAction="#btVoltar" opacity="0.45" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="Voltar" underline="true" />
+      <AnchorPane layoutX="4.0" layoutY="4.0" prefHeight="381.0" prefWidth="278.0" style="-fx-background-color: #5F9EA0;">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="188.0" layoutX="55.0" layoutY="33.0">
+               <image>
+                  <Image url="@../../../../../../../Desktop/user-icon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="94.0" layoutY="244.0" text="Memorando">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="323.0" layoutY="14.0" text="Verificaçao de Permissao">
+         <font>
+            <Font name="System Italic" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="304.0" layoutY="84.0" text="Matricula:" />
+      <Label layoutX="317.0" layoutY="124.0" text="Suap:" />
+      <TextField fx:id="KeyName_field" layoutX="395.0" layoutY="80.0" promptText="Laboratório de Informática" />
+      <TextField fx:id="KeyNumber_field" layoutX="395.0" layoutY="120.0" promptText="12" />
+      <Label layoutX="304.0" layoutY="195.0" text="&lt;&lt;&lt;&lt; Nome &gt;&gt;&gt;&gt;" />
+      <Label layoutX="440.0" layoutY="195.0" text="&lt;&lt;&lt;&lt; Permissao &gt;&gt;&gt;&gt;" />
+      <Label layoutX="552.0" layoutY="97.0" text="ou" />
+   </children>
+</AnchorPane>

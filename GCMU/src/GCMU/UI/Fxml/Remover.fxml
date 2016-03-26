@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="595.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.RemoverController">
+   <children>
+      <ProgressBar prefHeight="168.0" prefWidth="198.0" progress="0.0" />
+      <Label layoutX="87.0" layoutY="6.0" text="Discente" />
+      <PasswordField layoutX="33.0" layoutY="120.0" />
+      <TextField layoutX="33.0" layoutY="59.0" />
+      <Label layoutX="91.0" layoutY="103.0" text="Senha" />
+      <Label layoutX="83.0" layoutY="42.0" text="Matricula" />
+      <Button layoutX="171.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: transoarent;" text="OK" underline="true">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
+      <ProgressBar layoutX="198.0" layoutY="160.0" prefHeight="168.0" prefWidth="198.0" progress="0.0" />
+      <ProgressBar layoutY="319.0" prefHeight="168.0" prefWidth="198.0" progress="0.0" />
+      <ProgressBar layoutX="396.0" prefHeight="168.0" prefWidth="198.0" progress="0.0" />
+      <ProgressBar layoutX="396.0" layoutY="319.0" prefHeight="168.0" prefWidth="198.0" progress="0.0" />
+      <Button layoutX="561.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: transoarent;" text="OK" underline="true">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
+      <Label layoutX="484.0" layoutY="34.0" text="Suap" />
+      <Label layoutX="481.0" layoutY="99.0" text="Senha" />
+      <TextField layoutX="423.0" layoutY="55.0" />
+      <PasswordField layoutX="423.0" layoutY="116.0" />
+      <Label layoutX="477.0" layoutY="2.0" text="Docente" />
+      <Label layoutX="277.0" layoutY="166.0" text="Chave" />
+      <PasswordField layoutX="223.0" layoutY="280.0" />
+      <TextField layoutX="223.0" layoutY="219.0" />
+      <Label layoutX="272.0" layoutY="263.0" text="Numero" />
+      <Label layoutX="281.0" layoutY="202.0" text="Nome/id?" />
+      <Button layoutX="372.0" layoutY="307.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: transoarent;" text="OK" underline="true">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
+      <Button layoutX="171.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: transoarent;" text="OK" underline="true">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
+      <Button layoutX="568.0" layoutY="464.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="27.0" style="-fx-background-color: transoarent;" text="OK" underline="true">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
+      <Button fx:id="Bt_Voltar" layoutX="268.0" layoutY="461.0" mnemonicParsing="false" onAction="#btVoltar" prefHeight="25.0" prefWidth="58.0" text="Voltar">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
+      <Label layoutX="83.0" layoutY="370.0" text="Nome/id?" />
+      <Label layoutX="74.0" layoutY="431.0" text="Numero" />
+      <TextField layoutX="25.0" layoutY="387.0" />
+      <PasswordField layoutX="25.0" layoutY="448.0" />
+      <Label layoutX="79.0" layoutY="334.0" text="Materiais" />
+      <Label layoutX="479.0" layoutY="365.0" text="Nome/id" />
+      <Label layoutX="470.0" layoutY="426.0" text="Numero" />
+      <TextField layoutX="421.0" layoutY="382.0" />
+      <PasswordField layoutX="421.0" layoutY="443.0" />
+      <Label layoutX="475.0" layoutY="329.0" text="Utensilios" />
+   </children>
+</AnchorPane>

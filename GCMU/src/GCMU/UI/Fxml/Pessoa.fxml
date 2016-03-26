@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black; -fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.AdminController">
+   <children>
+      <Button fx:id="Bt_Continuar" layoutX="501.0" layoutY="332.0" mnemonicParsing="false" onAction="#btContinuar" opacity="0.45" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Continuar" underline="true" />
+      <Label layoutX="198.0" layoutY="23.0" prefHeight="38.0" prefWidth="335.0" text="O que deseja Realizar?">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="26.0" layoutY="105.0" mnemonicParsing="false" text="Cadastro" />
+      <CheckBox layoutX="230.0" layoutY="105.0" mnemonicParsing="false" text="Atualizaçao" />
+      <CheckBox layoutX="441.0" layoutY="105.0" mnemonicParsing="false" text="Remoçao" />
+      <MenuButton layoutX="61.0" layoutY="134.0" mnemonicParsing="false" text="Cadastro de...">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Dicente" />
+          <MenuItem mnemonicParsing="false" text="Docente" />
+            <MenuItem mnemonicParsing="false" text="Chave" />
+            <MenuItem mnemonicParsing="false" text="Material" />
+            <MenuItem mnemonicParsing="false" text="Utensilio" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="277.0" layoutY="134.0" mnemonicParsing="false" text="Atualizaçao de...">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Dicente" />
+            <MenuItem mnemonicParsing="false" text="Docente" />
+            <MenuItem mnemonicParsing="false" text="Chave" />
+            <MenuItem mnemonicParsing="false" text="Material" />
+            <MenuItem mnemonicParsing="false" text="Utensilio" />
+         </items>
+      </MenuButton>
+      <MenuButton layoutX="471.0" layoutY="134.0" mnemonicParsing="false" text="Remoçao de...">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Dicente" />
+            <MenuItem mnemonicParsing="false" text="Docente" />
+            <MenuItem mnemonicParsing="false" text="Chave" />
+            <MenuItem mnemonicParsing="false" text="Material" />
+            <MenuItem mnemonicParsing="false" text="Utensilio" />
+         </items>
+      </MenuButton>
+   </children>
+</AnchorPane>

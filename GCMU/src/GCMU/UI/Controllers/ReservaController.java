@@ -12,7 +12,7 @@
 	import javafx.stage.Stage;
 
 
-		public class ChoiceController implements Initializable {
+		public class ReservaController implements Initializable {
 
 			@FXML
 			private Button Bt_Materiais;
@@ -21,7 +21,7 @@
 			private Button Bt_Chaves;
 			
 			@FXML
-			private Button Bt_Sair;
+			private Button Bt_Voltar;
 			
 			public static String tipoPedido;
 			
@@ -30,7 +30,7 @@
 			private void btMateriais() throws IOException{
 				
 				tipoPedido = "Materiais"; 
-				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Pedidos.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/ReservaMaterial.fxml"));
 				
 				Scene Pedidos = new Scene(root);
 				Main.primaryStage.setTitle("Pedido de materiais");
@@ -38,29 +38,30 @@
 				Main.primaryStage.show(); 
 			}
 			
+				
+				
 			@FXML
-			private void btSair() throws IOException{
+			private void btChaves() throws IOException{
+				tipoPedido = "Chaves";
+				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/ReservaChave.fxml"));
 				
-				
-				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Menu.fxml"));
-				
-				Scene Menu = new Scene(root);
-				Main.primaryStage.setTitle("Menu");
-				Main.primaryStage.setScene(Menu);
+				Scene Chaves = new Scene(root);
+				Main.primaryStage.setTitle("Escolha Chave");
+				Main.primaryStage.setScene(Chaves);
 				Main.primaryStage.show(); 
 			}
-			
-		@FXML
-		private void btChaves() throws IOException{
-			tipoPedido = "Chaves";
-			Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Pedidos.fxml"));
-			
-			Scene Chaves = new Scene(root);
-			Main.primaryStage.setTitle("Escolha Chave");
-			Main.primaryStage.setScene(Chaves);
-			Main.primaryStage.show(); 
-		}
-
+		
+			@FXML
+			private void btVoltar() throws IOException{
+					
+					
+					Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Menu.fxml"));
+					
+					Scene Menu = new Scene(root);
+					Main.primaryStage.setTitle("Menu");
+					Main.primaryStage.setScene(Menu);
+					Main.primaryStage.show(); 
+			}
 		@Override
 		public void initialize(URL location, ResourceBundle Resources) {
 			// TODO Auto-generated method stub

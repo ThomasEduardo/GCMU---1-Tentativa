@@ -13,15 +13,15 @@ public class Docente extends Pessoa {
 	private String cargo;
 	private String area;
 	private String turno;
-	private int suap;
+	private int siap;
 
 	public Docente(String cargo, String area, String turno, int matricula, String name, String email, int telefone,
-			String senha, String cpf, int suap) {
+			String senha, String cpf, int siap) {
 		super(matricula, name, email, telefone, senha, cpf);
 		this.cargo = cargo;
 		this.area = area;
 		this.turno = turno;
-		this.suap = suap;
+		this.siap = siap;
 	}
 	
 
@@ -51,16 +51,16 @@ public class Docente extends Pessoa {
 		this.turno = turno;
 	}
 	
-	public int getSuap() {
-		return suap;
+	public int getSiap() {
+		return siap;
 	}
 
-	public void setSiap(int suap) {
-		this.suap = suap;
+	public void setSiap1(int siap) {
+		this.siap = siap;
 	}
 
 
-	public void setSuap(int parseInt) {
+	public void setSiap(int parseInt) {
 		// TODO Auto-generated method stub
 		
 	}

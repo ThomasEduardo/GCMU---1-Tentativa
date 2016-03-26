@@ -1,13 +1,13 @@
 package GCMU.UI.Controllers;
 
-	import java.awt.TextField;
+import java.awt.TextField;
 	import java.io.IOException;
 	import java.net.URL;
 	import java.sql.SQLException;
 	import java.text.DateFormat;
 	import java.text.SimpleDateFormat;
 	import java.util.ResourceBundle;
-	import GCMU.classes.Discente;
+import GCMU.classes.Discente;
 	import GCMU.classes.Docente;
 	import GCMU.classes.Pessoa;
 	import javafx.application.*;
@@ -23,7 +23,7 @@ package GCMU.UI.Controllers;
 	import javafx.stage.Stage;
 
 
-		public class AreaAdminController implements Initializable {
+		public class CadastroDiscenteController implements Initializable {
 
 			@FXML
 			private TextField SuapField;
@@ -32,33 +32,43 @@ package GCMU.UI.Controllers;
 			private TextField SenhaField;
 			
 			@FXML
-			private TextField Campo_SUAPServidor;
+			private TextField ProfField;
+			
+			@FXML
+			private TextField CargoField;
+			
+			@FXML
+			private TextField CpfField;
+			
+			@FXML
+			private TextField NomeField;
+
 
 			@FXML
-			private Button Bt_Sair;
+			private Button Bt_Voltar;
 			
 			@FXML
-			private Button Bt_Continuar;
+			private Button Bt_Cadastrar;
 			
 			
 			@FXML
-			private void btSair() throws IOException{
+			private void btVoltar() throws IOException{
 				
 				
-				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Menu.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Crud.fxml"));
 				
-				Scene getOut = new Scene(root);
+				Scene menu = new Scene(root);
 				Main.primaryStage.setTitle("Menu");
-				Main.primaryStage.setScene(getOut);
+				Main.primaryStage.setScene(menu);
 				Main.primaryStage.show(); 
 			}
 			
 			//
 			@FXML
-			private void btContinuar() throws IOException{
+			private void btCadastrar() throws IOException{
 				
 
-				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Choice.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Menu.fxml"));
 				
 				Scene consulta = new Scene(root);
 				Main.primaryStage.setTitle("Consulta");
@@ -71,10 +81,13 @@ package GCMU.UI.Controllers;
 					
 					Docente d = new Docente();
 					
-					d.setSuap(Integer.parseInt(SuapField.getText()));
+					d.setSiap(Integer.parseInt(SuapField.getText()));
 					d.setSenha(SenhaField.getText());
+					d.setArea(ProfField.getText());
+					d.setCargo(CargoField.getText());
+					d.setCpf((CpfField.getText()));
+					d.setName(NomeField.getText());
 					DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-					/////////////////////////////////////////////////////////////////////d.setIdPessoa(p.insert(d));
 					docente.insert(d);
 				
 			
@@ -92,7 +105,3 @@ package GCMU.UI.Controllers;
 				
 			}
 		}
-			
-			
-			
-		

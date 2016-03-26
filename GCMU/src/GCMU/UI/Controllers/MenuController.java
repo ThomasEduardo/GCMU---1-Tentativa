@@ -18,33 +18,35 @@ public class MenuController implements Initializable {
 	
 	 private static String perfil;
 	
+	 @FXML
+	private Button Bt_Memorando;
 	@FXML
-	private Button Bt_Admninistrador;
+	private Button Bt_Controll;
 	
 	@FXML
-	private Button Bt_Docente;
+	private Button Bt_Consulta;
 	
 	@FXML
-	private Button Bt_Discente;
+	private Button Bt_Reserva;
 
 	
 	@FXML
-	private void btAdministrador() throws IOException{
+	private void btControll() throws IOException{
 		perfil = "Administrador";
-		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/AreaAdmin.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Crud.fxml"));
 		
-		Scene admLogin = new Scene(root);
-		Main.primaryStage.setTitle("Docente");
-		Main.primaryStage.setScene(admLogin);
+		Scene Controll = new Scene(root);
+		Main.primaryStage.setTitle("Controle de Dados");
+		Main.primaryStage.setScene(Controll);
 		Main.primaryStage.show(); 
 	}
 	
 	//
 	@FXML
-	private void btDocente() throws IOException{
+	private void btConsulta() throws IOException{
 		
 		perfil = "Docente";
-		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Login.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Consulta.fxml"));
 		
 		Scene loginDocente = new Scene(root);
 		Main.primaryStage.setTitle("Docente");
@@ -56,9 +58,21 @@ public class MenuController implements Initializable {
 	
 	
 	@FXML
-	private void btDiscente() throws IOException{
+	private void btReserva() throws IOException{
 		perfil = "Discente";
-		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/Login.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/Reserva.fxml"));
+		
+		Scene loginSupervisorScreen = new Scene(root);
+		
+		Main.primaryStage.setTitle("Discente");
+		Main.primaryStage.setScene(loginSupervisorScreen);
+		Main.primaryStage.show();
+	}
+	
+	@FXML
+	private void btMemorando() throws IOException{
+		perfil = "Discente";
+		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/FXML/Memorando.fxml"));
 		
 		Scene loginSupervisorScreen = new Scene(root);
 		

@@ -52,7 +52,7 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 
-			stmt.setInt(1, docente.getSuap());	
+			stmt.setInt(1, docente.getSiap());	
 			stmt.setString(2, docente.getCargo());
 			stmt.setString(3, docente.getArea());
 			stmt.setString(4, docente.getTurno());

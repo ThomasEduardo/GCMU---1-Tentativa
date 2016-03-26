@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black; -fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.CrudController">
+   <children>
+      <Button fx:id="Bt_Voltar" layoutX="501.0" layoutY="332.0" mnemonicParsing="false" onAction="#btVoltar" opacity="0.45" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Voltar" underline="true" />
+      <Label layoutX="198.0" layoutY="23.0" prefHeight="38.0" prefWidth="335.0" text="O que deseja Fazer?">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="53.0" layoutY="79.0" mnemonicParsing="false" text="Cadastrar" />
+      <CheckBox layoutX="444.0" layoutY="81.0" mnemonicParsing="false" text="Atualizar" />
+      <CheckBox layoutX="270.0" layoutY="79.0" mnemonicParsing="false" text="Remover" />
+      <Button fx:id="Bt_Discente_C" layoutX="83.0" layoutY="107.0" mnemonicParsing="false" onAction="#btDiscenteC" prefHeight="24.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Discente" underline="true">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Label layoutX="85.0" layoutY="111.0" text="&gt;" />
+      <Button fx:id="Bt_Docente_C" layoutX="84.0" layoutY="128.0" mnemonicParsing="false" onAction="#btDocenteC" prefHeight="24.0" prefWidth="82.0" style="-fx-background-color: trasnparente;" text="Docente" underline="true">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Label layoutX="85.0" layoutY="132.0" text="&gt;" />
+      <Button fx:id="Bt_Chave_C" layoutX="83.0" layoutY="198.0" mnemonicParsing="false" onAction="#btChaveC" prefHeight="24.0" prefWidth="82.0" style="-fx-background-color: trasnparente;" text="Chave" underline="true">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Label layoutX="85.0" layoutY="178.0" prefHeight="17.0" prefWidth="9.0" text="&gt;" />
+      <Button fx:id="Bt_Material_C" layoutX="83.0" layoutY="150.0" mnemonicParsing="false" onAction="#btMaterialC" prefHeight="24.0" prefWidth="82.0" style="-fx-background-color: trasnparente;" text="Material" underline="true">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Label layoutX="85.0" layoutY="153.0" prefHeight="17.0" prefWidth="9.0" text="&gt;" />
+      <Button fx:id="Bt_Utensilio_C" layoutX="83.0" layoutY="174.0" mnemonicParsing="false" onAction="#btUtensilioC" prefHeight="24.0" prefWidth="82.0" style="-fx-background-color: trasnparente;" text="Utensilio" underline="true">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Label layoutX="85.0" layoutY="202.0" prefHeight="17.0" prefWidth="9.0" text="&gt;" />
+      <Label layoutX="461.0" layoutY="208.0" prefHeight="17.0" prefWidth="9.0" text="&gt;" />
+      <Label layoutX="461.0" layoutY="159.0" prefHeight="17.0" prefWidth="9.0" text="&gt;" />
+      <Label layoutX="461.0" layoutY="138.0" text="&gt;" />
+      <Label layoutX="461.0" layoutY="117.0" text="&gt;" />
+      <Label layoutX="461.0" layoutY="184.0" prefHeight="17.0" prefWidth="9.0" text="&gt;" />
+      <Label layoutX="286.0" layoutY="112.0" text="&gt;" />
+      <Button fx:id="Bt_Remover" layoutX="294.0" layoutY="109.0" mnemonicParsing="false" onAction="#btRemover" prefHeight="24.0" prefWidth="90.0" style="-fx-background-color: trasnparente;" text="Area Remoçao" underline="true">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

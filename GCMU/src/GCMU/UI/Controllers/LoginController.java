@@ -26,13 +26,11 @@ import javafx.stage.Stage;
 	public class LoginController implements Initializable {
 
 		@FXML
-		private TextField SuapField;
+		private TextField SiapField;
 		
 		@FXML
 		private TextField SenhaField;
 		
-		@FXML
-		private TextField Campo_SUAPServidor;
 
 		@FXML
 		private Button Bt_Voltar;
@@ -71,7 +69,7 @@ import javafx.stage.Stage;
 				
 				Docente d = new Docente();
 				
-				d.setSuap(Integer.parseInt(SuapField.getText()));
+				d.setSiap(Integer.parseInt(SiapField.getText()));
 				d.setSenha(SenhaField.getText());
 				DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				/////////////////////////////////////////////////////////////////////d.setIdPessoa(p.insert(d));

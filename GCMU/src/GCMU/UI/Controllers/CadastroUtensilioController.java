@@ -23,7 +23,7 @@ import GCMU.classes.Discente;
 	import javafx.stage.Stage;
 
 
-		public class CadastroPessoaController implements Initializable {
+		public class CadastroUtensilioController implements Initializable {
 
 			@FXML
 			private TextField SuapField;

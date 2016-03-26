@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.web.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="448.0" style="-fx-border-width: 04; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.PedidosController">
    <children>
@@ -16,16 +11,16 @@
       <AnchorPane layoutX="4.0" layoutY="1.0" prefHeight="59.0" prefWidth="440.0" style="-fx-background-color: #5F9EA0;">
          <children>
             <Text fx:id="Pedido" layoutX="162.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Label layoutX="88.0" layoutY="9.0" text="Pedido De Chave">
+            <Label layoutX="88.0" layoutY="9.0" text="Pedido De Materiais">
                <font>
                   <Font size="35.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="38.0" layoutY="139.0" prefHeight="17.0" prefWidth="77.0" text="Matrícula:" />
+      <Label layoutX="38.0" layoutY="139.0" prefHeight="17.0" prefWidth="77.0" text="Suap:" />
       <Label layoutX="312.0" layoutY="178.0" />
-      <TextField fx:id="Matricula_Form" layoutX="216.0" layoutY="137.0" promptText="ex: 20141004" />
+      <TextField fx:id="Matricula_Form" layoutX="216.0" layoutY="137.0" promptText="ex: 1234" />
       <Label layoutX="38.0" layoutY="266.0" text="Data:" />
       <Label layoutX="38.0" layoutY="178.0" text="Numêro da Sala do Destino:" />
       <TextField fx:id="NumeroSala_Form" layoutX="217.0" layoutY="176.0" promptText="ex: 10" />
@@ -34,5 +29,8 @@
       <DatePicker fx:id="DataReserva_Form" layoutX="216.0" layoutY="264.0" prefHeight="25.0" prefWidth="149.0" promptText="ex: YYY-MM-DD" />
       <Button fx:id="Bt_Voltar" layoutX="284.0" layoutY="338.0" mnemonicParsing="false" onAction="#btVoltar" opacity="0.45" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: transparent;" text="Voltar" underline="true" />
       <Button layoutX="352.0" layoutY="338.0" mnemonicParsing="false" text="Reservar" />
+      <TextField fx:id="Matricula_Form1" layoutX="216.0" layoutY="99.0" promptText="ex: 20141004" />
+      <Label layoutX="38.0" layoutY="101.0" prefHeight="17.0" prefWidth="77.0" text="Matrícula:" />
+      <Label layoutX="375.0" layoutY="116.0" text="ou" />
    </children>
 </AnchorPane>

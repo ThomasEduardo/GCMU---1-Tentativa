@@ -77,9 +77,7 @@ public class Chaves {
 		this.nomeSala = nomeSala;
 
 	}
-	public void insert(Chaves chaves) throws SQLException {
-		ChavesDAO c = new ChavesDAO(null);
-		c.insert(chaves);
-		
+	public static void insert(Chaves chaves) throws SQLException {
+		ChavesDAO.getInstance().insert(chaves);
 	}
 }

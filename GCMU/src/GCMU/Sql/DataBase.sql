@@ -9,7 +9,6 @@ cpf VARCHAR(14)
 
 CREATE TABLE administrador_tb(
 siap INT(30) PRIMARY KEY,
-senha VARCHAR(30) NOT NULL,
 pessoa_matricula INT UNSIGNED,
 CONSTRAINT fk_administrador_pessoa FOREIGN KEY 
 (pessoa_matricula) REFERENCES pessoa_tb(matricula)
@@ -18,7 +17,8 @@ CONSTRAINT fk_administrador_pessoa FOREIGN KEY
 CREATE TABLE discente_tb (
 matricula VARCHAR (20)PRIMARY KEY,    
 curso VARCHAR(30),
-Ano INT(10),
+sala INT(10),
+turma VARCHAR(10),
 pessoa_matricula INT UNSIGNED,
 CONSTRAINT fk_dicente_pessoa FOREIGN KEY 
 (pessoa_matricula) REFERENCES pessoa_tb(matricula)
@@ -142,13 +142,13 @@ INSERT INTO administrador_tb (SIAP, pessoa_matricula)
 VALUES('58175','54778');
 
 INSERT INTO discente_tb(matricula, sala, curso, turma,pessoa_matricula)
-VALUES('2234','01','Inform√°tica','A','2234');
+VALUES('2234','01','Inform·tica','A','2234');
 
 INSERT INTO discente_tb(matricula,sala, curso, turma,pessoa_matricula) 
 VALUES('34788','02','quimica','B', '34788');
 
 INSERT INTO discente_tb(matricula,sala, curso, turma, pessoa_matricula)
-VALUES('44778','03','Inform√°tica','C', '44778');
+VALUES('44778','03','Inform·tica','C', '44778');
 
 INSERT INTO docente_tb (siap, cargo ,area, turno, pessoa_matricula)
 VALUES('1222','tecnico', 'informatica','manha', '51234');
@@ -356,35 +356,3 @@ inner join pessoa_tb P
 on P.matricula = D.matricula and D.data =  '2017-01-25'
 inner join materiais_tb M
 on M.idMaterial = D.idMaterial;
-
-/* so funciona ate os selects*/
-
-
-DELETE FROM pessoa_tb WHERE matricula = '1234' and matricula = '54788' and matricula = '54778';
-
-DELETE FROM discente_tb where matricula ='2234' and matricula = '34788' and matricula='44778';
-
-DELETE FROM administrador_tb WHERE siap = '58475' and siap= '58485' and siap = '58175';
-
-DELETE FROM docente_tb where siap='1222' and siap= '2222222' and siap = '3333333';
-
-DELETE FROM chaves_tb where idChave <= 3;
-
-DELETE FROM materiais_tb where idMaterial <=3;
-
-DELETE FROM utensilios_tb where idUtensilio <=3;
-
-
-
-
-DROP TABLE administrador_tb;
-DROP TABLE discente_tb;
-DROP TABLE docente_tb;
-DROP TABLE Pessoa_Reserva_Chaves_tb;
-DROP TABLE Pessoa_Reserva_Utensilios_tb;
-DROP TABLE Pessoa_Reserva_Materiais_tb;
-DROP TABLE utensilios_tb;
-DROP TABLE chaves_tb;
-DROP TABLE materiais_tb;
-DROP TABLE bkpPessoa_tb;
-DROP TABLE pessoa_tb;

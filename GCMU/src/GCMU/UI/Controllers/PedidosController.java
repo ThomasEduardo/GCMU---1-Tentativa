@@ -49,7 +49,7 @@ import javafx.stage.Stage;
 		@FXML
 		private Button Bt_Voltar;
 			
-			public static String tipoPedido = ChoiceController.tipoPedido;
+			public static String tipoPedido = ReservaController.tipoPedido;
 			
 			
 			
@@ -58,7 +58,7 @@ import javafx.stage.Stage;
 			private void btVoltar() throws IOException{
 				
 				
-				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Choice.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Reserva.fxml"));
 				
 				Scene DocenteLogin = new Scene(root);
 				Main.primaryStage.setTitle("Docente Login");
@@ -67,8 +67,8 @@ import javafx.stage.Stage;
 			}
 			
 			@FXML
-			private void btReserva() throws IOException, ParseException,SQLException{
-				
+			private void btReserva() throws IOException, ParseException,SQLException, java.text.ParseException{
+				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Menu.fxml"));
 				
 				try {
 					
