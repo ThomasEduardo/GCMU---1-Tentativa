@@ -58,6 +58,7 @@ public class CadastroDocenteController implements Initializable {
 			d.setCpf(Cpf_Field.getText());
 			d.setCargo(Cargo_Field.getText());
 			d.insert(d);
+			
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

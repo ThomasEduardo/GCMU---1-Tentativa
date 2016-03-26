@@ -67,12 +67,8 @@ public class Docente extends Pessoa {
 
 	public void setIdPessoa(Object insert) {
 		// TODO Auto-generated method stub
-		
 	}
-	public void insert(Docente docente) throws SQLException {
-		DocenteDAO d = new DocenteDAO(null);
-		d.insert(docente);
-		
-
+		public void insert(Docente docente) throws SQLException {
+			DocenteDAO.getInstance().insert(docente);
 	}
 }
