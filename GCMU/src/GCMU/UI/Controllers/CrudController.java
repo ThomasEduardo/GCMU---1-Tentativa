@@ -1,6 +1,5 @@
 package GCMU.UI.Controllers;
 
-	import java.awt.TextField;
 	import java.io.IOException;
 	import java.net.URL;
 	import java.sql.SQLException;
@@ -21,36 +20,27 @@ package GCMU.UI.Controllers;
 	import javafx.scene.control.MenuButton;
 	import javafx.scene.control.PasswordField;
 	import javafx.stage.Stage;
-
+	import javafx.scene.control.TextField;
 
 		public class CrudController implements Initializable {
-
-			@FXML
-			private TextField SuapField;
-			
-			@FXML
-			private TextField SenhaField;
-			
-			@FXML
-			private TextField Campo_SUAPServidor;
 
 			@FXML
 			private Button Bt_Voltar;
 			
 			@FXML
-			private Button Bt_DiscenteC;
+			private Button Bt_Discente;
 			
 			@FXML
-			private Button Bt_DocenteC;
+			private Button Bt_Docente;
 		
 			@FXML
-			private Button Bt_ChaveC;
+			private Button Bt_Chave;
 			
 			@FXML
-			private Button Bt_MaterialC;
+			private Button Bt_Material;
 			
 			@FXML
-			private Button Bt_UtensilioC;
+			private Button Bt_Utensilio;
 			
 			@FXML
 			private Button Bt_Remover;
@@ -70,10 +60,10 @@ package GCMU.UI.Controllers;
 			}
 			
 			@FXML
-			private void btDiscenteC() throws IOException{
+			private void btDiscente() throws IOException{
 				
 				
-				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/CadastroDiscente.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/CadastroDocente2.fxml"));
 				
 				Scene getOut = new Scene(root);
 				Main.primaryStage.setTitle("Menu");
@@ -83,7 +73,7 @@ package GCMU.UI.Controllers;
 			}
 		
 			@FXML
-			private void btDocenteC() throws IOException{
+			private void btDocente() throws IOException{
 				
 				
 				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/CadastroDocente.fxml"));
@@ -96,7 +86,7 @@ package GCMU.UI.Controllers;
 			}
 			
 			@FXML
-			private void btChaveC() throws IOException{
+			private void btChave() throws IOException{
 				
 				
 				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/CadastroChave.fxml"));
@@ -109,7 +99,7 @@ package GCMU.UI.Controllers;
 			}
 			
 			@FXML
-			private void btUtensilioC() throws IOException{
+			private void btUtensilio() throws IOException{
 				
 				
 				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/CadastroUtensilio.fxml"));
@@ -122,7 +112,7 @@ package GCMU.UI.Controllers;
 			}
 			
 			@FXML
-			private void btMaterialC() throws IOException{
+			private void btMaterial() throws IOException{
 				
 				
 				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/CadastroMaterial.fxml"));

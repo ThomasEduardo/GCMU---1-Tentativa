@@ -15,13 +15,13 @@
 		public class ConsultaController implements Initializable {
 
 			@FXML
-			private Button Bt_Materiais;
+			private Button Bt_Material;
 			
 			@FXML
-			private Button Bt_Chaves;
+			private Button Bt_Chave;
 			
 			@FXML
-			private Button Bt_Utensilios;
+			private Button Bt_Utensilio;
 			
 			@FXML
 			private Button Bt_Voltar;
@@ -30,7 +30,7 @@
 			
 			
 			@FXML
-			private void btMateriais() throws IOException{
+			private void btMaterial() throws IOException{
 				
 				tipoPedido = "Materiais"; 
 				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/ConsultaMaterial.fxml"));
@@ -42,7 +42,7 @@
 			}
 			
 			@FXML
-			private void btUtensilios() throws IOException{
+			private void btUtensilio() throws IOException{
 				
 				tipoPedido = "Utensilios"; 
 				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/ConsultaUtensilio.fxml"));
@@ -55,7 +55,7 @@
 			
 				
 			@FXML
-			private void btChaves() throws IOException{
+			private void btChave() throws IOException{
 				tipoPedido = "Chaves";
 				Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/ConsultaChave.fxml"));
 				
@@ -69,7 +69,7 @@
 			private void btVoltar() throws IOException{
 					
 					
-					Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Consulta.fxml"));
+					Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Menu.fxml"));
 					
 					Scene Menu = new Scene(root);
 					Main.primaryStage.setTitle("Menu");

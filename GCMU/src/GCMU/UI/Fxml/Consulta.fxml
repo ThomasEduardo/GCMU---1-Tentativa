@@ -13,8 +13,8 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="Bt_Chaves" layoutX="164.0" layoutY="182.0" mnemonicParsing="false" onAction="#btChaves" text="Chaves" />
-      <Button fx:id="Bt_Materiais" layoutX="312.0" layoutY="182.0" mnemonicParsing="false" onAction="#btMateriais" text="Materiais" />
-      <Button fx:id="Bt_Utensilios" layoutX="459.0" layoutY="182.0" mnemonicParsing="false" onAction="#btUtensilios" text="Utensilios" />
+      <Button fx:id="Bt_Chave" layoutX="164.0" layoutY="182.0" mnemonicParsing="false" onAction="#btChave" text="Chaves" />
+      <Button fx:id="Bt_Material" layoutX="312.0" layoutY="182.0" mnemonicParsing="false" onAction="#btMaterial" text="Materiais" />
+      <Button fx:id="Bt_Utensilio" layoutX="459.0" layoutY="182.0" mnemonicParsing="false" onAction="#btUtensilio" text="Utensilios" />
    </children>
 </AnchorPane>

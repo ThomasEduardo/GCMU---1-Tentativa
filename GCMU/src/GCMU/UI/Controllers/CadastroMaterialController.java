@@ -27,9 +27,7 @@ import GCMU.classes.Discente;
 
 			@FXML
 			private TextField SuapField;
-			
-			@FXML
-			private TextField SenhaField;
+
 			
 			@FXML
 			private TextField ProfField;
@@ -63,7 +61,7 @@ import GCMU.classes.Discente;
 				Main.primaryStage.show(); 
 			}
 			
-			//
+			
 			@FXML
 			private void btCadastrar() throws IOException{
 				
@@ -82,7 +80,6 @@ import GCMU.classes.Discente;
 					Docente d = new Docente();
 					
 					d.setSiap(Integer.parseInt(SuapField.getText()));
-					d.setSenha(SenhaField.getText());
 					d.setArea(ProfField.getText());
 					d.setCargo(CargoField.getText());
 					d.setCpf((CpfField.getText()));

@@ -10,7 +10,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black; -fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.ConsultaMaterialController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="623.0" style="-fx-border-width: 04; -fx-border-color: black; -fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.ConsultaController">
    <children>
       <Button fx:id="Bt_Voltar" layoutX="501.0" layoutY="332.0" mnemonicParsing="false" onAction="#btVoltar" opacity="0.45" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Voltar" underline="true" />
       <Label layoutX="198.0" layoutY="23.0" prefHeight="38.0" prefWidth="335.0" text="Consulta do Material">

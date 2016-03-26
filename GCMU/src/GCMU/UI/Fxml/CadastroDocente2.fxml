@@ -6,37 +6,32 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.CadastroDocenteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GCMU.UI.Controllers.CadastroDocente2Controller">
    <children>
-      <Label fx:id="Label_Nome" layoutX="384.0" layoutY="69.0" text="Nome">
+      <Label fx:id="Nome_Field" layoutX="384.0" layoutY="69.0" text="Nome">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Nome_Field" layoutX="400.0" layoutY="86.0" prefHeight="25.0" prefWidth="230.0" promptText="Ex.: Maria Alice Cândido Ferreira" />
-      <Label fx:id="Label_SUAP" layoutX="384.0" layoutY="122.0" text="Suap:">
+      <TextField fx:id="NomeDiscente_Field" layoutX="400.0" layoutY="86.0" prefHeight="25.0" prefWidth="230.0" promptText="Ex.: Maria Alice Cândido Ferreira" />
+      <Label fx:id="Matricula_Field" layoutX="384.0" layoutY="122.0" text="Matricula:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Suap_Field" layoutX="400.0" layoutY="139.0" prefHeight="25.0" prefWidth="230.0" promptText="Ex.: 20121999" />
-      <Label fx:id="Label_Senha" layoutX="383.0" layoutY="303.0" text="Criar Senha:">
+      <TextField fx:id="MatriculaDiscente_Field" layoutX="400.0" layoutY="139.0" prefHeight="25.0" prefWidth="230.0" promptText="Ex.: 20121999" />
+      <Label fx:id="Curso_FIeld" layoutX="384.0" layoutY="235.0" text="Curso:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="Label_Cargo" layoutX="384.0" layoutY="235.0" text="Cargo:">
+      <TextField fx:id="Curso_Field" layoutX="390.0" layoutY="256.0" prefHeight="25.0" prefWidth="230.0" promptText="Ex.: Assistente Social" />
+      <Label fx:id="Cpf_Field" layoutX="379.0" layoutY="176.0" text="Cpf:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Cargo_Field" layoutX="390.0" layoutY="256.0" prefHeight="25.0" prefWidth="230.0" promptText="Ex.: Assistente Social" />
-      <Label fx:id="Label_Cpf" layoutX="379.0" layoutY="176.0" text="Cpf:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="Cpf_Field" layoutX="390.0" layoutY="193.0" prefHeight="25.0" prefWidth="230.0" promptText="Ex.: 101.111.111-98" />
+      <TextField fx:id="CpfDiscente_Field" layoutX="390.0" layoutY="193.0" prefHeight="25.0" prefWidth="230.0" promptText="Ex.: 101.111.111-98" />
       <Button fx:id="Bt_Voltar" layoutX="515.0" layoutY="359.0" mnemonicParsing="false" onAction="#btVoltar" opacity="0.72" style="-fx-background-color: transparent;" text="Voltar" underline="true">
          <font>
             <Font size="11.0" />
@@ -47,7 +42,7 @@
             <Font name="Book Antiqua Bold" size="14.0" />
          </font>
       </Button>
-      <Label layoutX="353.0" layoutY="6.0" text="Cadastro do Docente" underline="true">
+      <Label layoutX="353.0" layoutY="6.0" text="Cadastro do Discente" underline="true">
          <font>
             <Font name="System Italic" size="25.0" />
          </font>

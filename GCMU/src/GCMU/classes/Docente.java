@@ -15,9 +15,8 @@ public class Docente extends Pessoa {
 	private String turno;
 	private int siap;
 
-	public Docente(String cargo, String area, String turno, int matricula, String name, String email, int telefone,
-			String senha, String cpf, int siap) {
-		super(matricula, name, email, telefone, senha, cpf);
+	public Docente(String cargo, String area, String turno, int matricula, String name, String email, int telefone, String cpf, int siap) {
+		super(matricula, name, email, telefone, cpf);
 		this.cargo = cargo;
 		this.area = area;
 		this.turno = turno;
@@ -70,7 +69,10 @@ public class Docente extends Pessoa {
 		// TODO Auto-generated method stub
 		
 	}
+	public void insert(Docente docente) throws SQLException {
+		DocenteDAO d = new DocenteDAO(null);
+		d.insert(docente);
+		
 
-
-	
+	}
 }

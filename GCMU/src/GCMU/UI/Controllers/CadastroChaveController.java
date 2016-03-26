@@ -28,17 +28,6 @@ import GCMU.classes.Discente;
 			@FXML
 			private TextField SuapField;
 			
-			@FXML
-			private TextField SenhaField;
-			
-			@FXML
-			private TextField ProfField;
-			
-			@FXML
-			private TextField CargoField;
-			
-			@FXML
-			private TextField CpfField;
 			
 			@FXML
 			private TextField NomeField;
@@ -82,10 +71,6 @@ import GCMU.classes.Discente;
 					Docente d = new Docente();
 					
 					d.setSiap(Integer.parseInt(SuapField.getText()));
-					d.setSenha(SenhaField.getText());
-					d.setArea(ProfField.getText());
-					d.setCargo(CargoField.getText());
-					d.setCpf((CpfField.getText()));
 					d.setName(NomeField.getText());
 					DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 					docente.insert(d);

@@ -2,7 +2,6 @@ CREATE TABLE pessoa_tb (
 matricula INT UNSIGNED PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
 email VARCHAR(30),
-senha VARCHAR(30),
 telefone INT(30),
 cpf VARCHAR(14)
 );
@@ -105,32 +104,32 @@ telefone VARCHAR(30)
 );
 
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
-VALUES('444444-4','1234','Jao', 'jaorock3000@gmail.com','223','9965');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
+VALUES('444444-4','1234','Jao', 'jaorock3000@gmail.com','9965');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
-VALUES('555555-5','54788','Robervaldo', 'robervaldoroc@gmail.com','1234','995778');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
+VALUES('555555-5','54788','Robervaldo', 'robervaldoroc@gmail.com','995778');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
-VALUES('666666-6','54778','Maria', 'mariarock@gmail.com','3334','9956578'); 
+INSERT INTO pessoa_tb(cpf, matricula, name, email,telefone)
+VALUES('666666-6','54778','Maria', 'mariarock@gmail.com','9956578'); 
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
-VALUES('1444444-4','2234','Jjao', 'jjaorock3000@gmail.com','423','9965');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
+VALUES('1444444-4','2234','Jjao', 'jjaorock3000@gmail.com','9965');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
-VALUES('255555-5','34788','Rrobervaldo', 'rrobervaldorock@gmail.com','5234','995778');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
+VALUES('255555-5','34788','Rrobervaldo', 'rrobervaldorock@gmail.com','995778');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
-VALUES('366666-6','44778','aaria', 'mariarock@gmail.com','5334','9956578'); 
+INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
+VALUES('366666-6','44778','aaria', 'mariarock@gmail.com','9956578'); 
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
-VALUES('54444444-4','51234','jjJao', 'jjjaorock3000@gmail.com','22123','9965');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
+VALUES('54444444-4','51234','jjJao', 'jjjaorock3000@gmail.com','9965');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
-VALUES('6555555-5','654788','rrRobervaldo', 'rrrobervaldoroc@gmail.com','2231234','995778');
+INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
+VALUES('6555555-5','654788','rrRobervaldo', 'rrrobervaldoroc@gmail.com','995778');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, senha, telefone)
-VALUES('7666666-6','754778','mmmMaria', 'mmmariarock@gmail.com','221334','9956578'); 
+INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
+VALUES('7666666-6','754778','mmmMaria', 'mmmariarock@gmail.com','9956578'); 
 
 INSERT INTO administrador_tb (SIAP, pessoa_matricula)
 VALUES('58475','1234');

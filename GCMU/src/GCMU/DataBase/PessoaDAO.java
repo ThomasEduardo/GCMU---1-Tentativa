@@ -10,7 +10,6 @@ import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Pessoa;
 
-
 public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 
 	public static ConnectionFactory banco;
@@ -43,7 +42,6 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 					+ " name,"
 					+ " email,"
 					+ " telefone,"
-					+ " senha,"
 					+ " cpf,"
 					+ " VALUES (?,?,?,?,?)";
 			
@@ -88,7 +86,6 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 					+ " pessoa.sala,"
 					+ " pessoa.email,"
 					+ " pessoa.telefone,"
-					+ " pessoa.senha,"
 					+ " pessoa.cpf"
 					+ " FROM pessoa_tb AS pessoa"
 					+ " WHERE pessoa.m = " 
@@ -258,7 +255,6 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 				pessoa.setName(rs.getString("pessoa.name"));
 				pessoa.setEmail(rs.getString("pessoa.email"));
 				pessoa.setTelefone(rs.getInt("pessoa.telefone"));
-				pessoa.setSenha(rs.getString("pessoa.senha"));
 				pessoa.setCpf(rs.getString("pessoa.cpf"));
 				
 	
@@ -306,7 +302,7 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 		try {
 
 			String sql = "UPDATE pessoa_tb"
-					+ " SET matricula=?, name=?, email=?, telefone=?, senha=?, cpf=?"
+					+ " SET matricula=?, name=?, email=?, telefone=?, cpf=?"
 					+ " WHERE matricula=?";
 
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
@@ -315,7 +311,6 @@ public class PessoaDAO implements GenericDAO<Integer, Pessoa>{
 			stmt.setString(2, pessoa.getName());
 			stmt.setString(3, pessoa.getEmail());
 			stmt.setLong(4, pessoa.getTelefone());
-			stmt.setString(5, pessoa.getSenha());
 			stmt.setString(6, pessoa.getCpf());
 			stmt.setLong(7, pessoa.getMatricula());
 

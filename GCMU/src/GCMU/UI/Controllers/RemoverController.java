@@ -28,7 +28,7 @@
 			private void btVoltar() throws IOException{
 					
 					
-					Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Menu.fxml"));
+					Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Crud.fxml"));
 					
 					Scene Menu = new Scene(root);
 					Main.primaryStage.setTitle("Menu");

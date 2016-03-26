@@ -18,8 +18,7 @@ public class DocenteTeste {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		dc1 = new Docente("secretario", "secretaria", "integral", 1234, "olavose", "olavose@gmail.com", 123456,
-				"T12345", "123.456.789-12", 7777);
+		dc1 = new Docente("secretario", "secretaria", "integral", 1234, "olavose", "olavose@gmail.com", 123456, "12345", 123);
 	}
 
 	@Test

@@ -18,7 +18,7 @@ public class DicenteTeste {
 	 * @throws Exception
 	 */
 	public void setUp() throws Exception {
-		d1 = new Discente("infoLab", "info", "A", 123, "Ola", "olavose@gmail.com", 123456, "T123", "123.456.789-11");
+		d1 = new Discente("infoLab", "info", "A", 123, "Ola", "olavose@gmail.com", 123, "123.456.789-11");
 	}
 
 	public void test() {

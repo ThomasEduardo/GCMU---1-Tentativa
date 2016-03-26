@@ -1,12 +1,13 @@
 package GCMU.UI.Controllers;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
-import GCMU.classes.Docente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,19 +21,20 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class CadastroDocenteController implements Initializable{
+public class CadastroDocente2Controller implements Initializable{
 	
 	@FXML
-	private TextField Nome_Field;
+	private TextField NomeDiscente_Field;
 	
 	@FXML
-	private TextField Suap_Field;
+	private TextField MatriculaDiscente_Field;
 	
 	@FXML
-	private TextField Cpf_Field;
+	private TextField CpfDiscente_Field;
 	
 	@FXML
-	private TextField Cargo_Field;
+	private TextField Curso_Field;
+	
 	
 	@FXML
 	private Button Bt_CadastrarDocente;
@@ -40,31 +42,7 @@ public class CadastroDocenteController implements Initializable{
 	@FXML
 	private Button Bt_Voltar;
 	
-	@FXML
-	private void bCadastrarDocente() throws IOException{
-		
-		
-		Parent root = FXMLLoader.load(getClass().getResource("/GCMU/UI/Fxml/Crud.fxml"));
-		
-		Scene menu = new Scene(root);
-		Main.primaryStage.setTitle("Menu");
-		Main.primaryStage.setScene(menu);
-		Main.primaryStage.show(); 
-	
-	try {
-		Docente d = new Docente();
-		
-		d.setName(Nome_Field.getText());
-		d.setSiap(Integer.parseInt(Suap_Field.getText()));
-		d.setCpf(Cpf_Field.getText());
-		d.setCargo(Cargo_Field.getText());
-		d.insert(d);
-		
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}
+
 
 	@FXML
 	private void btVoltar() throws IOException{

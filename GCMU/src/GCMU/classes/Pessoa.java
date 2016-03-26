@@ -2,7 +2,7 @@ package GCMU.classes;
 
 import java.sql.SQLException;
 import java.util.Date;
-
+import GCMU.DataBase.PessoaDAO;
 import GCMU.DataBase.DocenteDAO;
 
 /**
@@ -15,7 +15,6 @@ public class Pessoa {
 	private String name;
 	private String email;
 	private int telefone;
-	private String senha;
 	private String cpf;
 	private Date data;
 
@@ -25,12 +24,11 @@ public class Pessoa {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	public Pessoa(int matricula, String name, String email, int telefone, String senha, String cpf) {
+	public Pessoa(int matricula, String name, String email, int telefone, String cpf) {
 		this.matricula = matricula;
 		this.name = name;
 		this.email = email;
 		this.telefone = telefone;
-		this.senha = senha;
 		this.setCpf(cpf);
 	}
 	public int getTelefone() {
@@ -63,14 +61,6 @@ public class Pessoa {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
 	}
 
 	public String getCpf() {
@@ -106,10 +96,12 @@ public class Pessoa {
 	 */
 	public String requisitaUtensilios() {
 		return ("ok, Utencilio Encontrado!");
+	
 	}
-	public void insert(Docente docente) throws SQLException {
-		DocenteDAO d = new DocenteDAO(null);
-		d.insert(docente);
-		
+	public void insert(Pessoa pessoa) throws SQLException {
+		PessoaDAO.getInstance().insert(pessoa);
+	
+
+
 	}
 }

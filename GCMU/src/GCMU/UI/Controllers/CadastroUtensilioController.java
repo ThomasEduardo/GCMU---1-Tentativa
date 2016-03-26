@@ -29,9 +29,6 @@ import GCMU.classes.Discente;
 			private TextField SuapField;
 			
 			@FXML
-			private TextField SenhaField;
-			
-			@FXML
 			private TextField ProfField;
 			
 			@FXML
@@ -74,31 +71,7 @@ import GCMU.classes.Discente;
 				Main.primaryStage.setTitle("Consulta");
 				Main.primaryStage.setScene(consulta);
 				Main.primaryStage.show(); 
-				
-				try {
-					Docente docente = new Docente();
-					Pessoa p = new Pessoa();
-					
-					Docente d = new Docente();
-					
-					d.setSiap(Integer.parseInt(SuapField.getText()));
-					d.setSenha(SenhaField.getText());
-					d.setArea(ProfField.getText());
-					d.setCargo(CargoField.getText());
-					d.setCpf((CpfField.getText()));
-					d.setName(NomeField.getText());
-					DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-					docente.insert(d);
-				
-			
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
-			
-			
-		}
 			@Override
 			public void initialize(URL location, ResourceBundle Resources) {
 				// TODO Auto-generated method stub
