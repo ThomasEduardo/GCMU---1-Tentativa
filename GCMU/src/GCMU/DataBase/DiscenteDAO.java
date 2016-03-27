@@ -1,5 +1,6 @@
 package GCMU.DataBase;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,31 +12,14 @@ import com.mysql.jdbc.Connection;
 import GCMU.classes.Discente;
 
 
-public class DiscenteDAO implements GenericDAO<Integer, Discente>{
+public class DiscenteDAO {
 
-	public static ConnectionFactory banco;
+	
 
-	public Connection connection;
-
-	private static DiscenteDAO instance;
-
-	public DiscenteDAO(ConnectionFactory banco) {
-
-		this.connection = (Connection) banco.getConnection();
-	}
-
-	public static DiscenteDAO getInstance() {
-
-		banco = ConnectionFactory.getInstance();
-
-		instance = new DiscenteDAO(banco);
-
-		return instance;
-	}
-
-	@Override
 	public boolean insert(Discente discente) throws SQLException {
+                Connection con =  (Connection) ConnectionFactory.getConnection();
 
+                PreparedStatement stmt = null;
 		try {
 
 			String sql = "INSERT INTO discente_tb ("
@@ -48,7 +32,7 @@ public class DiscenteDAO implements GenericDAO<Integer, Discente>{
 			
 		
 
-			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = (PreparedStatement) con.prepareStatement(sql);
 
 			stmt.setInt(1, discente.getMatricula());	
 			stmt.setString(2, discente.getCurso());
@@ -64,19 +48,21 @@ public class DiscenteDAO implements GenericDAO<Integer, Discente>{
 
 		} finally {
 
-			connection.close();
+			ConnectionFactory.closeConnection(con , stmt);   
 		}
 
 		return true;
 
 	}
 
-	@Override
+
 	public Discente getById(Integer pk) throws SQLException {
 
 		Discente discente = null;
 
-		PreparedStatement stmt = null;
+		Connection con = (Connection) ConnectionFactory.getConnection();
+
+                PreparedStatement stmt = null;
 
 		ResultSet rs = null;
 
@@ -90,7 +76,7 @@ public class DiscenteDAO implements GenericDAO<Integer, Discente>{
 					+ " WHERE discente.m = " 
 					+ pk;
 
-			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = (PreparedStatement) con.prepareStatement(sql);
 
 			rs = stmt.executeQuery(sql);
 
@@ -105,7 +91,7 @@ public class DiscenteDAO implements GenericDAO<Integer, Discente>{
 
 		} finally {
 
-			connection.close();
+			ConnectionFactory.closeConnection(con , stmt);   
 		}
 
 		return discente;
@@ -138,10 +124,11 @@ public class DiscenteDAO implements GenericDAO<Integer, Discente>{
 		return discentes;
 	}
 
-	@Override
-	public boolean delete(Integer pk) throws SQLException {
 
-		PreparedStatement stmt = null;
+	public boolean delete(Integer pk) throws SQLException {
+                Connection con = (Connection) ConnectionFactory.getConnection();
+
+                PreparedStatement stmt = null;
 
 		try {
 
@@ -149,7 +136,7 @@ public class DiscenteDAO implements GenericDAO<Integer, Discente>{
 					+ " WHERE matricula = "
 					+ pk;
 
-			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = (PreparedStatement) con.prepareStatement(sql);
 
 			stmt.execute();
 
@@ -159,22 +146,24 @@ public class DiscenteDAO implements GenericDAO<Integer, Discente>{
 
 		} finally{
 
-			connection.close();
+			ConnectionFactory.closeConnection(con , stmt);   
 		}
 
 		return true;
 	}
 
-	@Override
+
 	public void update(Discente discente) throws SQLException {
-				
+		Connection con = (Connection) ConnectionFactory.getConnection();
+
+                PreparedStatement stmt = null;		
 		try {
 			
 			String sql = "UPDATE discente_tb"
 					+ " SET matricula=?, curso=?, sala=?, turma=?"
 					+ " WHERE matricula=?";
 			
-	         PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+	          stmt = (PreparedStatement) con.prepareStatement(sql);
 	         
 	         stmt.setLong(1, discente.getMatricula());
 	         stmt.setString(2, discente.getCurso());
@@ -190,17 +179,17 @@ public class DiscenteDAO implements GenericDAO<Integer, Discente>{
 
 	 		} finally {
 
-	 			connection.close();
+	 			ConnectionFactory.closeConnection(con , stmt);   
 	 		}
 
 	}
-	@Override
+	
 	public List<Discente> getAll() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+
 	public List<Discente> find(Discente entity) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;

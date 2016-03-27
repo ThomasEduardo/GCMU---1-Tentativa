@@ -10,35 +10,17 @@ import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Docente;
 
-public class DocenteDAO implements GenericDAO<Integer, Docente>{
+public class DocenteDAO{
 
-	public static ConnectionFactory banco;
-
-	public Connection connection;
-
-	private static DocenteDAO instance;
-
-	public DocenteDAO(ConnectionFactory banco) {
-
-		this.connection = (Connection) banco.getConnection();
-	}
-
-	public static DocenteDAO getInstance() {
-
-		banco = ConnectionFactory.getInstance();
-
-		instance = new DocenteDAO(banco);
-
-		return instance;
-	}
-
-	@Override
+	
 	public boolean insert(Docente docente) throws SQLException {
+                Connection con = (Connection) ConnectionFactory.getConnection();
 
+                PreparedStatement stmt = null;
 		try {
 
 			String sql = "INSERT INTO docente_tb ("
-					+ " siap, "
+					+ " suap, "
 					+ " cargo,"
 					+ " area,"
 					+ " turno,"
@@ -46,13 +28,11 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 					+ " name,"
 					+ " email,"
 					+ " telefone,"
-					+ " senha,"
-					+ " cpf)"
-					+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
+					+ " VALUES (?,?,?,?,?,?,?,?)";
 
-			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			stmt.setInt(1, docente.getSiap());	
+			stmt.setInt(1, docente.getSuap());	
 			stmt.setString(2, docente.getCargo());
 			stmt.setString(3, docente.getArea());
 			stmt.setString(4, docente.getTurno());
@@ -60,7 +40,7 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 			stmt.setString(6, docente.getName());
 			stmt.setString(7, docente.getEmail());
 			stmt.setInt(8, docente.getTelefone());
-			stmt.setString(10, docente.getCpf());
+
 			
 			stmt.execute();
 
@@ -70,37 +50,38 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 
 		} finally {
 
-			connection.close();
+			ConnectionFactory.closeConnection(con , stmt);   
 		}
 
 		return true;
 
 	}
 
-	@Override
+
 	public Docente getById(Integer pk) throws SQLException {
 
 		Docente docente = null;
 
-		PreparedStatement stmt = null;
+		Connection con = (Connection) ConnectionFactory.getConnection();
+
+                PreparedStatement stmt = null;
 
 		ResultSet rs = null;
 
 		try {
 
-			String sql = "SELECT docente.siap,"
+			String sql = "SELECT docente.suap,"
 					+ " docente.cargo,"
 					+ " docente.area,"
-					+ " docente.turno"
-					+ " docente.name"
-					+ " docente.email"
-					+ " docente.telefone"
-					+ " docente.cpf"
+					+ " docente.turno,"
+					+ " docente.name,"
+					+ " docente.email,"
+					+ " docente.telefone,"
 					+ " FROM docente_tb AS docente"
-					+ " WHERE docente.siap = " 
+					+ " WHERE docente.suap = " 
 					+ pk;
 
-			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = (PreparedStatement) con.prepareStatement(sql);
 
 			rs = stmt.executeQuery(sql);
 
@@ -115,7 +96,7 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 
 		} finally {
 
-			connection.close();
+			ConnectionFactory.closeConnection(con , stmt);   
 		}
 
 		return docente;
@@ -124,8 +105,9 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 	public Docente queryCargo (String area) throws SQLException {
 		
 		Docente docente = null;
+                Connection con = (Connection) ConnectionFactory.getConnection();
 
-		PreparedStatement stmt = null;
+                PreparedStatement stmt = null;
 
 		ResultSet rs = null;
 
@@ -136,7 +118,7 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 					+ " WHERE docente.area = " 
 					+ area;
 
-			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = (PreparedStatement) con.prepareStatement(sql);
 
 			rs = stmt.executeQuery(sql);
 
@@ -151,7 +133,7 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 
 		} finally {
 
-			connection.close();
+			ConnectionFactory.closeConnection(con , stmt);   
 		}
 
 		return docente;
@@ -175,7 +157,6 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 				docente.setName(rs.getString("docente.name"));
 				docente.setEmail(rs.getString("docente.email"));
 				docente.setTelefone(rs.getInt("docente.telefone"));
-				docente.setCpf(rs.getString("docente.cpf"));
 								
 				docentes.add(docente);
 			}
@@ -188,18 +169,19 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 		return docentes;
 	}
 
-	@Override
+	
 	public boolean delete(Integer pk) throws SQLException {
+                Connection con = (Connection) ConnectionFactory.getConnection();
 
-		PreparedStatement stmt = null;
+                PreparedStatement stmt = null;
 
 		try {
 
 			String sql = "DELETE FROM docente_tb"
-					+ " WHERE siap = "
+					+ " WHERE suap = "
 					+ pk;
 
-			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = (PreparedStatement) con.prepareStatement(sql);
 
 			stmt.execute();
 
@@ -209,33 +191,34 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 
 		} finally{
 
-			connection.close();
+			ConnectionFactory.closeConnection(con , stmt);   
 		}
 
 		return true;
 	}
 
-	@Override
-	public void update(Docente docente) throws SQLException {
 
+	public void update(Docente docente) throws SQLException {
+                Connection con = (Connection) ConnectionFactory.getConnection();
+
+                PreparedStatement stmt = null;
 		try {
 
 			String sql = "UPDATE docente_tb"
-					+ " SET siap=?, cargo=?, area=?, turno=?, matricula=?, name=?, email=?, telefone=?, cpf=?"
-					+ " WHERE siap=?";
+					+ " SET suap=?, cargo=?, area=?, turno=?, matricula=?, name=?, email=?, telefone=?"
+					+ " WHERE suap=?";
 
-			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			stmt.setLong(1, docente.getSiap());
+			stmt.setLong(1, docente.getSuap());
 			stmt.setString(2, docente.getCargo());
 			stmt.setString(3, docente.getArea());
 			stmt.setString(4, docente.getTurno());
-			stmt.setLong(5, docente.getSiap());
-			stmt.setLong(6, docente.getMatricula());
-			stmt.setString(7, docente.getName());
-			stmt.setString(8, docente.getEmail());
-			stmt.setLong(9, docente.getTelefone());
-			stmt.setString(11, docente.getCpf());
+			stmt.setLong(5, docente.getMatricula());
+			stmt.setString(6, docente.getName());
+			stmt.setString(7, docente.getEmail());
+			stmt.setLong(8, docente.getTelefone());
+                        stmt.setLong(9, docente.getSuap());
 
 			stmt.execute();
 
@@ -245,19 +228,18 @@ public class DocenteDAO implements GenericDAO<Integer, Docente>{
 
 		} finally {
 
-			connection.close();
+			ConnectionFactory.closeConnection(con , stmt);   
 		}
 
 
 	}
 
-	@Override
+	
 	public List<Docente> getAll() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<Docente> find(Docente entity) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;

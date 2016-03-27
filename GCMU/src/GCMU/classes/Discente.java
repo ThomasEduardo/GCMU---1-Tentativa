@@ -9,8 +9,8 @@ public class Discente extends Pessoa {
 	private String curso;
 	private String turma;
 
-	public Discente(String sala, String curso, String turma, int matricula, String name, String email, int telefone, String cpf) {
-		super(matricula, name, email, telefone, cpf);
+	public Discente(String sala, String curso, String turma, int matricula, String name, String email, int telefone,String permissao) {
+		super(matricula, name, email, telefone,permissao);
 		this.turma = turma;
 		this.sala = sala;
 		this.curso = curso;
