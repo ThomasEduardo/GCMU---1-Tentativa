@@ -12,8 +12,7 @@ import java.sql.Date;
  * @author Milena
  */
 public class DiscenteReservaChave {
-    
-    
+
     private int id;
     private String horaDevolucao;
     private String horaPedido;
@@ -76,7 +75,6 @@ public class DiscenteReservaChave {
     public void setData(Date data) {
         this.data = data;
     }
-
 
     /**
      * @return the discente

@@ -5,7 +5,6 @@
  */
 package GCMU.DataBase;
 
-import GCMU.classes.DiscenteReservaMaterial;
 import GCMU.classes.DocenteReservaChave;
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
@@ -33,7 +32,7 @@ public class DocenteReservaChaveDAO {
             stmt.setString(1, docenteReservaChave.getHoraPedido());
             stmt.setString(2, docenteReservaChave.getHoraDevolucao());
             stmt.setDate(3, docenteReservaChave.getData());
-            stmt.setInt(4, docenteReservaChave.getDocente().getMatricula());
+            stmt.setInt(4, docenteReservaChave.getDocente().getSuap());
             stmt.setInt(5, docenteReservaChave.getChaves().getId());
 
             stmt.executeUpdate();

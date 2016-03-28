@@ -1,45 +1,98 @@
 package GCMU.classes;
+
 /**
- * 
- * @author GCMU
- * Essa classe representa um discente que autorizado pelo administrador podera pegar chaves ou materiais
+ *
+ * @author GCMU Essa classe representa um discente que autorizado pelo
+ * administrador podera pegar chaves ou materiais
  */
-public class Discente extends Pessoa {
-	private String sala;
-	private String curso;
-	private String turma;
+public class Discente{
+       
+    private int matricula;
+    private String curso;
+    private String name;
+    private String email;
+    private String permissao;
 
-	public Discente(String sala, String curso, String turma, int matricula, String name, String email, int telefone,String permissao) {
-		super(matricula, name, email, telefone,permissao);
-		this.turma = turma;
-		this.sala = sala;
-		this.curso = curso;
-	}
-	
-	public Discente(){}
-	
-	public String getSala() {
-		return sala;
-	}
+    public Discente(int matricula, String curso, String name, String email, String permissao) {
 
-	public void setSala(String sala) {
-		this.sala = sala;
-	}
+        this.curso = curso;
+        this.matricula = matricula;
+        this.name = name;
+        this.email = email;
+        this.permissao = permissao;
+    }
 
-	public String getCurso() {
-		return curso;
-	}
+    public Discente() {
+    }
 
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
+    /**
+     * @return the curso
+     */
+    public String getCurso() {
+        return curso;
+    }
 
-	public String getTurma() {
-		return turma;
-	}
+    /**
+     * @param curso the curso to set
+     */
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
 
-	public void setTurma(String turma) {
-		this.turma = turma;
-	}
+    /**
+     * @return the matricula
+     */
+    public int getMatricula() {
+        return matricula;
+    }
+
+    /**
+     * @param matricula the matricula to set
+     */
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the permissao
+     */
+    public String getPermissao() {
+        return permissao;
+    }
+
+    /**
+     * @param permissao the permissao to set
+     */
+    public void setPermissao(String permissao) {
+        this.permissao = permissao;
+    }
 
 }

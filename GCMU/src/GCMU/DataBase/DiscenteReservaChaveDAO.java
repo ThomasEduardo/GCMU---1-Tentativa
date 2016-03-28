@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GCMU.DataBase;
 
 import GCMU.classes.DiscenteReservaChave;
-import GCMU.classes.DocenteReservaChave;
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -17,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author Milena
  */
 public class DiscenteReservaChaveDAO {
-    
+
     public void insert(DiscenteReservaChave discenteReservaChave) throws SQLException {
 
         Connection con = (Connection) ConnectionFactory.getConnection();
@@ -49,5 +43,5 @@ public class DiscenteReservaChaveDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
+
 }

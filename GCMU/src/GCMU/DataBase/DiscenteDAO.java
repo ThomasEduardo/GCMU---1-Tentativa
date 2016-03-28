@@ -1,6 +1,5 @@
 package GCMU.DataBase;
 
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,190 +10,176 @@ import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Discente;
 
-
 public class DiscenteDAO {
 
-	
+    public boolean insert(Discente discente) throws SQLException {
+        
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-	public boolean insert(Discente discente) throws SQLException {
-                Connection con =  (Connection) ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
 
-                PreparedStatement stmt = null;
-		try {
+        try {
+            
+            String sql = "INSERT INTO discente_tb(matricula, curso, name, email, permissao) VALUES(?,?,?,?,?)";
 
-			String sql = "INSERT INTO discente_tb ("
-					+ " matricula, "
-					+ " curso,"
-					+ " sala,"
-					+ " turma,"
-					+ " pessoa_matricula)"
-					+ " VALUES (?,?,?,?,?)";
-			
-		
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setInt(1, discente.getMatricula());
+            stmt.setString(2, discente.getCurso());
+            stmt.setString(3, discente.getName());
+            stmt.setString(4, discente.getEmail());
+            stmt.setString(5, discente.getPermissao());
 
-			stmt.setInt(1, discente.getMatricula());	
-			stmt.setString(2, discente.getCurso());
-			stmt.setString(3, discente.getSala());
-			stmt.setString(4, discente.getTurma());
-			stmt.setInt(5, discente.getMatricula());
-			
-			stmt.execute();
+            stmt.execute();
 
-		} catch (SQLException e) {
+        } catch (SQLException e) {
 
-			System.out.println(e);
+            System.out.println(e);
 
-		} finally {
+        } finally {
 
-			ConnectionFactory.closeConnection(con , stmt);   
-		}
+            ConnectionFactory.closeConnection(con, stmt);
+        }
 
-		return true;
+        return true;
 
-	}
+    }
 
+    public Discente getById(Integer pk) throws SQLException {
 
-	public Discente getById(Integer pk) throws SQLException {
+        Discente discente = null;
 
-		Discente discente = null;
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-		Connection con = (Connection) ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
 
-                PreparedStatement stmt = null;
+        ResultSet rs = null;
 
-		ResultSet rs = null;
+        try {
 
-		try {
+            String sql = "SELECT discente.matricula,"
+                    + " discente.curso,"
+                    + " discente.name,"
+                    + " discente.email,"
+                    + " discente.permissao"
+                    + " FROM discente_tb AS discente"
+                    + " WHERE discente.m = "
+                    + pk;
 
-			String sql = "SELECT discente.matricula,"
-					+ " discente.curso,"
-					+ " discente.sala,"
-					+ " discente.turma"
-					+ " FROM discente_tb AS discente"
-					+ " WHERE discente.m = " 
-					+ pk;
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
+            rs = stmt.executeQuery(sql);
 
-			rs = stmt.executeQuery(sql);
+            List<Discente> discentes = convertToList(rs);
 
-			List<Discente> discentes = convertToList(rs);
+            if (!discentes.isEmpty()) {
+                discente = discentes.get(0);
+            }
 
-			if (!discentes.isEmpty())
-				discente = discentes.get(0);
+        } catch (SQLException sqle) {
 
-		} catch (SQLException sqle) {
+            throw sqle;
 
-			throw sqle;
+        } finally {
 
-		} finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
 
-			ConnectionFactory.closeConnection(con , stmt);   
-		}
+        return discente;
+    }
 
-		return discente;
-	}
+    private List<Discente> convertToList(ResultSet rs) throws SQLException {
 
-	private List<Discente> convertToList(ResultSet rs) throws SQLException {
+        List<Discente> discentes = new ArrayList<Discente>();
 
-		List<Discente> discentes = new ArrayList<Discente>();
+        try {
 
-		try {
+            while (rs.next()) {
 
-			while (rs.next()) {
+                // Pessoa
+                Discente discente = new Discente();
 
-				// Pessoa
-				Discente discente = new Discente();
+                discente.setMatricula(rs.getInt("discente.matricula"));
+                discente.setCurso(rs.getString("discente.curso"));
+                discente.setEmail(rs.getString("discente.email"));
+                discente.setPermissao("discente.permissao");
+                discente.setName(rs.getString("discente.name"));
 
-				discente.setMatricula(rs.getInt("discente.Matricula"));
-				discente.setCurso(rs.getString("discente.Curso"));
-				discente.setSala(rs.getString("	discente.Sala"));
-				discente.setTurma(rs.getString("discente.Turma"));
-				
-				discentes.add(discente);
-			}
+                discentes.add(discente);
+            }
 
-		} catch (SQLException sqle) {
+        } catch (SQLException sqle) {
 
-			throw sqle;
-		}
+            throw sqle;
+        }
 
-		return discentes;
-	}
+        return discentes;
+    }
 
+    public boolean delete(Integer pk) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-	public boolean delete(Integer pk) throws SQLException {
-                Connection con = (Connection) ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
 
-                PreparedStatement stmt = null;
+        try {
 
-		try {
+            String sql = "DELETE FROM discente_tb"
+                    + " WHERE matricula = "
+                    + pk;
 
-			String sql = "DELETE FROM discente_tb"
-					+ " WHERE matricula = "
-					+ pk;
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.execute();
 
-			stmt.execute();
+        } catch (SQLException e) {
 
-		} catch (SQLException e) {
+            throw new RuntimeException(e);
 
-			throw new RuntimeException(e);
+        } finally {
 
-		} finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
 
-			ConnectionFactory.closeConnection(con , stmt);   
-		}
+        return true;
+    }
 
-		return true;
-	}
+    public void update(Discente discente) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
+        PreparedStatement stmt = null;
+        try {
 
-	public void update(Discente discente) throws SQLException {
-		Connection con = (Connection) ConnectionFactory.getConnection();
+            String sql = "UPDATE discente_tb"
+                    + " SET matricula=?, curso=?"
+                    + " WHERE matricula=?";
 
-                PreparedStatement stmt = null;		
-		try {
-			
-			String sql = "UPDATE discente_tb"
-					+ " SET matricula=?, curso=?, sala=?, turma=?"
-					+ " WHERE matricula=?";
-			
-	          stmt = (PreparedStatement) con.prepareStatement(sql);
-	         
-	         stmt.setLong(1, discente.getMatricula());
-	         stmt.setString(2, discente.getCurso());
-	         stmt.setString(3, discente.getSala());
-	         stmt.setString(4, discente.getTurma());
-	         stmt.setLong(5, discente.getMatricula());
-	         
-	         stmt.execute();
-	         
-	         }catch (SQLException e) {
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-	 			System.out.println(e);
+            stmt.setLong(1, discente.getMatricula());
+            stmt.setString(2, discente.getCurso());
+            stmt.setLong(3, discente.getMatricula());
 
-	 		} finally {
+            stmt.execute();
 
-	 			ConnectionFactory.closeConnection(con , stmt);   
-	 		}
+        } catch (SQLException e) {
 
-	}
-	
-	public List<Discente> getAll() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+            System.out.println(e);
 
+        } finally {
 
-	public List<Discente> find(Discente entity) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+            ConnectionFactory.closeConnection(con, stmt);
+        }
 
+    }
 
+    public List<Discente> getAll() throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public List<Discente> find(Discente entity) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

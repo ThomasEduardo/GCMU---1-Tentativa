@@ -1,76 +1,98 @@
-
 package GCMU.classes;
 
-import java.sql.SQLException;
-
-import GCMU.DataBase.DocenteDAO;
-
 /**
- * 
- * @author GCMU
- * Essa classe representa um docente que autorizado pelo administrador podera pegar chaves ou materiais
+ *
+ * @author GCMU Essa classe representa um docente que autorizado pelo
+ * administrador podera pegar chaves ou materiais
  */
-public class Docente extends Pessoa {
-	private String cargo;
-	private String area;
-	private String turno;
-	private int suap;
+public class Docente {
 
-	public Docente(String cargo, String area, int suap, String turno, int matricula, String name, String email, int telefone, String cpf,String permissao) {
-		super( matricula,  name, email, telefone,permissao);
-		this.cargo = cargo;
-		this.area = area;
-		this.turno = turno;
-		this.suap = suap;
-	}
-	
+    private String cargo;
+    private int suap;
+    private String name;
+    private String email;
+    private String permissao;
 
-	public Docente(){}
+    public Docente(String cargo, int suap, String name, String email, String permissao) {
 
-	public String getCargo() {
-		return cargo;
-	}
+        this.cargo = cargo;
+        this.suap = suap;
+        this.name = name;
+        this.email = email;
+        this.permissao = permissao;
+    }
 
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
-	}
+    public Docente() {
+    }
 
-	public String getArea() {
-		return area;
-	}
+    /**
+     * @return the cargo
+     */
+    public String getCargo() {
+        return cargo;
+    }
 
-	public void setArea(String area) {
-		this.area = area;
-	}
+    /**
+     * @param cargo the cargo to set
+     */
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 
-	public String getTurno() {
-		return turno;
-	}
+    /**
+     * @return the suap
+     */
+    public int getSuap() {
+        return suap;
+    }
 
-	public void setTurno(String turno) {
-		this.turno = turno;
-	}
-	
-	public int getSuap() {
-		return suap;
-	}
+    /**
+     * @param suap the suap to set
+     */
+    public void setSuap(int suap) {
+        this.suap = suap;
+    }
 
-	public void setSuap1(int suap) {
-		this.suap = suap;
-	}
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
 
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setSuap(int parseInt) {
-		// TODO Auto-generated method stub
-		
-	}
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
 
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setIdPessoa(Object insert) {
-		// TODO Auto-generated method stub
-		
-	}
+    /**
+     * @return the permissao
+     */
+    public String getPermissao() {
+        return permissao;
+    }
 
+    /**
+     * @param permissao the permissao to set
+     */
+    public void setPermissao(String permissao) {
+        this.permissao = permissao;
+    }
 
-	
 }
