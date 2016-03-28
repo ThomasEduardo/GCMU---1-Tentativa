@@ -455,7 +455,7 @@ ConnectionFactory.closeConnection(con , stmt);
 	
 
 
-	public boolean delete(Integer pk) throws SQLException {
+	public boolean delete(Chaves c) throws SQLException {
                 Connection con = (Connection) ConnectionFactory.getConnection();
                
 		PreparedStatement stmt = null;
@@ -463,13 +463,12 @@ ConnectionFactory.closeConnection(con , stmt);
 		try {
 
 			String sql = "DELETE FROM chaves_tb"
-					+ " WHERE idChave = "
-					+ pk;
+					+ " WHERE idChave = ? ";
 
 			stmt = (PreparedStatement) con.prepareStatement(sql);
-
+                        stmt.setInt(1, c.getId());
 			stmt.execute();
-
+                        JOptionPane.showMessageDialog(null, "Removido!");
 		} catch (SQLException e) {
 
 			throw new RuntimeException(e);

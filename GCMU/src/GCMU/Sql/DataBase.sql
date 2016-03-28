@@ -2,13 +2,21 @@ CREATE TABLE pessoa_tb (
 matricula INT UNSIGNED PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
 email VARCHAR(30),
-telefone INT(30)
+telefone INT(30),
+permissao VARCHAR(30)
+);
+
+CREATE TABLE administrador_tb(
+siap INT(30) PRIMARY KEY,
+pessoa_matricula INT UNSIGNED,
+CONSTRAINT fk_administrador_pessoa FOREIGN KEY 
+(pessoa_matricula) REFERENCES pessoa_tb(matricula)
 );
 
 CREATE TABLE discente_tb (
 matricula VARCHAR (20)PRIMARY KEY,    
 curso VARCHAR(30),
-sala INT(10),
+sala VARCHAR(10),
 turma VARCHAR(10),
 pessoa_matricula INT UNSIGNED,
 CONSTRAINT fk_dicente_pessoa FOREIGN KEY 
@@ -96,32 +104,32 @@ telefone VARCHAR(30)
 );
 
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
-VALUES('444444-4','1234','Jao', 'jaorock3000@gmail.com','9965');
+INSERT INTO pessoa_tb( matricula, name, email, telefone, permissao)
+VALUES('1234','Jao', 'jaorock3000@gmail.com','9965', 'todos');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
-VALUES('555555-5','54788','Robervaldo', 'robervaldoroc@gmail.com','995778');
+INSERT INTO pessoa_tb( matricula, name, email, telefone,permissao)
+VALUES('54788','Robervaldo', 'robervaldoroc@gmail.com','995778','todos');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email,telefone)
-VALUES('666666-6','54778','Maria', 'mariarock@gmail.com','9956578'); 
+INSERT INTO pessoa_tb( matricula, name, email,telefone,permissao)
+VALUES('54778','Maria', 'mariarock@gmail.com','9956578','todos'); 
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
-VALUES('1444444-4','2234','Jjao', 'jjaorock3000@gmail.com','9965');
+INSERT INTO pessoa_tb( matricula, name, email, telefone, permissao)
+VALUES('2234','Jjao', 'jjaorock3000@gmail.com','9965','todos');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
-VALUES('255555-5','34788','Rrobervaldo', 'rrobervaldorock@gmail.com','995778');
+INSERT INTO pessoa_tb( matricula, name, email, telefone, permissao)
+VALUES('34788','Rrobervaldo', 'rrobervaldorock@gmail.com','995778','todos');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
-VALUES('366666-6','44778','aaria', 'mariarock@gmail.com','9956578'); 
+INSERT INTO pessoa_tb(matricula, name, email, telefone, permissao)
+VALUES('44778','aaria', 'mariarock@gmail.com','9956578','todos'); 
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
-VALUES('54444444-4','51234','jjJao', 'jjjaorock3000@gmail.com','9965');
+INSERT INTO pessoa_tb( matricula, name, email, telefone, permissao)
+VALUES('51234','jjJao', 'jjjaorock3000@gmail.com','9965','todos');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
-VALUES('6555555-5','654788','rrRobervaldo', 'rrrobervaldoroc@gmail.com','995778');
+INSERT INTO pessoa_tb( matricula, name, email, telefone,permissao)
+VALUES('654788','rrRobervaldo', 'rrrobervaldoroc@gmail.com','995778','todos');
 
-INSERT INTO pessoa_tb(cpf, matricula, name, email, telefone)
-VALUES('7666666-6','754778','mmmMaria', 'mmmariarock@gmail.com','9956578'); 
+INSERT INTO pessoa_tb( matricula, name, email, telefone, permissao)
+VALUES('754778','mmmMaria', 'mmmariarock@gmail.com','9956578','todos'); 
 
 INSERT INTO administrador_tb (SIAP, pessoa_matricula)
 VALUES('58475','1234');
@@ -133,13 +141,13 @@ INSERT INTO administrador_tb (SIAP, pessoa_matricula)
 VALUES('58175','54778');
 
 INSERT INTO discente_tb(matricula, sala, curso, turma,pessoa_matricula)
-VALUES('2234','01','Informática','A','2234');
+VALUES('2234','kjk','Informática','A','2234');
 
 INSERT INTO discente_tb(matricula,sala, curso, turma,pessoa_matricula) 
-VALUES('34788','02','quimica','B', '34788');
+VALUES('34788','dgf','quimica','B', '34788');
 
 INSERT INTO discente_tb(matricula,sala, curso, turma, pessoa_matricula)
-VALUES('44778','03','Informática','C', '44778');
+VALUES('44778','fg','Informática','C', '44778');
 
 INSERT INTO docente_tb (siap, cargo ,area, turno, pessoa_matricula)
 VALUES('1222','tecnico', 'informatica','manha', '51234');
@@ -176,8 +184,6 @@ VALUES('celular','perdido','com a tela quebrada','quadra', 'SAMSUMG');
 
 INSERT INTO utensilios_tb(tipo,status,observacao,locall, marca)
 VALUES('pendrive','perdido','com a tela quebrada','sala de aula','THOMASIL');
-
-
 
 INSERT INTO Pessoa_Reserva_Chaves_tb(data,horaPedido, horaDevolucao, matricula, idChave)
 VALUES('2018-03-20','10:01:00','11:01:00','1234','01'); 
@@ -221,8 +227,6 @@ SELECT  status
 FROM materiais_tb
 WHERE nomeSala = 'BD'
 OR numeroSala = '13';
-
-
 
 SELECT  marca
 FROM utensilios_tb
@@ -347,3 +351,4 @@ inner join pessoa_tb P
 on P.matricula = D.matricula and D.data =  '2017-01-25'
 inner join materiais_tb M
 on M.idMaterial = D.idMaterial;
+

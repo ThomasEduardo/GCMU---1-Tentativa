@@ -42,10 +42,10 @@ public class ConnectionFactory {
             
  
             } catch (SQLException ex) {
-               throw new RuntimeException("Erro na conexão: ",ex);
+               throw new RuntimeException("Erro na conexão1: ",ex);
             }
         } catch (ClassNotFoundException ex) {
-           throw new RuntimeException("Erro na conexão: ",ex);
+           throw new RuntimeException("Erro na conexão2: ",ex);
         }
     }
     

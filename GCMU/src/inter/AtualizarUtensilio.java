@@ -7,17 +7,20 @@ package inter;
 
 import GCMU.DataBase.UtensiliosDAO;
 import GCMU.classes.Utensilios;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author ClelioJr
  */
-public class UiCadastroUtensilios extends javax.swing.JFrame {
+public class AtualizarUtensilio extends javax.swing.JFrame {
 
     /**
-     * Creates new form UiCadastroUtensilios
+     * Creates new form AtulizarUtensilio
      */
-    public UiCadastroUtensilios() {
+    public AtualizarUtensilio() {
         initComponents();
     }
 
@@ -41,6 +44,8 @@ public class UiCadastroUtensilios extends javax.swing.JFrame {
         TextLocal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         TextMarca = new javax.swing.JTextField();
+        TextID = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,9 +60,9 @@ public class UiCadastroUtensilios extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel3.setText("Cadastro Utensilio");
+        jLabel3.setText("Alterar Utensilio");
 
-        jButton1.setText("Cadastrar");
+        jButton1.setText("Alterar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -88,6 +93,14 @@ public class UiCadastroUtensilios extends javax.swing.JFrame {
             }
         });
 
+        TextID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextIDActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("ID do Utensilio");
+
         javax.swing.GroupLayout AddPessoaLayout = new javax.swing.GroupLayout(AddPessoa);
         AddPessoa.setLayout(AddPessoaLayout);
         AddPessoaLayout.setHorizontalGroup(
@@ -95,6 +108,12 @@ public class UiCadastroUtensilios extends javax.swing.JFrame {
             .addGroup(AddPessoaLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(AddPessoaLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TextID, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddPessoaLayout.createSequentialGroup()
                             .addGap(48, 48, 48)
@@ -106,16 +125,12 @@ public class UiCadastroUtensilios extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(21, 21, 21)
                         .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TextObs, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                             .addComponent(TextLocal)
                             .addComponent(TextMarca))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddPessoaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         AddPessoaLayout.setVerticalGroup(
             AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,9 +153,14 @@ public class UiCadastroUtensilios extends javax.swing.JFrame {
                 .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(TextMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(TextID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,7 +194,12 @@ public class UiCadastroUtensilios extends javax.swing.JFrame {
         u.setTipo(TextTipo.getText());
         u.setLocall(TextLocal.getText());
         u.setMarca(TextMarca.getText());
-        DAO.insert(u);
+        u.setId(Integer.parseInt(TextID.getText()));
+        try {
+            DAO.update(u);
+        } catch (SQLException ex) {
+            Logger.getLogger(AtualizarUtensilio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TextObsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextObsActionPerformed
@@ -188,6 +213,10 @@ public class UiCadastroUtensilios extends javax.swing.JFrame {
     private void TextMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextMarcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextMarcaActionPerformed
+
+    private void TextIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,26 +235,28 @@ public class UiCadastroUtensilios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UiCadastroUtensilios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizarUtensilio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UiCadastroUtensilios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizarUtensilio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UiCadastroUtensilios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizarUtensilio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UiCadastroUtensilios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizarUtensilio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UiCadastroUtensilios().setVisible(true);
+                new AtualizarUtensilio().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddPessoa;
+    private javax.swing.JTextField TextID;
     private javax.swing.JTextField TextLocal;
     private javax.swing.JTextField TextMarca;
     private javax.swing.JTextField TextObs;
@@ -236,5 +267,6 @@ public class UiCadastroUtensilios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

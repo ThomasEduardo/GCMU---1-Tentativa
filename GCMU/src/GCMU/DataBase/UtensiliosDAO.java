@@ -53,7 +53,7 @@ public class UtensiliosDAO {
 	}
 	
 	
-	public boolean delete(Integer pk) throws SQLException {
+	public boolean delete(Utensilios u) throws SQLException {
 
  		Connection con = ConnectionFactory.getConnection();
 
@@ -62,16 +62,16 @@ public class UtensiliosDAO {
 		try {
 
 			String sql = "DELETE FROM utensilios_tb"
-					+ " WHERE id = "
-					+ pk;
+					+ " WHERE id = ?";
+
 
 			stmt = (PreparedStatement) con.prepareStatement(sql);
-
+                        stmt.setInt(1, u.getId());
 			stmt.execute();
-
+                        JOptionPane.showMessageDialog(null, "Deletado!");
 		} catch (SQLException e) {
 
-			throw new RuntimeException(e);
+			JOptionPane.showMessageDialog(null, e);
 
 		} finally{
 
@@ -88,20 +88,20 @@ public class UtensiliosDAO {
 		try {
 
 			String sql = "UPDATE utensilios_tb"
-					+ " SET tipo=?, observavao=?, marca=?, tipo=?"
+					+ " SET tipo=?, locall =?, observacao=?, marca=?"
 					+ " WHERE id=?";
 
                          stmt = (PreparedStatement) con.prepareStatement(sql);
 
 			stmt.setString(1, utensilios.getTipo());
-
-			stmt.setString(2, utensilios.getObservacao());
-			stmt.setString(3, utensilios.getMarca());
-			stmt.setString(4, utensilios.getTipo());
+                        stmt.setString(2, utensilios.getLocall());
+			stmt.setString(3, utensilios.getObservacao());
+			stmt.setString(4, utensilios.getMarca());
+			
 			stmt.setLong(5, utensilios.getId());
 
 			stmt.execute();
-
+                        JOptionPane.showMessageDialog(null, "Alterado!");
 		}catch (SQLException e) {
 
 			System.out.println(e);

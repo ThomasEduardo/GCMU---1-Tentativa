@@ -1,4 +1,4 @@
-package GCMU.DataBase;
+package GCMU.Database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +15,7 @@ public class MateriaisDAO{
 
 public boolean insert(Materiais materiais) throws SQLException {
 
-		Connection con = (Connection) ConnectionFactory.getConnection();
+		Connection con =  (Connection) ConnectionFactory.getConnection();
 
                 PreparedStatement stmt = null;
 
@@ -31,7 +31,7 @@ public boolean insert(Materiais materiais) throws SQLException {
 			stmt.setInt(4, materiais.getNumeroSala());
 			stmt.setString(5, materiais.getNomeSala());
 			
-			stmt.execute();
+			stmt.executeUpdate();
 
                         JOptionPane.showMessageDialog(null, "Salvo!");
 
@@ -118,7 +118,7 @@ public boolean insert(Materiais materiais) throws SQLException {
 		return materiais;
 	}
 	
-	public boolean delete(Integer pk) throws SQLException {
+	public boolean delete(Materiais mm) throws SQLException {
 
  		Connection con = (Connection) ConnectionFactory.getConnection();
 
@@ -127,17 +127,17 @@ public boolean insert(Materiais materiais) throws SQLException {
 		try {
 
 			String sql = "DELETE FROM materiais_tb"
-					+ " WHERE id = "
-					+ pk;
-
+					+ " WHERE idMaterial = ?";
+					
+                        
 			stmt = (PreparedStatement) con.prepareStatement(sql);
-
+                           stmt.setInt(1, mm.getId());
 			stmt.execute();
-
+                        JOptionPane.showMessageDialog(null, "Removido!");
 		} catch (SQLException e) {
 
-			throw new RuntimeException(e);
-
+			
+                        JOptionPane.showMessageDialog(null, "Erro!"+e);
 		} finally{
 
 			ConnectionFactory.closeConnection(con , stmt);    
@@ -153,17 +153,17 @@ public boolean insert(Materiais materiais) throws SQLException {
 		try {
 
 			String sql = "UPDATE materiais_tb"
-					+ " SET tipo=?, status=?, observavao=?, numeroSala=?, nomeSala=?"
+					+ " SET tipo=?, observavao=?, numeroSala=?, nomeSala=?"
 					+ " WHERE id=?";
 
 			stmt = (PreparedStatement) con.prepareStatement(sql);
 
 			stmt.setString(1, materiais.getTipo());
-			stmt.setString(2, materiais.getStatus());
-			stmt.setString(3, materiais.getObservacao());
-			stmt.setLong(4, materiais.getNumeroSala());
-			stmt.setString(5, materiais.getNomeSala());
-			stmt.setLong(6, materiais.getId());
+			
+			stmt.setString(2, materiais.getObservacao());
+			stmt.setLong(3, materiais.getNumeroSala());
+			stmt.setString(4, materiais.getNomeSala());
+			stmt.setLong(5, materiais.getId());
 
 			stmt.execute();
 

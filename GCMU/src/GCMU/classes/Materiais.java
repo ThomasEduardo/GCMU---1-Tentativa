@@ -13,19 +13,7 @@ public class Materiais {
 	private int numeroSala;
 	private String nomeSala;
 
-	public Materiais( int id, String tipo, String status, String observacao, int numeroSala, String nomeSala) {
-
 	
-		this.tipo = tipo;
-		this.status = status;
-		this.observacao = observacao;
-		this.id = id;
-		this.numeroSala = numeroSala;
-		this.nomeSala = nomeSala;
-	}
-
-	public Materiais(){}
-
 	public int getId() {
 		return id;
 	}
