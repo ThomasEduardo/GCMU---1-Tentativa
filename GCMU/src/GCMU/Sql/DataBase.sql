@@ -2,15 +2,7 @@ CREATE TABLE pessoa_tb (
 matricula INT UNSIGNED PRIMARY KEY,
 name VARCHAR(30) NOT NULL,
 email VARCHAR(30),
-telefone INT(30),
-cpf VARCHAR(14)
-);
-
-CREATE TABLE administrador_tb(
-siap INT(30) PRIMARY KEY,
-pessoa_matricula INT UNSIGNED,
-CONSTRAINT fk_administrador_pessoa FOREIGN KEY 
-(pessoa_matricula) REFERENCES pessoa_tb(matricula)
+telefone INT(30)
 );
 
 CREATE TABLE discente_tb (

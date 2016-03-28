@@ -9,6 +9,8 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Chaves;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ChavesDAO {
@@ -42,6 +44,38 @@ public class ChavesDAO {
 
 	}
 
+        private List<Chaves> read(){
+                Connection con = (Connection) ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+                List<Chaves> chaves = new ArrayList<Chaves>();
+               
+            try {
+                 String sql = "SELECT * FROM chaves_tb";
+                 
+                stmt = con.prepareStatement(sql);
+                rs = stmt.executeQuery();
+                
+                
+                while(rs.next()){
+                    Chaves cha = new Chaves();
+                    cha.setId(rs.getInt("idChave"));
+                    cha.setNumeroSala(rs.getInt("numeroSala"));
+                    cha.setNomeSala(rs.getString("nomeSala"));
+                    cha.setStatus(rs.getString("status"));
+                    chaves.add(cha);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ChavesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }finally{
+                    ConnectionFactory.closeConnection(con, stmt, rs);
+            }
+            
+            return chaves;
+            
+        }
+        
 	public Chaves queryStatus(Integer number, String sala) throws SQLException {
                 Connection con = (Connection) ConnectionFactory.getConnection();
 		Chaves chaves = null;
@@ -92,7 +126,7 @@ public class ChavesDAO {
 				Chaves chaves = new Chaves();
 
 				chaves.setStatus(rs.getString("chaves.status"));
-				chaves.setObservacao(rs.getString("chaves.observacao"));
+				
 
 				chavess.add(chaves);
 			}
@@ -159,8 +193,7 @@ public class ChavesDAO {
 				chaves.setId(rs.getInt("chaves.idChave"));
 				chaves.setNumeroSala(rs.getInt("chaves.numeroSala"));
 				chaves.setNomeSala(rs.getString("chaves.nomeSala"));
-				chaves.setObservacao(rs.getString("chaves.observacao"));
-
+				
 				chavess.add(chaves);
 			}
 
@@ -455,22 +488,22 @@ ConnectionFactory.closeConnection(con , stmt);
 		try {
 
 			String sql = "UPDATE chaves_tb"
-					+ " SET idChave=?, numeroSala=?, nomeSala=?, observacao=?"
-					+ " WHERE id=?";
+					+ " SET numeroSala=?, nomeSala=?"
+					+ " WHERE idChave=?";
 
 			stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			stmt.setLong(1, chaves.getId());
-			stmt.setInt(2, chaves.getNumeroSala());
-			stmt.setString(3, chaves.getNomeSala());
-			stmt.setString(4, chaves.getObservacao());
-			stmt.setLong(5, chaves.getId());
+			
+			stmt.setInt(1, chaves.getNumeroSala());
+			stmt.setString(2, chaves.getNomeSala());
+			
+			stmt.setLong(3, chaves.getId());
 
 			stmt.execute();
-
+                        JOptionPane.showMessageDialog(null, "Alterado!");
 		}catch (SQLException e) {
 
-			System.out.println(e);
+			JOptionPane.showMessageDialog(null,e);
 
 		} finally {
                     

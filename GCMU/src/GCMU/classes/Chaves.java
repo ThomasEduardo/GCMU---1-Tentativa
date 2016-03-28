@@ -14,7 +14,6 @@ public class Chaves {
 
 	private int numeroSala;
 	private String nomeSala;
-	private String observacao;
 	private int id;
 	private String status;
 	
@@ -27,17 +26,8 @@ public class Chaves {
 		this.status = status;
 	}
 
-	public Chaves(int numeroSala, int id, String nomeSala, String observacao) {
 
-		this.numeroSala = numeroSala;
-		this.nomeSala = nomeSala;
-		this.observacao = observacao;
-		this.id = id;
 
-	}
-	
-	public Chaves(){}
-	
 	public int getId() {
 		return id;
 	}
@@ -46,13 +36,6 @@ public class Chaves {
 		this.id = id;
 	}
 
-	public String getObservacao() {
-		return observacao;
-	}
-
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
-	}
 
 	public int getNumeroSala() {
 
