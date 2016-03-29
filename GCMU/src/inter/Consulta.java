@@ -5,6 +5,10 @@
  */
 package inter;
 
+import GCMU.DataBase.ChavesDAO;
+import GCMU.classes.Chaves;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Thomas
@@ -36,7 +40,7 @@ public class Consulta extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
@@ -47,6 +51,11 @@ public class Consulta extends javax.swing.JFrame {
         jLabel1.setText("O que deseja Consultar?");
 
         jButton1.setText("Chave");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Material");
 
@@ -59,17 +68,30 @@ public class Consulta extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
                 "ID", "Numero Sala", "Nome Sala", "Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabela);
 
         jButton4.setText("Atualizar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,6 +160,24 @@ public class Consulta extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btVoltarActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       DefaultTableModel model = (DefaultTableModel)tabela.getModel();
+       model.setNumRows(0);
+       ChavesDAO chave = new ChavesDAO();
+       for(Chaves c: chave.read()){
+           model.addRow(new Object[]{
+           c.getId(),
+           c.getNomeSala(),
+           c.getNumeroSala(),
+           c.getStatus()
+       });
+       }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -184,6 +224,6 @@ public class Consulta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }

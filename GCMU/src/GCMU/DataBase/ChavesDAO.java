@@ -44,7 +44,7 @@ public class ChavesDAO {
 
 	}
 
-        private List<Chaves> read(){
+        public List<Chaves> read(){
                 Connection con = (Connection) ConnectionFactory.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
