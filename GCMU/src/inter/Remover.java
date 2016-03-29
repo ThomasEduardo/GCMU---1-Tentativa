@@ -7,7 +7,7 @@ package inter;
 
 import GCMU.DataBase.ChavesDAO;
 import GCMU.DataBase.UtensiliosDAO;
-import GCMU.Database.MateriaisDAO;
+import GCMU.DataBase.MateriaisDAO;
 import GCMU.classes.Chaves;
 import GCMU.classes.Materiais;
 import GCMU.classes.Utensilios;

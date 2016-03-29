@@ -5,7 +5,7 @@
  */
 package inter;
 
-import GCMU.Database.MateriaisDAO;
+import GCMU.DataBase.MateriaisDAO;
 import GCMU.classes.Materiais;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -196,7 +196,7 @@ public class CadastroMaterial extends javax.swing.JFrame {
         m.setStatus("LIVRE");
         try {
             DAO.insert(m);
-            JOptionPane.showMessageDialog(null, "Ok!");
+            
         } catch (SQLException ex) {
             Logger.getLogger(CadastroMaterial.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -345,7 +345,7 @@ inner join chaves_tb C
 on C.idChave= A.idChave;
 
 
- SELECT P.matricula, M.tipo, M.nomeSala, M.numeroSala, D.horaPedido 
+SELECT P.matricula, M.tipo, M.nomeSala, M.numeroSala, D.horaPedido 
 FROM Pessoa_Reserva_Materiais_tb D
 inner join pessoa_tb P
 on P.matricula = D.matricula and D.data =  '2017-01-25'

@@ -62,7 +62,7 @@ public class UtensiliosDAO {
                 List<Utensilios> uten = new ArrayList<Utensilios>();
                
             try {
-                 String sql = "SELECT * FROM chaves_tb";
+                 String sql = "SELECT * FROM utensilios_tb";
                  
                 stmt = con.prepareStatement(sql);
                 rs = stmt.executeQuery();
@@ -70,10 +70,11 @@ public class UtensiliosDAO {
                 
                 while(rs.next()){
                     Utensilios u = new Utensilios();
-                    u.setId(rs.getInt("idMaterial"));
+                    u.setId(rs.getInt("id"));
                     u.setLocall(rs.getString("locall"));
                     u.setMarca(rs.getString("marca"));
                     u.setTipo(rs.getString("tipo"));
+                    u.setObservacao(rs.getString("observacao"));
                     uten.add(u);
                 }
                 

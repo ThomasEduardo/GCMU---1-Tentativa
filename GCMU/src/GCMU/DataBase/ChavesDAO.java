@@ -9,521 +9,609 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Chaves;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ChavesDAO {
 
-	public boolean insert(Chaves chaves) {
-                Connection con = (Connection) ConnectionFactory.getConnection();
-                PreparedStatement stmt = null;
-		try {	
+    public boolean insert(Chaves chaves) {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
 
-			String sql = "INSERT INTO chaves_tb(numeroSala, nomeSala, status) VALUES(?,?,?)";
+            String sql = "INSERT INTO chaves_tb(numeroSala, nomeSala, status) VALUES(?,?,?)";
 
-			stmt = con.prepareStatement(sql);
+            stmt = con.prepareStatement(sql);
 
-				
-			stmt.setInt(1, chaves.getNumeroSala());
-			stmt.setString(2, chaves.getNomeSala());
-			stmt.setString(3, chaves.getStatus());
+            stmt.setInt(1, chaves.getNumeroSala());
+            stmt.setString(2, chaves.getNomeSala());
+            stmt.setString(3, chaves.getStatus());
 
-			stmt.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "Salvo!");
-		} catch (SQLException e) {
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Salvo!");
+        } catch (SQLException e) {
 
-			JOptionPane.showMessageDialog(null, "ERRO"+e);
+            JOptionPane.showMessageDialog(null, "ERRO" + e);
 
-		} finally {
+        } finally {
 
-			ConnectionFactory.closeConnection(con , stmt);      
-		}
-
-		return true;
-
-	}
-
-        public List<Chaves> read(){
-                Connection con = (Connection) ConnectionFactory.getConnection();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-                List<Chaves> chaves = new ArrayList<Chaves>();
-               
-            try {
-                 String sql = "SELECT * FROM chaves_tb";
-                 
-                stmt = con.prepareStatement(sql);
-                rs = stmt.executeQuery();
-                
-                
-                while(rs.next()){
-                    Chaves cha = new Chaves();
-                    cha.setId(rs.getInt("idChave"));
-                    cha.setNumeroSala(rs.getInt("numeroSala"));
-                    cha.setNomeSala(rs.getString("nomeSala"));
-                    cha.setStatus(rs.getString("status"));
-                    chaves.add(cha);
-                }
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(ChavesDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }finally{
-                    ConnectionFactory.closeConnection(con, stmt, rs);
-            }
-            
-            return chaves;
-            
+            ConnectionFactory.closeConnection(con, stmt);
         }
-        
-	public Chaves queryStatus(Integer number, String sala) throws SQLException {
-                Connection con = (Connection) ConnectionFactory.getConnection();
-		Chaves chaves = null;
 
-		PreparedStatement stmt = null;
+        return true;
 
-		ResultSet rs = null;
+    }
 
-		try {
+    public List<Chaves> read() {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Chaves> chaves = new ArrayList<Chaves>();
 
-			String sql = "SELECT chaves.status,"
-					+ " chaves.observacao"
-					+" FROM chaves_tb AS chaves"
-					+" WHERE chaves.nomeSala =" + sala
-					+" OR chaves.numeroSala =" + number;
+        try {
 
+            String sql = "SELECT * FROM chaves_tb";
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
 
-			rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Chaves cha = new Chaves();
+                cha.setId(rs.getInt("idChave"));
+                cha.setNumeroSala(rs.getInt("numeroSala"));
+                cha.setNomeSala(rs.getString("nomeSala"));
+                cha.setStatus(rs.getString("status"));
+                chaves.add(cha);
+            }
 
-			List<Chaves> chavess = convertToListQueryStatus(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(ChavesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
 
-			if (!chavess.isEmpty())
-				chaves = chavess.get(0);
+        return chaves;
 
-		} catch (SQLException sqle) {
+    }
 
-			throw sqle;
+    public Chaves queryStatus(Integer number, String sala) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+        Chaves chaves = null;
 
-		} finally {
-                        ConnectionFactory.closeConnection(con , stmt);
-			
-		}
+        PreparedStatement stmt = null;
 
-		return chaves;
-	}
+        ResultSet rs = null;
 
-	private List<Chaves> convertToListQueryStatus(ResultSet rs) throws SQLException {
+        try {
 
-		List<Chaves> chavess = new ArrayList<Chaves>();
+            String sql = "SELECT chaves.status,"
+                    + " chaves.observacao"
+                    + " FROM chaves_tb AS chaves"
+                    + " WHERE chaves.nomeSala =" + sala
+                    + " OR chaves.numeroSala =" + number;
 
-		try {
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			while (rs.next()) {
+            rs = stmt.executeQuery(sql);
 
-				// Chaves
-				Chaves chaves = new Chaves();
+            List<Chaves> chavess = convertToList(rs);
 
-				chaves.setStatus(rs.getString("chaves.status"));
-				
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
 
-				chavess.add(chaves);
-			}
+        } catch (SQLException sqle) {
 
-		} catch (SQLException sqle) {
+            throw sqle;
 
-			throw sqle;
-		}
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
 
-		return chavess;
-	}
+        }
 
-	public Chaves getById(Integer pk) throws SQLException {
-                Connection con = (Connection) ConnectionFactory.getConnection();
-                
-		Chaves chaves = null;
+        return chaves;
+    }
 
-		PreparedStatement stmt = null;
+    public Chaves getById(Integer pk) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-		ResultSet rs = null;
+        Chaves chaves = null;
 
-		try {
+        PreparedStatement stmt = null;
 
-			String sql = "SELECT chaves.idChave,"
-					+ " chaves.numeroSala,"
-					+ " chaves.nomeSala,"
-					+ " chaves.obersevacao,"
-					+ " FROM chaves_tb AS chaves"
-					+ " WHERE chaves.idChave = " 
-					+ pk;
+        ResultSet rs = null;
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
+        try {
 
-			rs = stmt.executeQuery(sql);
+            String sql = "SELECT chaves.idChave,"
+                    + " chaves.numeroSala,"
+                    + " chaves.nomeSala,"
+                    + " chaves.status"
+                    + " FROM chaves_tb AS chaves"
+                    + " WHERE chaves.idChave = "
+                    + pk;
 
-			List<Chaves> chavess = convertToList(rs);
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			if (!chavess.isEmpty())
-				chaves = chavess.get(0);
+            rs = stmt.executeQuery(sql);
 
-		} catch (SQLException sqle) {
+            List<Chaves> chavess = convertToList(rs);
 
-			throw sqle;
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
 
-		} finally {
-                    ConnectionFactory.closeConnection(con , stmt);
-			
-		}
+        } catch (SQLException sqle) {
 
-		return chaves;
-	}
+            throw sqle;
 
-	private List<Chaves> convertToList(ResultSet rs) throws SQLException {
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
 
-		List<Chaves> chavess = new ArrayList<Chaves>();
+        }
 
-		try {
+        return chaves;
+    }
 
-			while (rs.next()) {
+    private List<Chaves> convertToList(ResultSet rs) throws SQLException {
 
-				// Chaves
-				Chaves chaves = new Chaves();
+        List<Chaves> chaves = new ArrayList<Chaves>();
 
-				chaves.setId(rs.getInt("chaves.idChave"));
-				chaves.setNumeroSala(rs.getInt("chaves.numeroSala"));
-				chaves.setNomeSala(rs.getString("chaves.nomeSala"));
-				
-				chavess.add(chaves);
-			}
+        try {
 
-		} catch (SQLException sqle) {
+            while (rs.next()) {
 
-			throw sqle;
-		}
+                // Chaves
+                Chaves chave = new Chaves();
 
-		return chavess;
-	}
+                chave.setId(rs.getInt("chaves.idChave"));
+                chave.setNumeroSala(rs.getInt("chaves.numeroSala"));
+                chave.setNomeSala(rs.getString("chaves.nomeSala"));
+                chave.setStatus(rs.getString("chaves.status"));
 
+                DocenteDAO docente = new DocenteDAO();
+                chave.setDocente(docente.getById(rs.getInt("docente.suap")));
 
-	public Chaves queryIdChave(String status) throws SQLException {
-                Connection con = (Connection) ConnectionFactory.getConnection();
-                
-		Chaves chaves = null;
+                DiscenteDAO discente = new DiscenteDAO();
+                chave.setDiscente(discente.getById(rs.getInt("discente.matricula")));
 
-		PreparedStatement stmt = null;
+                DiscenteReservaChaveDAO discenteReservaChaveDAO = new DiscenteReservaChaveDAO();
+                chave.setDiscenteReserva(discenteReservaChaveDAO.getById(rs.getInt("id")));
 
-		ResultSet rs = null;
+                DocenteReservaChaveDAO docenteReservaChaveDAO = new DocenteReservaChaveDAO();
+                chave.setDocenteReserva(docenteReservaChaveDAO.getById(rs.getInt("id")));
 
-		try {
+                chaves.add(chave);
+            }
 
-			String sql = "SELECT chaves.idChave"
-					+" FROM chaves_tb AS chaves"
-					+" WHERE chaves.status =" + status;
+        } catch (SQLException sqle) {
 
+            throw sqle;
+        }
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
+        return chaves;
+    }
 
-			rs = stmt.executeQuery(sql);
+    public Chaves queryIdChave(String status) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-			List<Chaves> chavess = convertToListQueryIdChave(rs);
+        Chaves chaves = null;
 
-			if (!chavess.isEmpty())
-				chaves = chavess.get(0);
+        PreparedStatement stmt = null;
 
-		} catch (SQLException sqle) {
+        ResultSet rs = null;
 
-			throw sqle;
+        try {
 
-		} finally {
-                        ConnectionFactory.closeConnection(con , stmt);
-			
-		}
+            String sql = "SELECT chaves.idChave"
+                    + " FROM chaves_tb AS chaves"
+                    + " WHERE chaves.status =" + status;
 
-		return chaves;
-	}
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-	private List<Chaves> convertToListQueryIdChave(ResultSet rs) throws SQLException {
+            rs = stmt.executeQuery(sql);
 
-		List<Chaves> chavess = new ArrayList<Chaves>();
+            List<Chaves> chavess = convertToList(rs);
 
-		try {
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
 
-			while (rs.next()) {
+        } catch (SQLException sqle) {
 
-				// Chaves
-				Chaves chaves = new Chaves();
+            throw sqle;
 
-				chaves.setId(rs.getInt("chaves.idChave"));
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
 
-				chavess.add(chaves);
-			}
+        }
 
-		} catch (SQLException sqle) {
+        return chaves;
+    }
 
-			throw sqle;
-		}
+    public Chaves queryNumeroNomeSala(Integer id) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-		return chavess;
-	}
+        Chaves chaves = null;
 
-	public Chaves queryNumeroNomeSala(Integer id) throws SQLException {
-                Connection con = (Connection) ConnectionFactory.getConnection();
-                
-		Chaves chaves = null;
+        PreparedStatement stmt = null;
 
-		PreparedStatement stmt = null;
+        ResultSet rs = null;
 
-		ResultSet rs = null;
+        try {
 
-		try {
+            String sql = "SELECT numeroSala,"
+                    + " nomeSala"
+                    + " FROM chaves_tb"
+                    + " WHERE idChave =" + id;
 
-			String sql = "SELECT numeroSala,"
-					+" nomeSala"
-					+" FROM chaves_tb"
-					+" WHERE idChave =" + id;
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
+            rs = stmt.executeQuery(sql);
 
-			rs = stmt.executeQuery(sql);
+            List<Chaves> chavess = convertToList(rs);
 
-			List<Chaves> chavess = convertToListQueryNumeroNomeSala(rs);
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
 
-			if (!chavess.isEmpty())
-				chaves = chavess.get(0);
+        } catch (SQLException sqle) {
 
-		} catch (SQLException sqle) {
+            throw sqle;
 
-			throw sqle;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
 
-		} finally {
-ConnectionFactory.closeConnection(con , stmt);
-			
-		}
+        }
 
-		return chaves;
-	}
+        return chaves;
+    }
 
-	private List<Chaves> convertToListQueryNumeroNomeSala(ResultSet rs) throws SQLException {
+    public Chaves queryStatusForNomeSala(String nomeSala) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-		List<Chaves> chavess = new ArrayList<Chaves>();
+        Chaves chaves = null;
 
-		try {
+        PreparedStatement stmt = null;
 
-			while (rs.next()) {
+        ResultSet rs = null;
 
-				// Chaves
-				Chaves chaves = new Chaves();
+        try {
 
-				chaves.setNomeSala(rs.getString("nomeSala"));
-				chaves.setNumeroSala(rs.getInt("numeroSala"));
+            String sql = "SELECT status"
+                    + " FROM chaves_tb"
+                    + " WHERE  nomeSala=" + nomeSala;
 
-				chavess.add(chaves);
-			}
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-		} catch (SQLException sqle) {
+            rs = stmt.executeQuery(sql);
 
-			throw sqle;
-		}
+            List<Chaves> chavess = convertToList(rs);
 
-		return chavess;
-	}
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
 
-	public Chaves queryStatusForNomeSala(String nomeSala) throws SQLException {
-                Connection con = (Connection) ConnectionFactory.getConnection();
-                
-		Chaves chaves = null;
+        } catch (SQLException sqle) {
 
-		PreparedStatement stmt = null;
+            throw sqle;
 
-		ResultSet rs = null;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
 
-		try {
+        }
 
-			String sql = "SELECT status"
-					+" FROM chaves_tb"
-					+" WHERE  nomeSala=" +nomeSala;
+        return chaves;
+    }
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
+    public Chaves queryDataNomeDocente(String status) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-			rs = stmt.executeQuery(sql);
+        Chaves chaves = null;
 
-			List<Chaves> chavess = convertToListQueryStatusForNomeSala(rs);
+        PreparedStatement stmt = null;
 
-			if (!chavess.isEmpty())
-				chaves = chavess.get(0);
+        ResultSet rs = null;
 
-		} catch (SQLException sqle) {
+        try {
 
-			throw sqle;
+            String sql = "SELECT R.data, D.name"
+                    + " FROM Docente_Reserva_Chaves_tb R"
+                    + " inner join docente_tb D"
+                    + " on D.suap = R.suap"
+                    + " inner join chaves_tb C"
+                    + " on C.idChave = R.idChave"
+                    + " AND C.status =" + status;
 
-		} finally {
-                        ConnectionFactory.closeConnection(con , stmt);
-			
-		}
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-		return chaves;
-	}
+            rs = stmt.executeQuery(sql);
 
-	private List<Chaves> convertToListQueryStatusForNomeSala(ResultSet rs) throws SQLException {
+            List<Chaves> chavess = convertToList(rs);
 
-		List<Chaves> chavess = new ArrayList<Chaves>();
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
 
-		try {
+        } catch (SQLException sqle) {
 
-			while (rs.next()) {
+            throw sqle;
 
-				// Chaves
-				Chaves chaves = new Chaves();
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
 
-				chaves.setStatus(rs.getString("status"));
+        }
 
-				chavess.add(chaves);
-			}
+        return chaves;
+    }
 
-		} catch (SQLException sqle) {
+    public Chaves queryDataNomeDiscente(String status) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-			throw sqle;
-		}
+        Chaves chaves = null;
 
-		return chavess;
-	}
-	
-	public Chaves queryDataNome(String status) throws SQLException {
-                Connection con = (Connection) ConnectionFactory.getConnection();
-                
-		Chaves chaves = null;
+        PreparedStatement stmt = null;
 
-		PreparedStatement stmt = null;
+        ResultSet rs = null;
 
-		ResultSet rs = null;
+        try {
 
-		try {
+            String sql = "SELECT R.data , P.name"
+                    + " FROM Discente_Reserva_Chaves_tb R"
+                    + " inner join discente_tb D"
+                    + " on D.matricula = R.matricula"
+                    + " inner join chaves_tb C"
+                    + " on C.idchave = R.idChave"
+                    + " AND C.status =" + status;
 
-			String sql = "SELECT R.data , P.name" 
-					+" FROM Pessoa_Reserva_Chaves_tb R"
-					+" inner join pessoa_tb P"
-					+" on P.matricula = R.matricula"
-					+" inner join chaves_tb C"
-					+" on C.idchave = R.idChave"
-					+" AND C.status =" + status;
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
+            rs = stmt.executeQuery(sql);
 
-			rs = stmt.executeQuery(sql);
+            List<Chaves> chavess = convertToList(rs);
 
-			List<Chaves> chavess = convertToListQueryDataNome(rs);
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
 
-			if (!chavess.isEmpty())
-				chaves = chavess.get(0);
+        } catch (SQLException sqle) {
 
-		} catch (SQLException sqle) {
+            throw sqle;
 
-			throw sqle;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
 
-		} finally {
-                        ConnectionFactory.closeConnection(con , stmt);
-			
-		}
+        }
 
-		return chaves;
-	}
-	
-	private List<Chaves> convertToListQueryDataNome(ResultSet rs) throws SQLException {
+        return chaves;
+    }
 
-		List<Chaves> chavess = new ArrayList<Chaves>();
+    public Chaves queryDataDadosDocente(Date data) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-		try {
+        Chaves chaves = null;
 
-			while (rs.next()) {
+        PreparedStatement stmt = null;
 
-				// Chaves
-				Chaves chaves = new Chaves();
+        ResultSet rs = null;
 
-				chaves.setStatus(rs.getString("status"));
+        try {
 
-				chavess.add(chaves);
-			}
+            String sql = "SELECT D.suap, C.numeroSala, C.nomeSala, A.horaPedido"
+                    + " FROM Docente_Reserva_Chaves_tb A"
+                    + " inner join docente_tb D"
+                    + " on D.suap = A.suap AND A.data =" + data
+                    + " inner join chaves_tb C"
+                    + " on C.idChave= A.idChave";
 
-		} catch (SQLException sqle) {
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			throw sqle;
-		}
+            rs = stmt.executeQuery(sql);
 
-		return chavess;
-	}
-	
+            List<Chaves> chavess = convertToList(rs);
 
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
 
-	public boolean delete(Chaves c) throws SQLException {
-                Connection con = (Connection) ConnectionFactory.getConnection();
-               
-		PreparedStatement stmt = null;
+        } catch (SQLException sqle) {
 
-		try {
+            throw sqle;
 
-			String sql = "DELETE FROM chaves_tb"
-					+ " WHERE idChave = ? ";
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
-                        stmt.setInt(1, c.getId());
-			stmt.execute();
-                        JOptionPane.showMessageDialog(null, "Removido!");
-		} catch (SQLException e) {
+        }
 
-			throw new RuntimeException(e);
+        return chaves;
+    }
 
-		} finally{
- ConnectionFactory.closeConnection(con , stmt);
-			
-		}
+    public Chaves queryDataDadosDiscente(Date data) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
 
-		return true;
-	}
+        Chaves chaves = null;
 
-	public void update(Chaves chaves) throws SQLException {
-                Connection con = (Connection) ConnectionFactory.getConnection();
-                PreparedStatement stmt = null;
-		try {
+        PreparedStatement stmt = null;
 
-			String sql = "UPDATE chaves_tb"
-					+ " SET numeroSala=?, nomeSala=?"
-					+ " WHERE idChave=?";
+        ResultSet rs = null;
 
-			stmt = (PreparedStatement) con.prepareStatement(sql);
+        try {
 
-			
-			stmt.setInt(1, chaves.getNumeroSala());
-			stmt.setString(2, chaves.getNomeSala());
-			
-			stmt.setLong(3, chaves.getId());
+            String sql = "SELECT D.matricula, C.numeroSala, C.nomeSala, A.horaPedido"
+                    + " FROM Discente_Reserva_Chaves_tb A"
+                    + " inner join discente_tb D"
+                    + " on D.matricula = A.matricula AND A.data =" + data
+                    + " inner join chaves_tb C"
+                    + " on C.idChave= A.idChave";
 
-			stmt.execute();
-                        JOptionPane.showMessageDialog(null, "Alterado!");
-		}catch (SQLException e) {
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
-			JOptionPane.showMessageDialog(null,e);
+            rs = stmt.executeQuery(sql);
 
-		} finally {
-                    
-                    ConnectionFactory.closeConnection(con , stmt);
+            List<Chaves> chavess = convertToList(rs);
 
-			
-		}
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
 
+        } catch (SQLException sqle) {
 
-	}
+            throw sqle;
 
-	public List<Chaves> getAll() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
 
-	public List<Chaves> find(Chaves entity) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        }
 
+        return chaves;
+    }
 
+    public Chaves queryHoraDevoDataDiscente() throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+
+        Chaves chaves = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT R.horaDevolucao, R.data"
+                    + " FROM Discente_Reserva_Chaves_tb R"
+                    + " inner join discente_tb D"
+                    + " on D.matricula = R.matricula"
+                    + " inner join chaves_tb C"
+                    + " on C.idchave = R.idChave";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<Chaves> chavess = convertToList(rs);
+
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return chaves;
+    }
+
+    public Chaves queryHoraDevoDataDocente() throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+
+        Chaves chaves = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT R.horaDevolucao, R.data"
+                    + " FROM Docente_Reserva_Chaves_tb R"
+                    + " inner join docente_tb D"
+                    + " on D.suap = R.suap"
+                    + " inner join chaves_tb C"
+                    + " on C.idchave = R.idChave";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<Chaves> chavess = convertToList(rs);
+
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return chaves;
+    }
+
+    public boolean delete(Chaves c) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+
+        PreparedStatement stmt = null;
+
+        try {
+
+            String sql = "DELETE FROM chaves_tb"
+                    + " WHERE idChave = ? ";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setInt(1, c.getId());
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Removido!");
+        } catch (SQLException e) {
+
+            throw new RuntimeException(e);
+
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return true;
+    }
+
+    public void update(Chaves chaves) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+
+            String sql = "UPDATE chaves_tb"
+                    + " SET numeroSala=?, nomeSala=?, status=?"
+                    + " WHERE idChave=?";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            stmt.setInt(1, chaves.getNumeroSala());
+            stmt.setString(2, chaves.getNomeSala());
+            stmt.setString(3, chaves.getStatus());
+            stmt.setLong(4, chaves.getId());
+
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Alterado!");
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, e);
+
+        } finally {
+
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+    }
+
+    public List<Chaves> getAll() throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public List<Chaves> find(Chaves entity) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

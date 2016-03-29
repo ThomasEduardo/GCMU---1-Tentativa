@@ -5,7 +5,7 @@
  */
 package inter;
 
-import GCMU.Database.MateriaisDAO;
+import GCMU.DataBase.MateriaisDAO;
 import GCMU.classes.Materiais;
 import java.sql.SQLException;
 import java.util.logging.Level;
