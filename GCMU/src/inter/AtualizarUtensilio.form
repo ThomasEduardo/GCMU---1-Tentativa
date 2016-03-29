@@ -6,7 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -60,8 +60,6 @@
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="TextID" min="-2" pref="89" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="116" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" alignment="1" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -70,18 +68,25 @@
                           </Group>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btVoltar" min="-2" pref="116" max="-2" attributes="0"/>
+                              <EmptySpace pref="173" max="32767" attributes="0"/>
+                              <Component id="jButton1" min="-2" pref="116" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="TextObs" alignment="0" pref="326" max="32767" attributes="0"/>
-                              <Component id="TextLocal" alignment="0" max="32767" attributes="0"/>
-                              <Component id="TextMarca" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="TextObs" alignment="0" pref="326" max="32767" attributes="0"/>
+                                  <Component id="TextLocal" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="TextMarca" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -114,15 +119,15 @@
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TextMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="43" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TextID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TextID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButton1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="btVoltar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
@@ -195,6 +200,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="ID do Utensilio"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btVoltar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Voltar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVoltarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

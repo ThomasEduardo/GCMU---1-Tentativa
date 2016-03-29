@@ -46,6 +46,7 @@ public class AtualizarUtensilio extends javax.swing.JFrame {
         TextMarca = new javax.swing.JTextField();
         TextID = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        btVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,6 +102,13 @@ public class AtualizarUtensilio extends javax.swing.JFrame {
 
         jLabel6.setText("ID do Utensilio");
 
+        btVoltar.setText("Voltar");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AddPessoaLayout = new javax.swing.GroupLayout(AddPessoa);
         AddPessoa.setLayout(AddPessoaLayout);
         AddPessoaLayout.setHorizontalGroup(
@@ -111,25 +119,28 @@ public class AtualizarUtensilio extends javax.swing.JFrame {
                     .addGroup(AddPessoaLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TextID, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TextID, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddPessoaLayout.createSequentialGroup()
                             .addGap(48, 48, 48)
                             .addComponent(TextTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addGroup(AddPessoaLayout.createSequentialGroup()
-                        .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel2))
-                        .addGap(21, 21, 21)
-                        .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TextObs, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                            .addComponent(TextLocal)
-                            .addComponent(TextMarca))))
+                    .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddPessoaLayout.createSequentialGroup()
+                            .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddPessoaLayout.createSequentialGroup()
+                            .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel2))
+                            .addGap(21, 21, 21)
+                            .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(TextObs, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                                .addComponent(TextLocal)
+                                .addComponent(TextMarca)))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         AddPessoaLayout.setVerticalGroup(
@@ -153,13 +164,14 @@ public class AtualizarUtensilio extends javax.swing.JFrame {
                 .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(TextMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(TextID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(TextID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
@@ -181,6 +193,7 @@ public class AtualizarUtensilio extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void TextTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextTipoActionPerformed
@@ -217,6 +230,12 @@ public class AtualizarUtensilio extends javax.swing.JFrame {
     private void TextIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextIDActionPerformed
+
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        Crud m = new Crud();
+        m.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,6 +280,7 @@ public class AtualizarUtensilio extends javax.swing.JFrame {
     private javax.swing.JTextField TextMarca;
     private javax.swing.JTextField TextObs;
     private javax.swing.JTextField TextTipo;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

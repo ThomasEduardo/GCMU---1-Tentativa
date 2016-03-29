@@ -1,43 +1,24 @@
-CREATE TABLE pessoa_tb (
-matricula INT UNSIGNED PRIMARY KEY,
-name VARCHAR(30) NOT NULL,
-email VARCHAR(30),
-telefone INT(30),
-permissao VARCHAR(30)
-);
-
-CREATE TABLE administrador_tb(
-siap INT(30) PRIMARY KEY,
-pessoa_matricula INT UNSIGNED,
-CONSTRAINT fk_administrador_pessoa FOREIGN KEY 
-(pessoa_matricula) REFERENCES pessoa_tb(matricula)
-);
 
 CREATE TABLE discente_tb (
-matricula VARCHAR (20)PRIMARY KEY,    
-curso VARCHAR(30),
-sala VARCHAR(10),
-turma VARCHAR(10),
-pessoa_matricula INT UNSIGNED,
-CONSTRAINT fk_dicente_pessoa FOREIGN KEY 
-(pessoa_matricula) REFERENCES pessoa_tb(matricula)
+matricula VARCHAR (20)PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+email VARCHAR(30),
+permissao VARCHAR(30),    
+curso VARCHAR(30)
 );
 
 
 CREATE TABLE docente_tb (
-siap INT UNSIGNED PRIMARY KEY,
-cargo VARCHAR(20), 
-area VARCHAR(15),
-turno VARCHAR(10),
-pessoa_matricula INT UNSIGNED,
-CONSTRAINT fk_docente_pessoa FOREIGN KEY 
-(pessoa_matricula) REFERENCES pessoa_tb(matricula)
+suap INT UNSIGNED PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+email VARCHAR(30),
+permissao VARCHAR(30), 
+cargo VARCHAR(20) 
 );
 
 CREATE TABLE chaves_tb (
 idChave INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-numeroSala INT(10),
-nomeSala VARCHAR(30),
+identificacao VARCHAR(30),
 status VARCHAR(30)
 );
 

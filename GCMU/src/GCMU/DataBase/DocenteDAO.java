@@ -10,6 +10,7 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Docente;
+import javax.swing.JOptionPane;
 
 public class DocenteDAO {
 
@@ -31,10 +32,10 @@ public class DocenteDAO {
             stmt.setString(5, docente.getPermissao());
 
             stmt.execute();
-
+            JOptionPane.showMessageDialog(null, "Salvo!");
         } catch (SQLException e) {
 
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
 
         } finally {
 

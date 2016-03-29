@@ -6,8 +6,10 @@
 package inter;
 
 import GCMU.DataBase.ChavesDAO;
+import GCMU.DataBase.MateriaisDAO;
 import GCMU.DataBase.UtensiliosDAO;
 import GCMU.classes.Chaves;
+import GCMU.classes.Materiais;
 import GCMU.classes.Utensilios;
 import javax.swing.table.DefaultTableModel;
 
@@ -49,6 +51,9 @@ public class Consulta extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabela1 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabela2 = new javax.swing.JTable();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -68,6 +73,11 @@ public class Consulta extends javax.swing.JFrame {
         });
 
         jButton2.setText("Material");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Utensilios Perdidos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -131,11 +141,11 @@ public class Consulta extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Numero Sala", "Nome Sala", "Status"
+                "ID", "Identificação", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -189,6 +199,38 @@ public class Consulta extends javax.swing.JFrame {
                 .addGap(0, 19, Short.MAX_VALUE))
         );
 
+        tabela2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tabela2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Tipo", "Status", "Obs", "Nome da Sala", "Numero da sala"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tabela2);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 19, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,7 +240,8 @@ public class Consulta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -210,7 +253,9 @@ public class Consulta extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -224,6 +269,7 @@ public class Consulta extends javax.swing.JFrame {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jPanel4.setVisible(false);
         jPanel3.setVisible(false);
         jPanel2.setVisible(true);
         DefaultTableModel model = (DefaultTableModel)tabela.getModel();
@@ -232,8 +278,7 @@ public class Consulta extends javax.swing.JFrame {
        for(Chaves c: chave.read()){
            model.addRow(new Object[]{
            c.getId(),
-           c.getNomeSala(),
-           c.getNumeroSala(),
+           c.getIdentificacao(),
            c.getStatus()
        });
        }
@@ -241,8 +286,10 @@ public class Consulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jPanel4.setVisible(false);
         jPanel2.setVisible(false);
         jPanel3.setVisible(true);
+        
        DefaultTableModel model = (DefaultTableModel)tabela1.getModel();
        model.setNumRows(0);
        UtensiliosDAO utensilio = new UtensiliosDAO();
@@ -256,6 +303,26 @@ public class Consulta extends javax.swing.JFrame {
        });
        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jPanel2.setVisible(false);
+        jPanel3.setVisible(false);
+        jPanel4.setVisible(true);
+       DefaultTableModel model = (DefaultTableModel)tabela2.getModel();
+       model.setNumRows(0);
+       MateriaisDAO materiail = new MateriaisDAO();
+       for(Materiais u: materiail.read()){
+           model.addRow(new Object[]{
+           u.getId(),
+           u.getTipo(),
+           u.getStatus(),
+           u.getObservacao(),
+           u.getNomeSala(),
+           u.getNumeroSala()
+       });
+       }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,9 +370,12 @@ public class Consulta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tabela;
     private javax.swing.JTable tabela1;
+    private javax.swing.JTable tabela2;
     // End of variables declaration//GEN-END:variables
 }

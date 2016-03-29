@@ -33,9 +33,7 @@ public class CadastroChaves extends javax.swing.JFrame {
 
         AddPessoa = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        TextName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        TextNum = new javax.swing.JTextField();
+        TextIden = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
@@ -44,19 +42,11 @@ public class CadastroChaves extends javax.swing.JFrame {
 
         AddPessoa.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel1.setText("Nome da Sala");
+        jLabel1.setText("Identifição");
 
-        TextName.addActionListener(new java.awt.event.ActionListener() {
+        TextIden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextNameActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Numero da Sala");
-
-        TextNum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextNumActionPerformed(evt);
+                TextIdenActionPerformed(evt);
             }
         });
 
@@ -92,14 +82,9 @@ public class CadastroChaves extends javax.swing.JFrame {
                         .addGap(69, 69, 69)
                         .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AddPessoaLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TextNum, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(AddPessoaLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(TextName, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TextIden, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -108,15 +93,11 @@ public class CadastroChaves extends javax.swing.JFrame {
             .addGroup(AddPessoaLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextIden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(39, 39, 39)
-                .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(AddPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -136,27 +117,23 @@ public class CadastroChaves extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AddPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AddPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNameActionPerformed
+    private void TextIdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextIdenActionPerformed
 
-    }//GEN-LAST:event_TextNameActionPerformed
-
-    private void TextNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextNumActionPerformed
+    }//GEN-LAST:event_TextIdenActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Chaves c = new Chaves();
         ChavesDAO DAO = new ChavesDAO();
-        c.setNomeSala(TextName.getText());
-        c.setNumeroSala(Integer.parseInt(TextNum.getText()));
+        c.setIdentificacao(TextIden.getText());
         c.setStatus("LIVRE");
         DAO.insert(c);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -206,12 +183,10 @@ public class CadastroChaves extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddPessoa;
-    private javax.swing.JTextField TextName;
-    private javax.swing.JTextField TextNum;
+    private javax.swing.JTextField TextIden;
     private javax.swing.JButton btVoltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

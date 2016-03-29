@@ -11,6 +11,8 @@ import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Materiais;
 import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class MateriaisDAO {
@@ -93,6 +95,39 @@ public class MateriaisDAO {
 
         return Materiais;
     }
+    public List<Materiais> read(){
+                Connection con = (Connection) ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+                List<Materiais> m = new ArrayList<Materiais>();
+               
+            try {
+                 String sql = "SELECT * FROM materiais_tb";
+                 
+                stmt = con.prepareStatement(sql);
+                rs = stmt.executeQuery();
+                
+                
+                while(rs.next()){
+                    Materiais u = new Materiais();
+                    u.setId(rs.getInt("idMaterial"));
+                    u.setTipo(rs.getString("tipo"));
+                    u.setStatus(rs.getString("status"));
+                    u.setObservacao(rs.getString("observacao"));
+                    u.setNomeSala(rs.getString("nomeSala"));
+                    u.setNumeroSala(rs.getInt("numeroSala"));
+                    m.add(u);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ChavesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }finally{
+                    ConnectionFactory.closeConnection(con, stmt, rs);
+            }
+            
+            return m;
+            
+        }
 
     public Materiais queryDataNomeDocente(String status) throws SQLException {
 

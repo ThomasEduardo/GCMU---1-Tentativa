@@ -89,12 +89,27 @@ public class Crud extends javax.swing.JFrame {
         jLabel3.setText("Alterar");
 
         jButton8.setText("Discente");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Docente");
 
         jButton11.setText("Material");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setText("Utensilio");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jButton13.setText("Chave");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +126,11 @@ public class Crud extends javax.swing.JFrame {
         });
 
         jButton4.setText("Docente");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Chave");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +143,11 @@ public class Crud extends javax.swing.JFrame {
         jLabel2.setText("Cadastrar");
 
         jButton6.setText("Utensilio");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         btMaterial.setText("Material");
         btMaterial.addActionListener(new java.awt.event.ActionListener() {
@@ -243,11 +268,15 @@ public class Crud extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
+       AtualizarChave cha = new AtualizarChave();
+       cha.setVisible(true);
+       dispose();
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
+        Remover re = new Remover();
+        re.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void btMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMaterialActionPerformed
@@ -263,6 +292,34 @@ public class Crud extends javax.swing.JFrame {
         cd.setVisible(true);
         dispose();
     }//GEN-LAST:event_BtDiscenteActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        CadastroUtensilios ut = new CadastroUtensilios();
+        ut.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        CadastroDocente cd = new CadastroDocente();
+        cd.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+       AtualizarUtensilio ute = new AtualizarUtensilio();
+       ute.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+      AtualizarMaterial ma= new AtualizarMaterial();
+       ma.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments

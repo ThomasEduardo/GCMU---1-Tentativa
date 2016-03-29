@@ -21,13 +21,12 @@ public class ChavesDAO {
         PreparedStatement stmt = null;
         try {
 
-            String sql = "INSERT INTO chaves_tb(numeroSala, nomeSala, status) VALUES(?,?,?)";
+            String sql = "INSERT INTO chaves_tb(identificacao, status) VALUES(?,?)";
 
             stmt = con.prepareStatement(sql);
 
-            stmt.setInt(1, chaves.getNumeroSala());
-            stmt.setString(2, chaves.getNomeSala());
-            stmt.setString(3, chaves.getStatus());
+            stmt.setString(1, chaves.getIdentificacao());
+            stmt.setString(2, chaves.getStatus());
 
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo!");
@@ -60,8 +59,7 @@ public class ChavesDAO {
             while (rs.next()) {
                 Chaves cha = new Chaves();
                 cha.setId(rs.getInt("idChave"));
-                cha.setNumeroSala(rs.getInt("numeroSala"));
-                cha.setNomeSala(rs.getString("nomeSala"));
+                cha.setIdentificacao(rs.getString("identificacao"));
                 cha.setStatus(rs.getString("status"));
                 chaves.add(cha);
             }
@@ -167,8 +165,7 @@ public class ChavesDAO {
                 Chaves chave = new Chaves();
 
                 chave.setId(rs.getInt("chaves.idChave"));
-                chave.setNumeroSala(rs.getInt("chaves.numeroSala"));
-                chave.setNomeSala(rs.getString("chaves.nomeSala"));
+                chave.setIdentificacao(rs.getString("chaves.identificacao"));
                 chave.setStatus(rs.getString("chaves.status"));
 
                 DocenteDAO docente = new DocenteDAO();
@@ -580,15 +577,14 @@ public class ChavesDAO {
         try {
 
             String sql = "UPDATE chaves_tb"
-                    + " SET numeroSala=?, nomeSala=?, status=?"
+                    + " SET identificacao, status=?"
                     + " WHERE idChave=?";
 
             stmt = (PreparedStatement) con.prepareStatement(sql);
 
-            stmt.setInt(1, chaves.getNumeroSala());
-            stmt.setString(2, chaves.getNomeSala());
-            stmt.setString(3, chaves.getStatus());
-            stmt.setLong(4, chaves.getId());
+            stmt.setString(1, chaves.getIdentificacao());
+            stmt.setString(2, chaves.getStatus());
+            stmt.setLong(3, chaves.getId());
 
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Alterado!");

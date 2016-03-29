@@ -10,6 +10,7 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Discente;
+import javax.swing.JOptionPane;
 
 public class DiscenteDAO {
 
@@ -32,10 +33,10 @@ public class DiscenteDAO {
             stmt.setString(5, discente.getPermissao());
 
             stmt.execute();
-
+            JOptionPane.showMessageDialog(null, "Salvo!");
         } catch (SQLException e) {
 
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null,e);
 
         } finally {
 

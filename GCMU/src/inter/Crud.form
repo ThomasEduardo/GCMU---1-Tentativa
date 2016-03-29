@@ -203,6 +203,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Discente"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton9">
           <Properties>
@@ -213,11 +216,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Material"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton12">
           <Properties>
             <Property name="text" type="java.lang.String" value="Utensilio"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton12ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton13">
           <Properties>
@@ -239,6 +248,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Docente"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
@@ -260,6 +272,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Utensilio"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btMaterial">
           <Properties>

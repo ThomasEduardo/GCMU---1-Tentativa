@@ -13,8 +13,7 @@ import GCMU.DataBase.DocenteDAO;
  */
 public class Chaves {
 
-    private int numeroSala;
-    private String nomeSala;
+    private String Identificacao;
     private int id;
     private String status;
     private DocenteReservaChave docenteReserva;
@@ -22,6 +21,14 @@ public class Chaves {
     private DiscenteReservaChave discenteReserva;
     private Discente discente;
 
+    
+    public String getIdentificacao() {
+        return Identificacao;
+    }
+
+    public void setIdentificacao(String Identificacao) {
+        this.Identificacao = Identificacao;
+    }
     public String getStatus() {
         return status;
     }
@@ -38,29 +45,6 @@ public class Chaves {
         this.id = id;
     }
 
-    public int getNumeroSala() {
-
-        return numeroSala;
-
-    }
-
-    public void setNumeroSala(int numeroSala) {
-
-        this.numeroSala = numeroSala;
-
-    }
-
-    public String getNomeSala() {
-
-        return nomeSala;
-
-    }
-
-    public void setNomeSala(String nomeSala) {
-
-        this.nomeSala = nomeSala;
-
-    }
 
     /**
      * @return the docenteReserva

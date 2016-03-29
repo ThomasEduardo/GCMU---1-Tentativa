@@ -5,10 +5,9 @@
  */
 package inter;
 
-import GCMU.DataBase.DiscenteDAO;
-
-import GCMU.classes.Discente;
-
+import GCMU.DataBase.DocenteDAO;
+import GCMU.classes.Docente;
+import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,12 +16,12 @@ import java.util.logging.Logger;
  *
  * @author Thomas
  */
-public class CadastroDiscente extends javax.swing.JFrame {
+public class CadastroDocente extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastroDiscente
+     * Creates new form CadastroDocente
      */
-    public CadastroDiscente() {
+    public CadastroDocente() {
         initComponents();
     }
 
@@ -42,12 +41,12 @@ public class CadastroDiscente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        TxtMatricula = new javax.swing.JTextField();
-        TxtCurso = new javax.swing.JTextField();
+        TxtCargo = new javax.swing.JTextField();
         TxtNome = new javax.swing.JTextField();
         TxtEmail = new javax.swing.JTextField();
         TxtPermissao = new javax.swing.JTextField();
         BtCadastrar = new javax.swing.JButton();
+        TxtSuap = new javax.swing.JTextField();
         btVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,11 +54,11 @@ public class CadastroDiscente extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setText("Cadastro Do Discente");
+        jLabel1.setText("Cadastro Docente");
 
-        jLabel2.setText("matricula");
+        jLabel2.setText("Suap");
 
-        jLabel3.setText("curso");
+        jLabel3.setText("Cargo");
 
         jLabel4.setText("Nome");
 
@@ -92,6 +91,12 @@ public class CadastroDiscente extends javax.swing.JFrame {
             }
         });
 
+        TxtSuap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtSuapActionPerformed(evt);
+            }
+        });
+
         btVoltar.setText("Voltar");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,57 +111,50 @@ public class CadastroDiscente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
+                        .addGap(54, 54, 54)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel10)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
+                                    .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TxtCurso)
+                                    .addComponent(TxtCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                    .addComponent(TxtSuap)
+                                    .addComponent(TxtEmail)
                                     .addComponent(TxtNome)
-                                    .addComponent(TxtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(TxtPermissao)))
+                            .addComponent(jLabel1))
+                        .addGap(0, 87, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtPermissao, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(BtCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(TxtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TxtCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TxtSuap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(TxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,11 +162,11 @@ public class CadastroDiscente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(TxtPermissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(BtCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,8 +175,8 @@ public class CadastroDiscente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +190,10 @@ public class CadastroDiscente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void TxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtNomeActionPerformed
+
     private void TxtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtEmailActionPerformed
@@ -200,29 +202,27 @@ public class CadastroDiscente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtPermissaoActionPerformed
 
-    private void TxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtNomeActionPerformed
-
     private void BtCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCadastrarActionPerformed
-      
-       
-        Discente d = new Discente();
-            DiscenteDAO dd = new DiscenteDAO();
-            
-            d.setMatricula(Integer.parseInt(TxtMatricula.getText()));
-            d.setCurso(TxtCurso.getText());
-            d.setName(TxtNome.getText());
-            d.setPermissao(TxtPermissao.getText());
-            d.setEmail(TxtEmail.getText());
-         
+
+        Docente d = new Docente();
+        DocenteDAO dd = new DocenteDAO();
+
+        d.setSuap(Integer.parseInt(TxtSuap.getText()));
+        d.setCargo(TxtCargo.getText());
+        d.setName(TxtNome.getText());
+        d.setPermissao(TxtPermissao.getText());
+        d.setEmail(TxtEmail.getText());
+
         try {
             dd.insert(d);
         } catch (SQLException ex) {
-            Logger.getLogger(CadastroDiscente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroDocente.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
     }//GEN-LAST:event_BtCadastrarActionPerformed
+
+    private void TxtSuapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtSuapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtSuapActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         Crud m = new Crud();
@@ -247,31 +247,31 @@ public class CadastroDiscente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroDiscente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroDiscente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroDiscente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroDiscente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroDiscente().setVisible(true);
+                new CadastroDocente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtCadastrar;
-    private javax.swing.JTextField TxtCurso;
+    private javax.swing.JTextField TxtCargo;
     private javax.swing.JTextField TxtEmail;
-    private javax.swing.JTextField TxtMatricula;
     private javax.swing.JTextField TxtNome;
     private javax.swing.JTextField TxtPermissao;
+    private javax.swing.JTextField TxtSuap;
     private javax.swing.JButton btVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
