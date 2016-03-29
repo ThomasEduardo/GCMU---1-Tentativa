@@ -110,9 +110,9 @@ public class MateriaisDAO {
                     + " FROM Docente_Reserva_Materiais_tb R"
                     + " inner join docente_tb D"
                     + " on D.suap = R.suap"
-                    + " inner join chaves_tb C"
-                    + " on C.idChave = R.idChave"
-                    + " AND C.status =" + status;
+                    + " inner join materiais_tb M"
+                    + " on M.idMaterial = R.idMaterial"
+                    + " AND M.status =" + status;
 
             stmt = (PreparedStatement) con.prepareStatement(sql);
 
@@ -153,9 +153,9 @@ public class MateriaisDAO {
                     + " FROM Discente_Reserva_Materiais_tb R"
                     + " inner join discente_tb D"
                     + " on D.matricula = R.matricula"
-                    + " inner join chaves_tb C"
-                    + " on C.idChave = R.idChave"
-                    + " AND C.status =" + status;
+                    + " inner join materiais_tb M"
+                    + " on M.idMaterial = R.idMaterial"
+                    + " AND M.status =" + status;
 
             stmt = (PreparedStatement) con.prepareStatement(sql);
 
