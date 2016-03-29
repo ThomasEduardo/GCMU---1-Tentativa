@@ -156,21 +156,33 @@ public class ChavesDAO {
 
     private List<Chaves> convertToList(ResultSet rs) throws SQLException {
 
-        List<Chaves> chavess = new ArrayList<Chaves>();
+        List<Chaves> chaves = new ArrayList<Chaves>();
 
         try {
 
             while (rs.next()) {
 
                 // Chaves
-                Chaves chaves = new Chaves();
+                Chaves chave = new Chaves();
 
-                chaves.setId(rs.getInt("chaves.idChave"));
-                chaves.setNumeroSala(rs.getInt("chaves.numeroSala"));
-                chaves.setNomeSala(rs.getString("chaves.nomeSala"));
-                chaves.setStatus(rs.getString("chaves.status"));
-
-                chavess.add(chaves);
+                chave.setId(rs.getInt("chaves.idChave"));
+                chave.setNumeroSala(rs.getInt("chaves.numeroSala"));
+                chave.setNomeSala(rs.getString("chaves.nomeSala"));
+                chave.setStatus(rs.getString("chaves.status"));
+                
+                DocenteDAO docente = new DocenteDAO();
+                chave.setDocente(docente.getById(rs.getInt("docente.suap")));
+                
+                DiscenteDAO discente = new DiscenteDAO();
+                chave.setDiscente(discente.getById(rs.getInt("discente.matricula")));
+                
+                DiscenteReservaChaveDAO discenteReservaChaveDAO = new DiscenteReservaChaveDAO();
+                chave.setDiscenteReserva(discenteReservaChaveDAO.getById(rs.getInt("id")));
+                
+                DocenteReservaChaveDAO docenteReservaChaveDAO = new DocenteReservaChaveDAO();
+                chave.setDocenteReserva(docenteReservaChaveDAO.getById(rs.getInt("id")));
+                
+                chaves.add(chave);
             }
 
         } catch (SQLException sqle) {
@@ -178,7 +190,7 @@ public class ChavesDAO {
             throw sqle;
         }
 
-        return chavess;
+        return chaves;
     }
 
     public Chaves queryIdChave(String status) throws SQLException {
@@ -304,12 +316,12 @@ public class ChavesDAO {
 
         try {
 
-            String sql = "SELECT R.data , P.name"
+            String sql = "SELECT R.data, D.name"
                     + " FROM Docente_Reserva_Chaves_tb R"
-                    + " inner join pessoa_tb P"
+                    + " inner join docente_tb D"
                     + " on P.matricula = R.matricula"
                     + " inner join chaves_tb C"
-                    + " on C.idchave = R.idChave"
+                    + " on C.idChave = R.idChave"
                     + " AND C.status =" + status;
 
             stmt = (PreparedStatement) con.prepareStatement(sql);

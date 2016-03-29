@@ -1,9 +1,13 @@
 package GCMU.DataBase;
 
 import GCMU.classes.DiscenteReservaChave;
+import GCMU.classes.DocenteReservaChave;
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,4 +48,77 @@ public class DiscenteReservaChaveDAO {
         }
     }
 
+    public DiscenteReservaChave getById(Integer pk) throws SQLException {
+
+        Connection con = (Connection) ConnectionFactory.getConnection();
+
+        DiscenteReservaChave discenteReservaChave = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT id,"
+                    + " horaPedido,"
+                    + " horaDevolucao,"
+                    + " data,"
+                    + " suap,"
+                    + " idChave"
+                    + " FROM Discente_Reserva_Chaves_tb"
+                    + " WHERE id = "
+                    + pk;
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<DiscenteReservaChave> discenteReservaChaves = convertToList(rs);
+
+            if (!discenteReservaChaves.isEmpty()) {
+                discenteReservaChave = discenteReservaChaves.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return discenteReservaChave;
+    }
+
+    private List<DiscenteReservaChave> convertToList(ResultSet rs) throws SQLException {
+
+        List<DiscenteReservaChave> discenteReservaChaves = new ArrayList<DiscenteReservaChave>();
+
+        try {
+
+            while (rs.next()) {
+
+                // Chaves
+                DiscenteReservaChave discenteReservaChave = new DiscenteReservaChave();
+
+                discenteReservaChave.setId(rs.getInt("id"));
+                discenteReservaChave.setHoraDevolucao(rs.getString("horaDevolucao"));
+                discenteReservaChave.setHoraPedido(rs.getString("horaPedido"));
+                discenteReservaChave.setData(rs.getDate("data"));
+
+                ChavesDAO chavesdao = new ChavesDAO();
+                discenteReservaChave.setChaves(chavesdao.getById(rs.getInt("idChave")));
+
+                discenteReservaChaves.add(discenteReservaChave);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+        }
+
+        return discenteReservaChaves;
+    }
 }
