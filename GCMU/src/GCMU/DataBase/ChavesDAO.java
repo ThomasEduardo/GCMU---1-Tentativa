@@ -9,6 +9,7 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Chaves;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -169,19 +170,19 @@ public class ChavesDAO {
                 chave.setNumeroSala(rs.getInt("chaves.numeroSala"));
                 chave.setNomeSala(rs.getString("chaves.nomeSala"));
                 chave.setStatus(rs.getString("chaves.status"));
-                
+
                 DocenteDAO docente = new DocenteDAO();
                 chave.setDocente(docente.getById(rs.getInt("docente.suap")));
-                
+
                 DiscenteDAO discente = new DiscenteDAO();
                 chave.setDiscente(discente.getById(rs.getInt("discente.matricula")));
-                
+
                 DiscenteReservaChaveDAO discenteReservaChaveDAO = new DiscenteReservaChaveDAO();
                 chave.setDiscenteReserva(discenteReservaChaveDAO.getById(rs.getInt("id")));
-                
+
                 DocenteReservaChaveDAO docenteReservaChaveDAO = new DocenteReservaChaveDAO();
                 chave.setDocenteReserva(docenteReservaChaveDAO.getById(rs.getInt("id")));
-                
+
                 chaves.add(chave);
             }
 
@@ -319,7 +320,7 @@ public class ChavesDAO {
             String sql = "SELECT R.data, D.name"
                     + " FROM Docente_Reserva_Chaves_tb R"
                     + " inner join docente_tb D"
-                    + " on P.matricula = R.matricula"
+                    + " on D.suap = R.suap"
                     + " inner join chaves_tb C"
                     + " on C.idChave = R.idChave"
                     + " AND C.status =" + status;
@@ -359,8 +360,8 @@ public class ChavesDAO {
 
             String sql = "SELECT R.data , P.name"
                     + " FROM Discente_Reserva_Chaves_tb R"
-                    + " inner join pessoa_tb P"
-                    + " on P.matricula = R.matricula"
+                    + " inner join discente_tb D"
+                    + " on D.matricula = R.matricula"
                     + " inner join chaves_tb C"
                     + " on C.idchave = R.idChave"
                     + " AND C.status =" + status;
@@ -387,6 +388,166 @@ public class ChavesDAO {
         return chaves;
     }
 
+    public Chaves queryDataDadosDocente(Date data) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+
+        Chaves chaves = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT D.suap, C.numeroSala, C.nomeSala, A.horaPedido"
+                    + " FROM Docente_Reserva_Chaves_tb A"
+                    + " inner join docente_tb D"
+                    + " on D.suap = A.suap AND A.data =" + data
+                    + " inner join chaves_tb C"
+                    + " on C.idChave= A.idChave";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<Chaves> chavess = convertToList(rs);
+
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return chaves;
+    }
+
+    public Chaves queryDataDadosDiscente(Date data) throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+
+        Chaves chaves = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT D.matricula, C.numeroSala, C.nomeSala, A.horaPedido"
+                    + " FROM Discente_Reserva_Chaves_tb A"
+                    + " inner join discente_tb D"
+                    + " on D.matricula = A.matricula AND A.data =" + data
+                    + " inner join chaves_tb C"
+                    + " on C.idChave= A.idChave";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<Chaves> chavess = convertToList(rs);
+
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return chaves;
+    }
+    
+    public Chaves queryHoraDevoDataDiscente() throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+
+        Chaves chaves = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT R.horaDevolucao, R.data"
+                    + " FROM Discente_Reserva_Chaves_tb R"
+                    + " inner join discente_tb D"
+                    + " on D.matricula = R.matricula"
+                    + " inner join chaves_tb C"
+                    + " on C.idchave = R.idChave";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<Chaves> chavess = convertToList(rs);
+
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+        
+
+        return chaves;
+    }
+    public Chaves queryHoraDevoDataDocente() throws SQLException {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+
+        Chaves chaves = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT R.horaDevolucao, R.data"
+                    + " FROM Docente_Reserva_Chaves_tb R"
+                    + " inner join docente_tb D"
+                    + " on D.suap = R.suap"
+                    + " inner join chaves_tb C"
+                    + " on C.idchave = R.idChave";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<Chaves> chavess = convertToList(rs);
+
+            if (!chavess.isEmpty()) {
+                chaves = chavess.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return chaves;
+    }
+    
     public boolean delete(Chaves c) throws SQLException {
         Connection con = (Connection) ConnectionFactory.getConnection();
 
