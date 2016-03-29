@@ -10,6 +10,7 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Materiais;
+import java.sql.Date;
 import javax.swing.JOptionPane;
 
 public class MateriaisDAO {
@@ -106,9 +107,9 @@ public class MateriaisDAO {
         try {
 
             String sql = "SELECT R.data, D.name"
-                    + " FROM Docente_Reserva_Chaves_tb R"
+                    + " FROM Docente_Reserva_Materiais_tb R"
                     + " inner join docente_tb D"
-                    + " on P.matricula = R.matricula"
+                    + " on D.suap = R.suap"
                     + " inner join chaves_tb C"
                     + " on C.idChave = R.idChave"
                     + " AND C.status =" + status;
@@ -135,8 +136,8 @@ public class MateriaisDAO {
 
         return material;
     }
-    
-     public Materiais queryDataNomeDiscente(String status) throws SQLException {
+
+    public Materiais queryDataNomeDiscente(String status) throws SQLException {
 
         Connection con = (Connection) GCMU.DataBase.ConnectionFactory.getConnection();
 
@@ -149,9 +150,9 @@ public class MateriaisDAO {
         try {
 
             String sql = "SELECT R.data, D.name"
-                    + " FROM Discente_Reserva_Chaves_tb R"
-                    + " inner join docente_tb D"
-                    + " on P.matricula = R.matricula"
+                    + " FROM Discente_Reserva_Materiais_tb R"
+                    + " inner join discente_tb D"
+                    + " on D.matricula = R.matricula"
                     + " inner join chaves_tb C"
                     + " on C.idChave = R.idChave"
                     + " AND C.status =" + status;
@@ -178,7 +179,171 @@ public class MateriaisDAO {
 
         return material;
     }
-    
+
+    public Materiais queryDataDadosDiscente(Date data) throws SQLException {
+
+        Connection con = (Connection) GCMU.DataBase.ConnectionFactory.getConnection();
+
+        Materiais material = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT D.matricula, M.tipo, M.nomeSala, M.numeroSala, D.horaPedido"
+                    + " FROM Discente_Reserva_Materiais_tb R"
+                    + " inner join discente_tb D"
+                    + " on D.matricula = R.matricula and R.data =" + data
+                    + " inner join materiais_tb M"
+                    + " M.idMaterial = R.idMaterial";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<Materiais> materiais = convertToList(rs);
+
+            if (!materiais.isEmpty()) {
+                material = materiais.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+
+            GCMU.DataBase.ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return material;
+    }
+
+    public Materiais queryDataDadosDocente(Date data) throws SQLException {
+
+        Connection con = (Connection) GCMU.DataBase.ConnectionFactory.getConnection();
+
+        Materiais material = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT D.matricula, M.tipo, M.nomeSala, M.numeroSala, D.horaPedido"
+                    + " FROM Docente_Reserva_Materiais_tb R"
+                    + " inner join docente_tb D"
+                    + " on D.suap = R.suap and R.data =" + data
+                    + " inner join materiais_tb M"
+                    + " M.idMaterial = R.idMaterial";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<Materiais> materiais = convertToList(rs);
+
+            if (!materiais.isEmpty()) {
+                material = materiais.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+
+            GCMU.DataBase.ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return material;
+    }
+
+    public Materiais queryHoraDevoDataDiscente() throws SQLException {
+        Connection con = (Connection) GCMU.DataBase.ConnectionFactory.getConnection();
+
+        Materiais material = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT R.horaDevolucao, R.data"
+                    + " FROM Discente_Reserva_Chaves_tb R"
+                    + " inner join discente_tb D"
+                    + " on D.matricula = R.matricula"
+                    + " inner join materiais_tb M"
+                    + " M.idMaterial = R.idMaterial";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<Materiais> materiais = convertToList(rs);
+
+            if (!materiais.isEmpty()) {
+                material = materiais.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+            GCMU.DataBase.ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return material;
+    }
+
+    public Materiais queryHoraDevoDataDocente() throws SQLException {
+        Connection con = (Connection) GCMU.DataBase.ConnectionFactory.getConnection();
+
+        Materiais material = null;
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "SELECT R.horaDevolucao, R.data"
+                    + " FROM Docente_Reserva_Chaves_tb R"
+                    + " inner join docente_tb D"
+                    + " on D.suap = R.suap"
+                    + " inner join materiais_tb M"
+                    + " M.idMaterial = R.idMaterial";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            rs = stmt.executeQuery(sql);
+
+            List<Materiais> materiais = convertToList(rs);
+
+            if (!materiais.isEmpty()) {
+                material = materiais.get(0);
+            }
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        } finally {
+            GCMU.DataBase.ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+        return material;
+    }
+
     private List<Materiais> convertToList(ResultSet rs) throws SQLException {
 
         List<Materiais> materiais = new ArrayList<Materiais>();
