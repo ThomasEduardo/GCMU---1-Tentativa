@@ -467,7 +467,7 @@ public class ChavesDAO {
 
         return chaves;
     }
-    
+
     public Chaves queryHoraDevoDataDiscente() throws SQLException {
         Connection con = (Connection) ConnectionFactory.getConnection();
 
@@ -504,10 +504,10 @@ public class ChavesDAO {
             ConnectionFactory.closeConnection(con, stmt);
 
         }
-        
 
         return chaves;
     }
+
     public Chaves queryHoraDevoDataDocente() throws SQLException {
         Connection con = (Connection) ConnectionFactory.getConnection();
 
@@ -547,7 +547,7 @@ public class ChavesDAO {
 
         return chaves;
     }
-    
+
     public boolean delete(Chaves c) throws SQLException {
         Connection con = (Connection) ConnectionFactory.getConnection();
 

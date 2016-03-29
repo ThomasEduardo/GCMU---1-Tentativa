@@ -276,7 +276,7 @@ public class MateriaisDAO {
         try {
 
             String sql = "SELECT R.horaDevolucao, R.data"
-                    + " FROM Discente_Reserva_Chaves_tb R"
+                    + " FROM Discente_Reserva_Materiais_tb R"
                     + " inner join discente_tb D"
                     + " on D.matricula = R.matricula"
                     + " inner join materiais_tb M"
@@ -316,7 +316,7 @@ public class MateriaisDAO {
         try {
 
             String sql = "SELECT R.horaDevolucao, R.data"
-                    + " FROM Docente_Reserva_Chaves_tb R"
+                    + " FROM Docente_Reserva_Materiais_tb R"
                     + " inner join docente_tb D"
                     + " on D.suap = R.suap"
                     + " inner join materiais_tb M"
