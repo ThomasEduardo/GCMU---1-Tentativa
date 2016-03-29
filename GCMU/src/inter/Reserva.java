@@ -108,7 +108,7 @@ public class Reserva extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
-             Menu m = new Menu();
+        Menu m = new Menu();
         m.setVisible(true);
         dispose();
                                        

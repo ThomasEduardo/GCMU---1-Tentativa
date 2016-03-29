@@ -6,6 +6,7 @@
 package inter;
 
 import GCMU.DataBase.ChavesDAO;
+import GCMU.DataBase.UtensiliosDAO;
 import GCMU.classes.Chaves;
 import javax.swing.table.DefaultTableModel;
 
@@ -60,6 +61,11 @@ public class Consulta extends javax.swing.JFrame {
         jButton2.setText("Material");
 
         jButton3.setText("Utensilios Perdidos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         btVoltar.setText("Voltar");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -177,6 +183,20 @@ public class Consulta extends javax.swing.JFrame {
        });
        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       DefaultTableModel model = (DefaultTableModel)tabela.getModel();
+       model.setNumRows(0);
+       UtensiliosDAO utensilio = new UtensiliosDAO();
+       for(Utensilios u: utensilio.read()){
+           model.addRow(new Object[]{
+           u.getId(),
+           u.getNomeSala(),
+           u.getNumeroSala(),
+           u.getStatus()
+       });
+       }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

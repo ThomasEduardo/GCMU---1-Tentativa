@@ -10,6 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -51,7 +55,38 @@ public class UtensiliosDAO {
 		return true;
 
 	}
-	
+	 public List<Utensilios> read(){
+                Connection con = (Connection) ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+                List<Utensilios> uten = new ArrayList<Utensilios>();
+               
+            try {
+                 String sql = "SELECT * FROM chaves_tb";
+                 
+                stmt = con.prepareStatement(sql);
+                rs = stmt.executeQuery();
+                
+                
+                while(rs.next()){
+                    Utensilios u = new Utensilios();
+                    u.setId(rs.getInt("idMaterial"));
+                    u.setLocall(rs.getString("locall"));
+                    u.setMarca(rs.getString("marca"));
+                    u.setTipo(rs.getString("tipo"));
+                    uten.add(u);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ChavesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }finally{
+                    ConnectionFactory.closeConnection(con, stmt, rs);
+            }
+            
+            return uten;
+            
+        }
+        
 	
 	public boolean delete(Utensilios u) throws SQLException {
 
