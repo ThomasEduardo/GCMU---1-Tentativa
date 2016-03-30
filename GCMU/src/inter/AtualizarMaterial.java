@@ -6,7 +6,9 @@
 package inter;
 
 import GCMU.DataBase.MateriaisDAO;
+import GCMU.DataBase.UtensiliosDAO;
 import GCMU.classes.Materiais;
+import GCMU.classes.Utensilios;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -190,10 +192,7 @@ public class AtualizarMaterial extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtTipoActionPerformed
 
     private void BtCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCadastrarActionPerformed
-        Crud c = new Crud();
-        c.setVisible(true);
-        dispose();
-
+       
         Materiais m = new Materiais();
         MateriaisDAO d = new MateriaisDAO();
 
@@ -201,15 +200,14 @@ public class AtualizarMaterial extends javax.swing.JFrame {
         m.setObservacao(TxtObs.getText());
         m.setNomeSala(TxtNomeSala.getText());
         m.setNumeroSala(Integer.parseInt(TxtNumeroSala.getText()));
-        
+        m.setId(Integer.parseInt(TxtID.getText()));
       
         try {
             d.update(m);
         } catch (SQLException ex) {
             Logger.getLogger(AtualizarMaterial.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
-
+        }
     }//GEN-LAST:event_BtCadastrarActionPerformed
 
     private void TxtNumeroSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNumeroSalaActionPerformed

@@ -155,7 +155,7 @@ public class DocenteDAO {
         return docentes;
     }
 
-    public boolean delete(Integer pk) throws SQLException {
+    public boolean delete(Docente docente) throws SQLException {
         Connection con = (Connection) ConnectionFactory.getConnection();
 
         PreparedStatement stmt = null;
@@ -163,16 +163,17 @@ public class DocenteDAO {
         try {
 
             String sql = "DELETE FROM docente_tb"
-                    + " WHERE suap = "
-                    + pk;
+                    + " WHERE suap = ?";
+                   
 
             stmt = (PreparedStatement) con.prepareStatement(sql);
-
+            stmt.setInt(1, docente.getSuap());
             stmt.execute();
+             JOptionPane.showMessageDialog(null, "Removido!");
 
         } catch (SQLException e) {
 
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(null,e);
 
         } finally {
 

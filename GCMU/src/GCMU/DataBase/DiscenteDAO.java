@@ -10,6 +10,8 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 
 import GCMU.classes.Discente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class DiscenteDAO {
@@ -21,10 +23,10 @@ public class DiscenteDAO {
         PreparedStatement stmt = null;
 
         try {
-            
-             String sql = "INSERT INTO discente_tb(matricula, curso, name, email, permissao) VALUES(?,?,?,?,?)";
 
-             stmt = (PreparedStatement) con.prepareStatement(sql);
+            String sql = "INSERT INTO discente_tb(matricula, curso, name, email, permissao) VALUES(?,?,?,?,?)";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
             stmt.setInt(1, discente.getMatricula());
             stmt.setString(2, discente.getCurso());
@@ -36,7 +38,7 @@ public class DiscenteDAO {
             JOptionPane.showMessageDialog(null, "Salvo!");
         } catch (SQLException e) {
 
-            JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null, e);
 
         } finally {
 
@@ -44,6 +46,39 @@ public class DiscenteDAO {
         }
 
         return true;
+
+    }
+
+    public List<Discente> read() {
+        Connection con = (Connection) ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Discente> drcs = new ArrayList<Discente>();
+
+        try {
+
+            String sql = "SELECT * FROM discente_tb";
+
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Discente drc = new Discente();
+                drc.setMatricula(rs.getInt("matricula"));
+                drc.setCurso(rs.getString("curso"));
+                drc.setEmail(rs.getString("email"));
+                drc.setName(rs.getString("name"));
+                drc.setPermissao(rs.getString("permissao"));
+                drcs.add(drc);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ChavesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return drcs;
 
     }
 
@@ -118,7 +153,7 @@ public class DiscenteDAO {
         return discentes;
     }
 
-    public boolean delete(Integer pk) throws SQLException {
+    public boolean delete(Discente discente) throws SQLException {
         Connection con = (Connection) ConnectionFactory.getConnection();
 
         PreparedStatement stmt = null;
@@ -126,16 +161,15 @@ public class DiscenteDAO {
         try {
 
             String sql = "DELETE FROM discente_tb"
-                    + " WHERE matricula = "
-                    + pk;
+                    + " WHERE matricula = ? ";
 
             stmt = (PreparedStatement) con.prepareStatement(sql);
-
+            stmt.setInt(1, discente.getMatricula());
             stmt.execute();
-
+            JOptionPane.showMessageDialog(null, "Removido!");
         } catch (SQLException e) {
 
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(null, e);
 
         } finally {
 

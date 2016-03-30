@@ -20,8 +20,8 @@ import javax.swing.JOptionPane;
  * @author Milena
  */
 public class DocenteReservaChaveDAO {
-    
-     public void insert(DocenteReservaChave docenteReservaChave) throws SQLException {
+
+    public void insert(DocenteReservaChave docenteReservaChave) throws SQLException {
 
         Connection con = (Connection) ConnectionFactory.getConnection();
 
@@ -52,8 +52,9 @@ public class DocenteReservaChaveDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
+
     public DocenteReservaChave getById(Integer pk) throws SQLException {
-        
+
         Connection con = (Connection) ConnectionFactory.getConnection();
 
         DocenteReservaChave docenteReservaChave = null;
@@ -111,10 +112,10 @@ public class DocenteReservaChaveDAO {
                 docenteReservaChave.setHoraDevolucao(rs.getString("horaDevolucao"));
                 docenteReservaChave.setHoraPedido(rs.getString("horaPedido"));
                 docenteReservaChave.setData(rs.getDate("data"));
-                
-                ChavesDAO chavesdao = new ChavesDAO(); 
+
+                ChavesDAO chavesdao = new ChavesDAO();
                 docenteReservaChave.setChaves(chavesdao.getById(rs.getInt("idChave")));
-                
+
                 docenteReservaChaves.add(docenteReservaChave);
             }
 
@@ -124,5 +125,35 @@ public class DocenteReservaChaveDAO {
         }
 
         return docenteReservaChaves;
+    }
+
+    public void update(DocenteReservaChave docenteReservaChave) throws SQLException {
+
+        Connection con = (Connection) ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+
+            String sql = "UPDATE Discente_Reserva_Chaves_tb"
+                    + " SET horaDevolucao=?"
+                    + " WHERE id=?";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            stmt.setString(1, docenteReservaChave.getHoraDevolucao());
+            stmt.setInt(2, docenteReservaChave.getId());
+
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Alterado!");
+
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, e);
+
+        } finally {
+
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
     }
 }

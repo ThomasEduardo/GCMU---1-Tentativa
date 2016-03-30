@@ -577,14 +577,14 @@ public class ChavesDAO {
         try {
 
             String sql = "UPDATE chaves_tb"
-                    + " SET identificacao, status=?"
+                    + " SET identificacao=?"
                     + " WHERE idChave=?";
 
             stmt = (PreparedStatement) con.prepareStatement(sql);
 
             stmt.setString(1, chaves.getIdentificacao());
-            stmt.setString(2, chaves.getStatus());
-            stmt.setLong(3, chaves.getId());
+        
+            stmt.setLong(2, chaves.getId());
 
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Alterado!");
@@ -597,17 +597,8 @@ public class ChavesDAO {
             ConnectionFactory.closeConnection(con, stmt);
 
         }
-
-    }
-
-    public List<Chaves> getAll() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public List<Chaves> find(Chaves entity) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        
+            
     }
 
 }

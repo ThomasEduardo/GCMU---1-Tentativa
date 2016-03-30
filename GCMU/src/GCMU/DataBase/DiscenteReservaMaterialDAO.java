@@ -129,4 +129,34 @@ public class DiscenteReservaMaterialDAO {
 
         return discenteReservaMateriais;
     }
+    
+    public void update(DiscenteReservaMaterial discenteReservaMaterial) throws SQLException {
+
+        Connection con = (Connection) ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+
+            String sql = "UPDATE Discente_Reserva_Materiais_tb"
+                    + " SET horaDevolucao=?"
+                    + " WHERE id=?";
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
+            stmt.setString(1, discenteReservaMaterial.getHoraDevolucao());
+            stmt.setInt(2, discenteReservaMaterial.getId());
+
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Alterado!");
+
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, e);
+
+        } finally {
+
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+    }
 }

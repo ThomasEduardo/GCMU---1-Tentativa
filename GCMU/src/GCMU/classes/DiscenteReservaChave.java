@@ -19,7 +19,24 @@ public class DiscenteReservaChave {
     private Date data;
     private Chaves chaves;
     private Discente discente;
+    private int matricula;
+    private int idChave;
 
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public int getIdChave() {
+        return idChave;
+    }
+
+    public void setIdChave(int idChave) {
+        this.idChave = idChave;
+    }
     /**
      * @return the id
      */

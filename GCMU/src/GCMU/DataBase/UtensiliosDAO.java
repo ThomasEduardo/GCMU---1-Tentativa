@@ -140,7 +140,7 @@ public class UtensiliosDAO {
                         JOptionPane.showMessageDialog(null, "Alterado!");
 		}catch (SQLException e) {
 
-			System.out.println(e);
+			JOptionPane.showMessageDialog(null, e);
 
 		} finally {
                     
